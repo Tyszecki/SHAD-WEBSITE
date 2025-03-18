@@ -1,0 +1,260 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Zdjęcia</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">BSP SHAD</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Informacje</a></li>
+							<li class="active"><a href="generic.html">Zdjęcia</a></li>
+							<li><a href="elements.html">O nas</a></li>
+						</ul>
+						<ul class="icons"><!--
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>-->
+						</ul> 	
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+				<!-- Post -->
+<section class="post">
+    <header class="major">
+        <h1>Zdjęcia</h1>
+    </header>
+
+<!-- Image -->
+<div class="box alt">
+	<div class="row gtr-50 gtr-uniform">
+		<!-- First Row -->
+		<div class="col-4">
+			<a href="images/3.jpg" class="lightbox"><img src="images/3.jpg" alt="" width="400" height="400" style="object-fit: cover;" /></a>
+		</div>
+		<div class="col-4">
+			<a href="images/9.jpg" class="lightbox"><img src="images/9.jpg" alt="" width="400" height="400" style="object-fit: cover;" /></a>
+		</div>
+		<div class="col-4">
+			<a href="images/10.jpg" class="lightbox"><img src="images/10.jpg" alt="" width="400" height="400" style="object-fit: cover;" /></a>
+		</div>
+
+		<!-- Second Row -->
+		<div class="col-4">
+			<a href="images/2.jpg" class="lightbox"><img src="images/2.jpg" alt="" width="400" height="400" style="object-fit: cover;" /></a>
+		</div>
+		<div class="col-4">
+			<a href="images/8.jpg" class="lightbox"><img src="images/8.jpg" alt="" width="400" height="400" style="object-fit: cover;" /></a>
+		</div>
+		<div class="col-4">
+			<a href="images/1.jpg" class="lightbox"><img src="images/1.jpg" alt="" width="400" height="400" style="object-fit: cover;" /></a>
+		</div>
+		<div class="col-4">
+			<a href="images/5.jpg" class="lightbox"><img src="images/5.jpg" alt="" width="400" height="400" style="object-fit: cover;" /></a>
+		</div>
+
+		<!-- Third Row -->
+		<div class="col-4">
+			<a href="images/7.jpg" class="lightbox"><img src="images/7.jpg" alt="" width="400" height="400" style="object-fit: cover;" /></a>
+		</div>
+		<div class="col-4">
+			<a href="images/4.jpg" class="lightbox"><img src="images/4.jpg" alt="" width="400" height="400" style="object-fit: cover;" /></a>
+		</div>
+		
+
+		<!-- Fourth Row -->
+		
+		
+	</div>
+</div>
+
+<!-- Lightbox Modal -->
+<div id="lightbox-modal" class="lightbox-modal">
+	<span class="close">&times;</span>
+	<!-- Left and Right arrows -->
+	<a class="prev" onclick="changeImage(-1)">&#10094;</a>
+	<a class="next" onclick="changeImage(1)">&#10095;</a>
+	<img class="lightbox-content" id="lightbox-img" />
+</div>
+
+<script>
+	// Get all image links with class 'lightbox'
+	const lightboxLinks = document.querySelectorAll('.lightbox');
+
+	// Get the modal and image elements
+	const modal = document.getElementById('lightbox-modal');
+	const lightboxImg = document.getElementById('lightbox-img');
+	const closeBtn = document.querySelector('.close');
+
+	// Store the index of the current image
+	let currentIndex = 0;
+	const images = Array.from(lightboxLinks);
+
+	// Function to show image in the modal
+	function showImage(index) {
+		lightboxImg.src = images[index].href;
+		currentIndex = index;
+		modal.style.display = "flex";  // Change to flex to ensure centered display
+	}
+
+	// Click event for lightbox images
+	lightboxLinks.forEach((link, index) => {
+		link.addEventListener('click', function(e) {
+			e.preventDefault(); // Prevent the default link action
+			showImage(index);
+		});
+	});
+
+	// Close the modal when the close button is clicked
+	closeBtn.addEventListener('click', function() {
+		modal.style.display = "none";
+	});
+
+	// Close the modal when clicking outside the image
+	window.addEventListener('click', function(e) {
+		if (e.target === modal) {
+			modal.style.display = "none";
+		}
+	});
+
+	// Function to change the image (next or previous)
+	function changeImage(direction) {
+		let newIndex = currentIndex + direction;
+
+		// Loop to ensure the index stays within bounds
+		if (newIndex < 0) {
+			newIndex = images.length - 1;
+		} else if (newIndex >= images.length) {
+			newIndex = 0;
+		}
+
+		showImage(newIndex);
+	}
+</script>
+
+<style>
+	/* Lightbox Modal Style */
+	.lightbox-modal {
+		display: none;
+		position: fixed;
+		z-index: 9999;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.8);
+		display: flex; /* Center the modal content */
+		justify-content: center; /* Centers horizontally */
+		align-items: center; /* Centers vertically */
+	}
+
+	/* Lightbox Image Style */
+	.lightbox-modal .lightbox-content {
+		max-width: 80%;
+		max-height: 80%;
+		display: block;
+	}
+
+	/* Close Button */
+	.lightbox-modal .close {
+		position: absolute;
+		top: 10px;
+		right: 25px;
+		color: white;
+		font-size: 96px;
+		font-weight: bold;
+		cursor: pointer;
+	}
+
+	/* Arrows */
+	.lightbox-modal .prev,
+	.lightbox-modal .next {
+		position: absolute;
+		top: 50%;
+		font-size: 96px;
+		color: white;
+		font-weight: bold;
+		cursor: pointer;
+		transition: 0.3s;
+		padding: 80px;
+		margin-top: -22px;
+	}
+
+	.lightbox-modal .prev {
+		left: 0;
+	}
+
+	.lightbox-modal .next {
+		right: 0;
+	}
+
+	.lightbox-modal .prev:hover,
+	.lightbox-modal .next:hover {
+		color: #bbb;
+	}
+
+	/* Ensure 3 images per row */
+	.row.gtr-50.gtr-uniform .col-4 {
+		width: 33.33%; /* 3 images per row */
+		padding: 10px;
+		box-sizing: border-box;
+	}
+</style>
+
+
+
+
+
+
+
+
+
+
+<!-- Footer -->
+<section class="split contact">
+	<section style="display: flex; justify-content: space-between; align-items: flex-start;">
+		<div class="author" style="flex: 1;">
+			<h3>Maciej Tyszecki</h3>
+			<p><a href="mailto:mtyszecki@gmail.com">mtyszecki@gmail.com</a></p>
+			<p><a href="tel:+48514259564">(+48) 514 259 564</a></p>									
+		</div>
+		<div class="author" style="flex: 1;">
+			<h3>Jakub Tkaczyk</h3>
+			<p><a href="mailto:kuba.tkaczy@gmail.com">kuba.tkaczy@gmail.com</a></p>
+			<p><a href="tel:+48690165295">(+48) 690 165 295</a></p>							
+		</div>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
