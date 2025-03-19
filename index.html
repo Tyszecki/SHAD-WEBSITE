@@ -71,21 +71,18 @@
         <!-- Footer -->
         <footer id="footer">
             <section>
-               <form
-  action="https://formspree.io/f/xanenrzj"
-  method="POST"
->
-  <label>
-    Your email:
-    <input type="email" name="email">
-  </label>
-  <label>
-    Your message:
-    <textarea name="message"></textarea>
-  </label>
-  <!-- your other form fields go here -->
-  <button type="submit">Send</button>
-</form>
+                <form
+                  action="https://formspree.io/f/xanenrzj"
+                  method="POST"
+                >
+                    <label for="email">Twój email:</label>
+                    <input type="email" name="email" id="email" required placeholder="Twój email">
+
+                    <label for="message">Twoja wiadomość:</label>
+                    <textarea name="message" id="message" required placeholder="Napisz wiadomość"></textarea>
+
+                    <button type="submit">Wyślij</button>
+                </form>
             </section>
             <section class="split contact">
                 <section class="alt">
