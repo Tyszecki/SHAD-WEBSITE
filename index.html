@@ -1,33 +1,261 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/js/loaders/OBJLoader.js"></script>
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>BSP SHAD</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-<script>
-    // Inicjalizacja sceny
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+    <style>
+        /* Modal CSS */
+        .modal {
+            display: none; /* Ukryte na początku */
+            position: fixed;
+            z-index: 1; /* Na samej górze */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Wyśrodkowanie modalu */
+        }
 
-    // Ładowanie obiektu OBJ
-    var loader = new THREE.OBJLoader();
-    loader.load('path/to/dron.obj', function (object) {
-        scene.add(object);
-        object.scale.set(0.5, 0.5, 0.5); // Zmiana skali obiektu, jeśli to konieczne
-    });
+        /* Obrazek wewnątrz modalu */
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain; /* Dopasowanie obrazu */
+        }
 
-    // Dodanie światła
-    var light = new THREE.PointLight(0xffffff);
-    light.position.set(10, 10, 10);
-    scene.add(light);
+        /* Przycisk zamknięcia */
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
 
-    // Ustawienia kamery
-    camera.position.z = 5;
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="is-preload">
 
-    // Funkcja animacji
-    function animate() {
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
+    <!-- Wrapper -->
+    <div id="wrapper" class="fade-in">
+
+        <!-- Intro -->
+        <div id="intro">
+            <h1>BSP SHAD</h1>
+            <p>Bezzałogowy statek powietrzny do akwizycji danych sonarem hydroakustycznym</p>
+            <ul class="actions">
+                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+            </ul>
+        </div>
+
+        <!-- Header -->
+        <header id="header">
+            <a href="index.html" class="logo">BSP SHAD</a>
+        </header>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul class="links">
+                <li class="active"><a href="index.html">Informacje</a></li>
+                <li><a href="generic.html">Zdjęcia</a></li>
+                <li><a href="elements.html">O nas</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main -->
+        <div id="main">
+
+            <!-- Featured Post -->
+            <article class="post featured">
+                <header class="major">
+                    <span class="date">7 Maja, 2024</span>
+                    <h2><a href="#" id="poczatekLink">POCZĄTEK<br /></a></h2>
+                    <p>Pomysł na budowę jednostki zdolnej do szybkiego przemieszczania się w powietrzu, jednocześnie wykonującej swoje misje na akwenach wodnych narodził się na AOS Czernica podczas warsztatów badawczych przeprowadzonych przez Akademię Marynarki Wojennej w Gdyni we współpracy z Ośrodkiem Badawczo-Rozwojowym CTM.</p>
+                </header>
+                <a href="#" class="image main" id="czernicaImage"><img src="images/czernica.jpg" alt="" /></a>
+            </article>
+
+            <!-- Posts -->
+            <section class="posts">
+                <article>
+                    <header>
+                        <!-- Link do wyświetlania modala -->
+                        <h2><a href="#" id="openModalSpecyfikacje">Specyfikacje techniczne</a></h2>
+                    </header>
+                    <a href="#" class="image fit" id="specyfikacjeImage"><img src="images/specyfikacje.jpg" alt="Specyfikacje" /> </a>                                     
+                </article>
+                <article>
+                    <header>
+                        <h2><a href="#" id="openModalZastosowanie">Zastosowanie</a></h2>
+                    </header>
+                    <a href="#" class="image fit"><img src="images/Zastosowanie.jpg" alt="Zastosowanie" id="zastosowanieImage" /></a>
+                    <p>Konstrukcja BSP obejmuje specjalnie opracowane pływaki, umożliwiające unoszenie się na powierzchni wody.
+                        BSP został zaprojektowany do pozyskiwania danych w toni wodnej za pomocą sonaru Ping360. Sterowanie odbywa się przy użyciu dedykowanego kontrolera zdalnego, a alternatywnie BSP może realizować autonomiczne misje według zaprogramowanego scenariusza. Dane sonarowe są przesyłane w czasie rzeczywistym do operatora przy stacji naziemnej, co umożliwia ich bieżącą analizę.</p>
+                </article>
+                <article>
+                    <header>
+                        <h2><a href="#" id="openModalModel">Model 3D</a></h2>
+                    </header>
+                    <a href="#" class="image fit"><img src="images/Model.jpg" alt="Model" id="ModelImage" /></a>
+                    
+                </article>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <section>
+                <form
+                  action="https://formspree.io/f/xanenrzj"
+                  method="POST"
+                >
+                    <label for="email">Twój email:</label>
+                    <input type="email" name="email" id="email" required placeholder="Twój email">
+
+                    <label for="message">Twoja wiadomość:</label>
+                    <textarea name="message" id="message" required placeholder="Napisz wiadomość"></textarea>
+
+                    <button type="submit">Wyślij</button>
+                </form>
+            </section>
+            <section class="split contact">
+                <section class="alt">
+                    <h3>Adres</h3>
+                    <p>81-010 Gdynia, Polska</p>
+                </section>
+                <section style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div class="author" style="flex: 1;">
+                        <h3>Maciej Tyszecki</h3>
+                        <p><a href="mailto:mtyszecki@gmail.com">mtyszecki@gmail.com</a></p>
+                        <p><a href="tel:+48514259564">(+48) 514 259 564</a></p>                                  
+                    </div>
+                    <div class="author" style="flex: 1;">
+                        <h3>Jakub Tkaczyk</h3>
+                        <p><a href="mailto:kuba.tkaczy@gmail.com">kuba.tkaczy@gmail.com</a></p>
+                        <p><a href="tel:+48690165295">(+48) 690 165 295</a></p>                          
+                    </div>
+                </section>
+            </section>
+        </footer>
+
+        <!-- Copyright -->
+        <div id="copyright">
+            <ul><li>&copy; BSP SHAD</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+        </div>
+
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="three.min.js"></script>
+
+    <script>
+    // Modal functionality
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+
+    // Funkcja do otwierania modalu
+    function openModal(imgSrc, caption) {
+        modal.style.display = "flex"; // Pokazuje modal
+        modalImg.src = imgSrc; // Ścieżka do obrazu
+        captionText.innerHTML = caption; // Opis
     }
-    animate();
-</script>
+
+    // Kiedy klikniesz na "Specyfikacje techniczne"
+    var specyfikacjeLink = document.getElementById("openModalSpecyfikacje");
+    specyfikacjeLink.onclick = function(event) {
+        event.preventDefault(); // Zapobiega domyślnej akcji
+        openModal("images/specyfikacje.jpg", "Specyfikacje techniczne");
+    }
+
+    // Kiedy klikniesz na "Zastosowanie"
+    var zastosowanieLink = document.getElementById("openModalZastosowanie");
+    zastosowanieLink.onclick = function(event) {
+        event.preventDefault(); // Zapobiega domyślnej akcji
+        openModal("images/Zastosowanie.jpg", "Zastosowanie");
+    }
+
+    // Kiedy klikniesz na "Model"
+    var ModelLink = document.getElementById("openModalModel");
+    ModelLink.onclick = function(event) {
+        event.preventDefault(); // Zapobiega domyślnej akcji
+        openModal("images/Model.jpg", "Model");
+    }
+
+    // Kiedy klikniesz na zdjęcie "Specyfikacje"
+    var specyfikacjeImage = document.getElementById("specyfikacjeImage");
+    specyfikacjeImage.onclick = function(event) {
+        event.preventDefault();
+        openModal("images/specyfikacje.jpg", "Specyfikacje techniczne");
+    }
+
+    // Kiedy klikniesz na zdjęcie "Zastosowanie"
+    var zastosowanieImage = document.getElementById("zastosowanieImage");
+    zastosowanieImage.onclick = function(event) {
+        event.preventDefault();
+        openModal("images/Zastosowanie.jpg", "Zastosowanie");
+    }
+
+    // Kiedy klikniesz na zdjęcie "Model"
+    var ModelImage = document.getElementById("ModelImage");
+    ModelImage.onclick = function(event) {
+        window.location.href = "https://tyszecki.github.io/Model-website/"; // Przenosi użytkownika na stronę modelu
+    }
+
+    // Zapobiega domyślnej akcji przy kliknięciu na "Początek"
+    var poczatekLink = document.getElementById("poczatekLink");
+    poczatekLink.onclick = function(event) {
+        event.preventDefault(); // Zapobiega przeładowaniu strony
+    }
+
+    // Zapobiega domyślnej akcji przy kliknięciu na zdjęcie "czernica.jpg"
+    var czernicaImage = document.getElementById("czernicaImage");
+    czernicaImage.onclick = function(event) {
+        event.preventDefault(); // Zapobiega przeładowaniu strony
+    }
+
+    // Kiedy klikniesz na przycisk zamknięcia
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+        modal.style.display = "none"; // Ukrywa modal
+    }
+
+    // Kiedy klikniesz poza obrazem, modal zostanie zamknięty
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none"; // Ukrywa modal, jeśli klikniesz poza nim
+        }
+    }
+    </script>
+</body>
+</html>
