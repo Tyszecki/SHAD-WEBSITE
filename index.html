@@ -84,10 +84,10 @@
             <article class="post featured">
                 <header class="major">
                     <span class="date">7 Maja, 2024</span>
-                    <h2><a href="#">POCZĄTEK<br /></a></h2>
+                    <h2><a href="#" id="poczatekLink">POCZĄTEK<br /></a></h2>
                     <p>Pomysł na budowę jednostki zdolnej do szybkiego przemieszczania się w powietrzu, jednocześnie wykonującej swoje misje na akwenach wodnych narodził się na AOS Czernica podczas warsztatów badawczych przeprowadzonych przez Akademię Marynarki Wojennej w Gdyni we współpracy z Ośrodkiem Badawczo-Rozwojowym CTM.</p>
                 </header>
-                <a href="#" class="image main"><img src="images/czernica.jpg" alt="" /></a>
+                <a href="#" class="image main" id="czernicaImage"><img src="images/czernica.jpg" alt="" /></a>
             </article>
 
             <!-- Posts -->
@@ -209,6 +209,18 @@
     zastosowanieImage.onclick = function(event) {
         event.preventDefault();
         openModal("images/Zastosowanie.jpg", "Zastosowanie");
+    }
+
+    // Zapobiega domyślnej akcji przy kliknięciu na "Początek"
+    var poczatekLink = document.getElementById("poczatekLink");
+    poczatekLink.onclick = function(event) {
+        event.preventDefault(); // Zapobiega przeładowaniu strony
+    }
+
+    // Zapobiega domyślnej akcji przy kliknięciu na zdjęcie "czernica.jpg"
+    var czernicaImage = document.getElementById("czernicaImage");
+    czernicaImage.onclick = function(event) {
+        event.preventDefault(); // Zapobiega przeładowaniu strony
     }
 
     // Kiedy klikniesz na przycisk zamknięcia
