@@ -107,6 +107,13 @@
                     <p>Konstrukcja BSP obejmuje specjalnie opracowane pływaki, umożliwiające unoszenie się na powierzchni wody.
                         BSP został zaprojektowany do pozyskiwania danych w toni wodnej za pomocą sonaru Ping360. Sterowanie odbywa się przy użyciu dedykowanego kontrolera zdalnego, a alternatywnie BSP może realizować autonomiczne misje według zaprogramowanego scenariusza. Dane sonarowe są przesyłane w czasie rzeczywistym do operatora przy stacji naziemnej, co umożliwia ich bieżącą analizę.</p>
                 </article>
+                <article>
+                    <header>
+                        <h2><a href="#" id="openModalModel">Model 3D</a></h2>
+                    </header>
+                    <a href="#" class="image fit"><img src="images/Model.jpg" alt="Model" id="ModelImage" /></a>
+                    
+                </article>
             </section>
 
         </div>
@@ -169,6 +176,7 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="three.min.js"></script>
 
     <script>
     // Modal functionality
@@ -197,6 +205,13 @@
         openModal("images/Zastosowanie.jpg", "Zastosowanie");
     }
 
+    // Kiedy klikniesz na "Model"
+    var ModelLink = document.getElementById("openModalModel");
+    ModelLink.onclick = function(event) {
+        event.preventDefault(); // Zapobiega domyślnej akcji
+        openModal("images/Model.jpg", "Model");
+    }
+
     // Kiedy klikniesz na zdjęcie "Specyfikacje"
     var specyfikacjeImage = document.getElementById("specyfikacjeImage");
     specyfikacjeImage.onclick = function(event) {
@@ -209,6 +224,12 @@
     zastosowanieImage.onclick = function(event) {
         event.preventDefault();
         openModal("images/Zastosowanie.jpg", "Zastosowanie");
+    }
+
+    // Kiedy klikniesz na zdjęcie "Model"
+    var ModelImage = document.getElementById("ModelImage");
+    ModelImage.onclick = function(event) {
+        window.location.href = "https://tyszecki.github.io/Model-website/"; // Przenosi użytkownika na stronę modelu
     }
 
     // Zapobiega domyślnej akcji przy kliknięciu na "Początek"
@@ -236,6 +257,5 @@
         }
     }
     </script>
-
 </body>
 </html>
