@@ -8,43 +8,39 @@
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
     <style>
-        /* Modal CSS */
-        .modal {
-            display: none; /* Ukryte na początku */
-            position: fixed;
-            z-index: 1; /* Na samej górze */
-            left: 0;
-            top: 0;
+        /* Styl dla sekcji z postami */
+        .posts {
+            display: flex;
+            flex-wrap: wrap; /* Pozwala na zawijanie elementów */
+            gap: 20px; /* Odstęp między elementami */
+        }
+
+        .posts article {
+            flex: 1 1 calc(50% - 20px); /* Dwa elementy w rzędzie na dużych ekranach */
+            box-sizing: border-box; /* Uwzględnia padding i border w szerokości */
+        }
+
+        /* Responsywność - na mniejszych ekranach układ kolumnowy */
+        @media (max-width: 768px) {
+            .posts article {
+                flex: 1 1 100%; /* Jeden element w rzędzie na telefonach */
+            }
+        }
+
+        /* Styl dla filmu */
+        video {
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center; /* Wyśrodkowanie modalu */
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
         }
 
-        /* Obrazek wewnątrz modalu */
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain; /* Dopasowanie obrazu */
-        }
-
-        /* Przycisk zamknięcia */
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
+        /* Styl dla obrazów */
+        .image.fit img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
     </style>
 </head>
@@ -96,10 +92,9 @@
             <section class="posts">
                 <article>
                     <header>
-                        <!-- Link do wyświetlania modala -->
                         <h2><a href="#" id="openModalSpecyfikacje">Specyfikacje techniczne</a></h2>
                     </header>
-                    <a href="#" class="image fit" id="specyfikacjeImage"><img src="images/specyfikacje.jpg" alt="Specyfikacje" /> </a>                                     
+                    <a href="#" class="image fit" id="specyfikacjeImage"><img src="images/specyfikacje.jpg" alt="Specyfikacje" /></a>
                 </article>
                 <article>
                     <header>
@@ -111,8 +106,8 @@
                 </article>
                 <article>
                     <header>
-    <h2 style="font-size: 1.5em;">Krótka prezentacja działania</h2>
-</header>
+                        <h2>Krótka prezentacja działania</h2>
+                    </header>
                     <!-- Dodaj film tutaj -->
                     <video controls width="100%" style="max-width: 100%; margin: 0 auto; display: block;">
                         <source src="lot1.mp4" type="video/mp4">
@@ -174,13 +169,6 @@
 
     </div>
 
-    <!-- Modal -->
-    <div id="myModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="img01">
-        <div id="caption"></div>
-    </div>
-
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.scrollex.min.js"></script>
@@ -189,86 +177,5 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="three.min.js"></script>
-
-    <script>
-        // Modal functionality
-        var modal = document.getElementById("myModal");
-        var modalImg = document.getElementById("img01");
-        var captionText = document.getElementById("caption");
-
-        // Funkcja do otwierania modalu
-        function openModal(imgSrc, caption) {
-            modal.style.display = "flex"; // Pokazuje modal
-            modalImg.src = imgSrc; // Ścieżka do obrazu
-            captionText.innerHTML = caption; // Opis
-        }
-
-        // Kiedy klikniesz na "Specyfikacje techniczne"
-        var specyfikacjeLink = document.getElementById("openModalSpecyfikacje");
-        specyfikacjeLink.onclick = function(event) {
-            event.preventDefault(); // Zapobiega domyślnej akcji
-            openModal("images/specyfikacje.jpg", "Specyfikacje techniczne");
-        }
-
-        // Kiedy klikniesz na "Zastosowanie"
-        var zastosowanieLink = document.getElementById("openModalZastosowanie");
-        zastosowanieLink.onclick = function(event) {
-            event.preventDefault(); // Zapobiega domyślnej akcji
-            openModal("images/Zastosowanie.jpg", "Zastosowanie");
-        }
-
-        // Kiedy klikniesz na "Model"
-        var ModelLink = document.getElementById("openModalModel");
-        ModelLink.onclick = function(event) {
-            event.preventDefault(); // Zapobiega domyślnej akcji
-            openModal("images/Model.jpg", "Model");
-        }
-
-        // Kiedy klikniesz na zdjęcie "Specyfikacje"
-        var specyfikacjeImage = document.getElementById("specyfikacjeImage");
-        specyfikacjeImage.onclick = function(event) {
-            event.preventDefault();
-            openModal("images/specyfikacje.jpg", "Specyfikacje techniczne");
-        }
-
-        // Kiedy klikniesz na zdjęcie "Zastosowanie"
-        var zastosowanieImage = document.getElementById("zastosowanieImage");
-        zastosowanieImage.onclick = function(event) {
-            event.preventDefault();
-            openModal("images/Zastosowanie.jpg", "Zastosowanie");
-        }
-
-        // Kiedy klikniesz na zdjęcie "Model"
-        var ModelImage = document.getElementById("ModelImage");
-        ModelImage.onclick = function(event) {
-            window.location.href = "https://tyszecki.github.io/SHAD-WEBSITE/generic.html"; // Przenosi użytkownika na stronę modelu
-        }
-
-        // Zapobiega domyślnej akcji przy kliknięciu na "Początek"
-        var poczatekLink = document.getElementById("poczatekLink");
-        poczatekLink.onclick = function(event) {
-            event.preventDefault(); // Zapobiega przeładowaniu strony
-        }
-
-        // Zapobiega domyślnej akcji przy kliknięciu na zdjęcie "czernica.jpg"
-        var czernicaImage = document.getElementById("czernicaImage");
-        czernicaImage.onclick = function(event) {
-            event.preventDefault(); // Zapobiega przeładowaniu strony
-        }
-
-        // Kiedy klikniesz na przycisk zamknięcia
-        var span = document.getElementsByClassName("close")[0];
-        span.onclick = function() {
-            modal.style.display = "none"; // Ukrywa modal
-        }
-
-        // Kiedy klikniesz poza obrazem, modal zostanie zamknięty
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none"; // Ukrywa modal, jeśli klikniesz poza nim
-            }
-        }
-    </script>
 </body>
 </html>
