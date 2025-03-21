@@ -8,19 +8,19 @@
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
     <style>
-/* Modal CSS */
-.modal {
-    display: none; /* Ukryte na początku */
-    position: fixed;
-    z-index: 1; /* Na samej górze */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    justify-content: center;
-    align-items: center; /* Wyśrodkowanie modalu */
-}
+        /* Modal CSS */
+        .modal {
+            display: none; /* Ukryte na początku */
+            position: fixed;
+            z-index: 1; /* Na samej górze */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center; /* Wyśrodkowanie modalu */
+        }
 
         /* Obrazek wewnątrz modalu */
         .modal-content {
@@ -109,14 +109,24 @@
                     <p>Konstrukcja BSP obejmuje specjalnie opracowane pływaki, umożliwiające unoszenie się na powierzchni wody.
                         BSP został zaprojektowany do pozyskiwania danych w toni wodnej za pomocą sonaru Ping360. Sterowanie odbywa się przy użyciu dedykowanego kontrolera zdalnego, a alternatywnie BSP może realizować autonomiczne misje według zaprogramowanego scenariusza. Dane sonarowe są przesyłane w czasie rzeczywistym do operatora przy stacji naziemnej, co umożliwia ich bieżącą analizę.</p>
                 </article>
-            <article>
-    <header>
-        <h2><a href="https://tyszecki.github.io/Model-website/" id="openModalModel">Model 3D</a></h2>
-    </header>
-    <a href="https://tyszecki.github.io/Model-website/" class="image fit">
-        <img src="images/Model.jpg" alt="Model" id="ModelImage" />
-    </a>
-</article>
+                <article>
+                    <header>
+                        <h2>Film</h2>
+                    </header>
+                    <!-- Dodaj film tutaj -->
+                    <video controls width="100%" style="max-width: 100%; margin: 0 auto; display: block;">
+                        <source src="videos/bspshad.mp4" type="video/mp4">
+                        Twoja przeglądarka nie obsługuje tagu video.
+                    </video>
+                </article>
+                <article>
+                    <header>
+                        <h2><a href="https://tyszecki.github.io/Model-website/" id="openModalModel">Model 3D</a></h2>
+                    </header>
+                    <a href="https://tyszecki.github.io/Model-website/" class="image fit">
+                        <img src="images/Model.jpg" alt="Model" id="ModelImage" />
+                    </a>
+                </article>
             </section>
 
         </div>
@@ -182,83 +192,83 @@
     <script src="three.min.js"></script>
 
     <script>
-    // Modal functionality
-var modal = document.getElementById("myModal");
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
+        // Modal functionality
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
 
-// Funkcja do otwierania modalu
-function openModal(imgSrc, caption) {
-    modal.style.display = "flex"; // Pokazuje modal
-    modalImg.src = imgSrc; // Ścieżka do obrazu
-    captionText.innerHTML = caption; // Opis
-}
+        // Funkcja do otwierania modalu
+        function openModal(imgSrc, caption) {
+            modal.style.display = "flex"; // Pokazuje modal
+            modalImg.src = imgSrc; // Ścieżka do obrazu
+            captionText.innerHTML = caption; // Opis
+        }
 
-// Kiedy klikniesz na "Specyfikacje techniczne"
-var specyfikacjeLink = document.getElementById("openModalSpecyfikacje");
-specyfikacjeLink.onclick = function(event) {
-    event.preventDefault(); // Zapobiega domyślnej akcji
-    openModal("images/specyfikacje.jpg", "Specyfikacje techniczne");
-}
+        // Kiedy klikniesz na "Specyfikacje techniczne"
+        var specyfikacjeLink = document.getElementById("openModalSpecyfikacje");
+        specyfikacjeLink.onclick = function(event) {
+            event.preventDefault(); // Zapobiega domyślnej akcji
+            openModal("images/specyfikacje.jpg", "Specyfikacje techniczne");
+        }
 
-// Kiedy klikniesz na "Zastosowanie"
-var zastosowanieLink = document.getElementById("openModalZastosowanie");
-zastosowanieLink.onclick = function(event) {
-    event.preventDefault(); // Zapobiega domyślnej akcji
-    openModal("images/Zastosowanie.jpg", "Zastosowanie");
-}
+        // Kiedy klikniesz na "Zastosowanie"
+        var zastosowanieLink = document.getElementById("openModalZastosowanie");
+        zastosowanieLink.onclick = function(event) {
+            event.preventDefault(); // Zapobiega domyślnej akcji
+            openModal("images/Zastosowanie.jpg", "Zastosowanie");
+        }
 
-// Kiedy klikniesz na "Model"
-var ModelLink = document.getElementById("openModalModel");
-ModelLink.onclick = function(event) {
-    event.preventDefault(); // Zapobiega domyślnej akcji
-    openModal("images/Model.jpg", "Model");
-}
+        // Kiedy klikniesz na "Model"
+        var ModelLink = document.getElementById("openModalModel");
+        ModelLink.onclick = function(event) {
+            event.preventDefault(); // Zapobiega domyślnej akcji
+            openModal("images/Model.jpg", "Model");
+        }
 
-// Kiedy klikniesz na zdjęcie "Specyfikacje"
-var specyfikacjeImage = document.getElementById("specyfikacjeImage");
-specyfikacjeImage.onclick = function(event) {
-    event.preventDefault();
-    openModal("images/specyfikacje.jpg", "Specyfikacje techniczne");
-}
+        // Kiedy klikniesz na zdjęcie "Specyfikacje"
+        var specyfikacjeImage = document.getElementById("specyfikacjeImage");
+        specyfikacjeImage.onclick = function(event) {
+            event.preventDefault();
+            openModal("images/specyfikacje.jpg", "Specyfikacje techniczne");
+        }
 
-// Kiedy klikniesz na zdjęcie "Zastosowanie"
-var zastosowanieImage = document.getElementById("zastosowanieImage");
-zastosowanieImage.onclick = function(event) {
-    event.preventDefault();
-    openModal("images/Zastosowanie.jpg", "Zastosowanie");
-}
+        // Kiedy klikniesz na zdjęcie "Zastosowanie"
+        var zastosowanieImage = document.getElementById("zastosowanieImage");
+        zastosowanieImage.onclick = function(event) {
+            event.preventDefault();
+            openModal("images/Zastosowanie.jpg", "Zastosowanie");
+        }
 
-// Kiedy klikniesz na zdjęcie "Model"
-var ModelImage = document.getElementById("ModelImage");
-ModelImage.onclick = function(event) {
-    window.location.href = "https://tyszecki.github.io/SHAD-WEBSITE/generic.html"; // Przenosi użytkownika na stronę modelu
-}
+        // Kiedy klikniesz na zdjęcie "Model"
+        var ModelImage = document.getElementById("ModelImage");
+        ModelImage.onclick = function(event) {
+            window.location.href = "https://tyszecki.github.io/SHAD-WEBSITE/generic.html"; // Przenosi użytkownika na stronę modelu
+        }
 
-// Zapobiega domyślnej akcji przy kliknięciu na "Początek"
-var poczatekLink = document.getElementById("poczatekLink");
-poczatekLink.onclick = function(event) {
-    event.preventDefault(); // Zapobiega przeładowaniu strony
-}
+        // Zapobiega domyślnej akcji przy kliknięciu na "Początek"
+        var poczatekLink = document.getElementById("poczatekLink");
+        poczatekLink.onclick = function(event) {
+            event.preventDefault(); // Zapobiega przeładowaniu strony
+        }
 
-// Zapobiega domyślnej akcji przy kliknięciu na zdjęcie "czernica.jpg"
-var czernicaImage = document.getElementById("czernicaImage");
-czernicaImage.onclick = function(event) {
-    event.preventDefault(); // Zapobiega przeładowaniu strony
-}
+        // Zapobiega domyślnej akcji przy kliknięciu na zdjęcie "czernica.jpg"
+        var czernicaImage = document.getElementById("czernicaImage");
+        czernicaImage.onclick = function(event) {
+            event.preventDefault(); // Zapobiega przeładowaniu strony
+        }
 
-// Kiedy klikniesz na przycisk zamknięcia
-var span = document.getElementsByClassName("close")[0];
-span.onclick = function() {
-    modal.style.display = "none"; // Ukrywa modal
-}
+        // Kiedy klikniesz na przycisk zamknięcia
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function() {
+            modal.style.display = "none"; // Ukrywa modal
+        }
 
-// Kiedy klikniesz poza obrazem, modal zostanie zamknięty
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none"; // Ukrywa modal, jeśli klikniesz poza nim
-    }
-}
+        // Kiedy klikniesz poza obrazem, modal zostanie zamknięty
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none"; // Ukrywa modal, jeśli klikniesz poza nim
+            }
+        }
     </script>
 </body>
 </html>
