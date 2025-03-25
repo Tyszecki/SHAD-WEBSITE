@@ -2,20 +2,41 @@
 <html lang="pl">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>BSP SHAD</title>
-    <link rel="stylesheet" href="assets/css/main.css" />
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="assets/css/main.css" as="style" />
+    <link rel="preload" href="assets/js/jquery.min.js" as="script" />
+    <link rel="preload" href="assets/js/main.js" as="script" />
+    
+    <link rel="stylesheet" href="assets/css/main.css" media="print" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-        <!-- Dla większości przeglądarek -->
-        <link rel="icon" href="images/logo_shad_bckg.png" type="image/png" sizes="64x64">
-        <!-- Dla Apple urządzeń -->
-        <link rel="apple-touch-icon" href="images/logo_shad_bckg.png">
-        <!-- Dla Windows 8/10 -->
-        <meta name="msapplication-TileImage" content="images/logo_shad_bckg.png">
+    <!-- Favicon optimized -->
+    <link rel="icon" href="images/logo_shad_bckg.png" type="image/png" sizes="64x64">
+    <link rel="apple-touch-icon" href="images/logo_shad_bckg.png">
+    <meta name="msapplication-TileImage" content="images/logo_shad_bckg.png">
+    
+    <!-- DNS prefetch for external domains -->
+    <link rel="dns-prefetch" href="https://formspree.io">
+    <link rel="dns-prefetch" href="https://html5up.net">
+    <link rel="dns-prefetch" href="https://linktr.ee">
     
     <style>
-        /* Modal CSS */
+        /* Critical CSS - inlined for faster rendering */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Modal basic styles */
         .modal {
             display: none;
             position: fixed;
@@ -27,14 +48,27 @@
             background-color: rgba(0,0,0,0.9);
             justify-content: center;
             align-items: center;
+            touch-action: manipulation;
         }
-
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
+        
+        /* Responsive video container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
         }
-
+        
+        /* Touch-friendly close button */
         .close {
             position: absolute;
             top: 15px;
@@ -43,64 +77,40 @@
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
         }
-
-        .close:hover {
-            color: #bbb;
-        }
-
-        /* Flexbox layout */
-        .posts {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            align-items: stretch; /* Dodane dla równych wysokości */
-        }
-
-        .posts article {
-            flex: 1 1 calc(50% - 20px);
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .posts article header {
-            min-height: 80px; /* Stała wysokość nagłówka */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .posts article header h2 {
-            font-size: 1.4em;
-            white-space: nowrap;
-            margin: 0;
-            text-align: center;
-            width: 100%;
-        }
-
-        @media (max-width: 768px) {
+        
+        /* Optimized for mobile viewports */
+        @media screen and (max-width: 768px) {
             .posts article {
-                flex: 1 1 100%;
+                flex: 1 1 100% !important;
+                min-width: 100% !important;
             }
             
             .posts article header h2 {
-                font-size: 1.2em;
+                font-size: 1.2em !important;
+                white-space: normal !important;
+            }
+            
+            .split contact {
+                flex-direction: column !important;
+            }
+            
+            .modal-content {
+                max-width: 95% !important;
+                max-height: 80% !important;
+            }
+            
+            .close {
+                right: 15px !important;
+                font-size: 30px !important;
             }
         }
-
-        video, .image.fit img {
-            width: 100%;
-            height: auto;
-            display: block;
-            cursor: pointer;
-            flex-grow: 1; /* Rozciąga elementy wypełniając dostępną przestrzeń */
-        }
-
-        .video-container {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+        
+        /* Will-change for animations */
+        .modal, .modal-content, .close {
+            will-change: transform, opacity;
         }
     </style>
 </head>
@@ -145,7 +155,7 @@
                     <h2><a href="#" id="poczatekLink">POCZĄTEK<br /></a></h2>
                     <p>Pomysł na budowę jednostki zdolnej do szybkiego przemieszczania się w powietrzu, jednocześnie wykonującej swoje misje na akwenach wodnych narodził się na AOS Czernica podczas warsztatów badawczych przeprowadzonych przez Akademię Marynarki Wojennej w Gdyni we współpracy z Ośrodkiem Badawczo-Rozwojowym CTM.</p>
                 </header>
-                <a href="#" class="image main" id="czernicaImage"><img src="images/czernica.jpg" alt="Czernica" /></a>
+                <a href="#" class="image main" id="czernicaImage"><img src="images/czernica.jpg" alt="Czernica" loading="lazy" /></a>
             </article>
 
             <!-- Posts -->
@@ -154,13 +164,13 @@
                     <header>
                         <h2><a href="#" id="openModalSpecyfikacje">Specyfikacje techniczne</a></h2>
                     </header>
-                    <a href="#" class="image fit" id="specyfikacjeImage"><img src="images/specyfikacje.jpg" alt="Specyfikacje" /></a>
+                    <a href="#" class="image fit" id="specyfikacjeImage"><img src="images/specyfikacje.jpg" alt="Specyfikacje" loading="lazy" /></a>
                 </article>
                 <article>
                     <header>
                         <h2><a href="#" id="openModalZastosowanie">Zastosowanie</a></h2>
                     </header>
-                    <a href="#" class="image fit" id="zastosowanieImage"><img src="images/Zastosowanie.jpg" alt="Zastosowanie" /></a>
+                    <a href="#" class="image fit" id="zastosowanieImage"><img src="images/Zastosowanie.jpg" alt="Zastosowanie" loading="lazy" /></a>
                     <p>Konstrukcja BSP obejmuje specjalnie opracowane pływaki, umożliwiające unoszenie się na powierzchni wody.
                         BSP został zaprojektowany do pozyskiwania danych w toni wodnej za pomocą sonaru Ping360. Sterowanie odbywa się przy użyciu dedykowanego kontrolera zdalnego, a alternatywnie BSP może realizować autonomiczne misje według zaprogramowanego scenariusza. Dane sonarowe są przesyłane w czasie rzeczywistym do operatora przy stacji naziemnej, co umożliwia ich bieżącą analizę.</p>
                 </article>
@@ -169,7 +179,7 @@
                         <h2>Krótka prezentacja</h2>
                     </header>
                     <div class="video-container">
-                        <video controls width="100%" style="max-width: 100%; display: block;">
+                        <video controls width="100%" playsinline preload="metadata" style="max-width: 100%; display: block;">
                             <source src="lot1.mp4" type="video/mp4">
                             Twoja przeglądarka nie obsługuje tagu video.
                         </video>
@@ -180,7 +190,7 @@
                         <h2><a href="https://tyszecki.github.io/Model-website/" id="openModalModel">Model 3D</a></h2>
                     </header>
                     <a href="https://tyszecki.github.io/Model-website/" class="image fit">
-                        <img src="images/Model.jpg" alt="Model" id="ModelImage" />
+                        <img src="images/Model.jpg" alt="Model" id="ModelImage" loading="lazy" />
                     </a>
                 </article>
             </section>
@@ -230,81 +240,89 @@
     <!-- Modale -->
     <div id="modalSpecyfikacje" class="modal">
         <span class="close">&times;</span>
-        <img class="modal-content" id="modalSpecImg" src="images/specyfikacje.jpg">
+        <img class="modal-content" id="modalSpecImg" src="images/specyfikacje.jpg" loading="eager">
     </div>
 
     <div id="modalZastosowanie" class="modal">
         <span class="close">&times;</span>
-        <img class="modal-content" id="modalZastImg" src="images/Zastosowanie.jpg">
+        <img class="modal-content" id="modalZastImg" src="images/Zastosowanie.jpg" loading="eager">
     </div>
 
     <div id="modalCzernica" class="modal">
         <span class="close">&times;</span>
-        <img class="modal-content" id="modalCzerImg" src="images/czernica.jpg">
+        <img class="modal-content" id="modalCzerImg" src="images/czernica.jpg" loading="eager">
     </div>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!-- Scripts with defer -->
+    <script src="assets/js/jquery.min.js" defer></script>
+    <script src="assets/js/jquery.scrollex.min.js" defer></script>
+    <script src="assets/js/jquery.scrolly.min.js" defer></script>
+    <script src="assets/js/browser.min.js" defer></script>
+    <script src="assets/js/breakpoints.min.js" defer></script>
+    <script src="assets/js/util.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
 
     <script>
-        // Funkcje do otwierania i zamykania modalów
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = "flex";
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = "none";
-        }
-
-        // Przypisanie zdarzeń dla Specyfikacji
-        document.getElementById('openModalSpecyfikacje').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalSpecyfikacje');
-        };
-        document.getElementById('specyfikacjeImage').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalSpecyfikacje');
-        };
-
-        // Przypisanie zdarzeń dla Zastosowania
-        document.getElementById('openModalZastosowanie').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalZastosowanie');
-        };
-        document.getElementById('zastosowanieImage').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalZastosowanie');
-        };
-
-        // Przypisanie zdarzeń dla Czernicy
-        document.getElementById('czernicaImage').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalCzernica');
-        };
-        document.getElementById('poczatekLink').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalCzernica');
-        };
-
-        // Zamknięcie modalów po kliknięciu na X
-        document.querySelectorAll('.close').forEach(function(closeBtn) {
-            closeBtn.onclick = function() {
-                this.parentElement.style.display = "none";
-            };
-        });
-
-        // Zamknięcie modalów po kliknięciu poza obrazem
-        window.onclick = function(event) {
-            if (event.target.className === 'modal') {
-                event.target.style.display = "none";
+        // Load non-critical JS after page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal functions
+            function openModal(modalId) {
+                document.getElementById(modalId).style.display = "flex";
+                document.body.style.overflow = "hidden";
             }
-        };
+
+            function closeModal(modalId) {
+                document.getElementById(modalId).style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+
+            // Event listeners for modals
+            document.getElementById('openModalSpecyfikacje').addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal('modalSpecyfikacje');
+            });
+            
+            document.getElementById('specyfikacjeImage').addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal('modalSpecyfikacje');
+            });
+
+            document.getElementById('openModalZastosowanie').addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal('modalZastosowanie');
+            });
+            
+            document.getElementById('zastosowanieImage').addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal('modalZastosowanie');
+            });
+
+            document.getElementById('czernicaImage').addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal('modalCzernica');
+            });
+            
+            document.getElementById('poczatekLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal('modalCzernica');
+            });
+
+            // Close modals
+            document.querySelectorAll('.close').forEach(function(closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    closeModal(this.parentElement.id);
+                });
+            });
+
+            // Close modal when clicking outside
+            document.querySelectorAll('.modal').forEach(function(modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeModal(this.id);
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
