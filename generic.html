@@ -11,6 +11,123 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* Responsywne style dla mobilnych */
+			@media screen and (max-width: 768px) {
+				/* Zmiana układu zdjęć na 1 kolumnę */
+				.row.gtr-50.gtr-uniform .col-4 {
+					width: 100% !important;
+					padding: 5px 0 !important;
+				}
+				
+				/* Mniejsze marginesy */
+				.box alt {
+					margin: 10px 0 !important;
+				}
+				
+				/* Pełna szerokość dla zdjęć */
+				.box alt img {
+					width: 100% !important;
+					height: auto !important;
+					max-width: 100% !important;
+				}
+				
+				/* Dostosowanie lightboxa na mobile */
+				.lightbox-modal .lightbox-content {
+					max-width: 95% !important;
+					max-height: 80% !important;
+				}
+				
+				.lightbox-modal .close {
+					font-size: 40px !important;
+					right: 15px !important;
+					top: 5px !important;
+				}
+				
+				.lightbox-modal .prev,
+				.lightbox-modal .next {
+					font-size: 40px !important;
+					padding: 20px !important;
+				}
+				
+				/* Dostosowanie stopki */
+				.split contact section {
+					flex-direction: column !important;
+				}
+				
+				.split contact .author {
+					width: 100% !important;
+					margin-bottom: 20px;
+				}
+				
+				/* Dostosowanie filmu YouTube */
+				div[style*="width: 60%"] {
+					width: 100% !important;
+				}
+			}
+			
+			/* Domyślne style lightboxa (bez zmian dla desktop) */
+			.lightbox-modal {
+				display: none;
+				position: fixed;
+				z-index: 9999;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.8);
+				justify-content: center;
+				align-items: center;
+			}
+
+			.lightbox-modal .lightbox-content {
+				max-width: 80%;
+				max-height: 80%;
+				display: block;
+			}
+
+			.lightbox-modal .close {
+				position: absolute;
+				top: 10px;
+				right: 25px;
+				color: white;
+				font-size: 96px;
+				font-weight: bold;
+				cursor: pointer;
+			}
+
+			.lightbox-modal .prev,
+			.lightbox-modal .next {
+				position: absolute;
+				top: 50%;
+				font-size: 96px;
+				color: white;
+				font-weight: bold;
+				cursor: pointer;
+				transition: 0.3s;
+				padding: 80px;
+				margin-top: -22px;
+			}
+
+			.lightbox-modal .prev {
+				left: 0;
+			}
+
+			.lightbox-modal .next {
+				right: 0;
+			}
+
+			.lightbox-modal .prev:hover,
+			.lightbox-modal .next:hover {
+				color: #bbb;
+			}
+
+			.row.gtr-50.gtr-uniform .col-4 {
+				width: 33.33%;
+				padding: 10px;
+				box-sizing: border-box;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -81,11 +198,6 @@
 		<div class="col-4">
 			<a href="images/4.jpg" class="lightbox"><img src="images/4.jpg" alt="" width="400" height="400" style="object-fit: cover;" /></a>
 		</div>
-		
-
-		<!-- Fourth Row -->
-		
-		
 	</div>
 </div>
 
@@ -153,83 +265,6 @@ function changeImage(direction) {
 }
 </script>
 
-<style>
-	/* Lightbox Modal Style */
-.lightbox-modal {
-    display: none; /* Ukryte na początku */
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
-}
-
-	/* Lightbox Image Style */
-	.lightbox-modal .lightbox-content {
-		max-width: 80%;
-		max-height: 80%;
-		display: block;
-	}
-
-	/* Close Button */
-	.lightbox-modal .close {
-		position: absolute;
-		top: 10px;
-		right: 25px;
-		color: white;
-		font-size: 96px;
-		font-weight: bold;
-		cursor: pointer;
-	}
-
-	/* Arrows */
-	.lightbox-modal .prev,
-	.lightbox-modal .next {
-		position: absolute;
-		top: 50%;
-		font-size: 96px;
-		color: white;
-		font-weight: bold;
-		cursor: pointer;
-		transition: 0.3s;
-		padding: 80px;
-		margin-top: -22px;
-	}
-
-	.lightbox-modal .prev {
-		left: 0;
-	}
-
-	.lightbox-modal .next {
-		right: 0;
-	}
-
-	.lightbox-modal .prev:hover,
-	.lightbox-modal .next:hover {
-		color: #bbb;
-	}
-
-	/* Ensure 3 images per row */
-	.row.gtr-50.gtr-uniform .col-4 {
-		width: 33.33%; /* 3 images per row */
-		padding: 10px;
-		box-sizing: border-box;
-	}
-</style>
-
-
-
-
-
-
-
-
-
-
 <!-- Footer -->
 <section class="split contact">
 	<section style="display: flex; justify-content: space-between; align-items: flex-start;">
@@ -243,8 +278,8 @@ function changeImage(direction) {
 			<p><a href="mailto:kuba.tkaczy@gmail.com">kuba.tkaczy@gmail.com</a></p>
 			<p><a href="tel:+48690165295">(+48) 690 165 295</a></p>							
 		</div>
-		<!-- Osadzony film z YouTube -->
-<!-- Osadzony film z YouTube -->
+	</section>
+</section>
 
 <!-- Osadzony film z YouTube -->
 <div style="text-align: center; margin-top: 20px;">
@@ -261,7 +296,6 @@ function changeImage(direction) {
         </div>
     </div>
 </div>
-
 
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
