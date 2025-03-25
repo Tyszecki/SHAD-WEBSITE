@@ -8,28 +8,34 @@
 	<head>
 		<title>Zdjęcia</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
 			/* Responsywne style dla mobilnych */
 			@media screen and (max-width: 768px) {
+				/* Ogólne skalowanie strony */
+				html {
+					zoom: 0.85;
+				}
+				
 				/* Zmiana układu zdjęć na 1 kolumnę */
 				.row.gtr-50.gtr-uniform .col-4 {
 					width: 100% !important;
-					padding: 5px 0 !important;
+					padding: 10px 0 !important;
 				}
 				
-				/* Mniejsze marginesy */
-				.box alt {
-					margin: 10px 0 !important;
-				}
-				
-				/* Pełna szerokość dla zdjęć */
+				/* Pełna szerokość dla zdjęć z zachowaniem proporcji */
 				.box alt img {
 					width: 100% !important;
 					height: auto !important;
 					max-width: 100% !important;
+					object-fit: contain !important;
+				}
+				
+				/* Mniejsze marginesy */
+				.box alt {
+					margin: 5px 0 !important;
 				}
 				
 				/* Dostosowanie lightboxa na mobile */
@@ -57,12 +63,24 @@
 				
 				.split contact .author {
 					width: 100% !important;
-					margin-bottom: 20px;
+					margin-bottom: 15px;
+					padding: 0 10px;
 				}
 				
 				/* Dostosowanie filmu YouTube */
 				div[style*="width: 60%"] {
 					width: 100% !important;
+					padding: 0 10px;
+				}
+				
+				/* Mniejsze nagłówki */
+				h1 {
+					font-size: 1.8rem !important;
+				}
+				
+				/* Ogólne zmniejszenie paddingu */
+				.post {
+					padding: 1.5rem !important;
 				}
 			}
 			
@@ -146,11 +164,7 @@
 							<li class="active"><a href="generic.html">Zdjęcia</a></li>
 							<li><a href="elements.html">O nas</a></li>
 						</ul>
-						<ul class="icons"><!--
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>-->
+						<ul class="icons">
 						</ul> 	
 					</nav>
 
@@ -227,13 +241,13 @@ const images = Array.from(lightboxLinks);
 function showImage(index) {
     lightboxImg.src = images[index].href;
     currentIndex = index;
-    modal.style.display = "flex";  // Change to flex to ensure centered display
+    modal.style.display = "flex";
 }
 
 // Click event for lightbox images
 lightboxLinks.forEach((link, index) => {
     link.addEventListener('click', function(e) {
-        e.preventDefault(); // Prevent the default link action
+        e.preventDefault();
         showImage(index);
     });
 });
@@ -254,7 +268,6 @@ window.addEventListener('click', function(e) {
 function changeImage(direction) {
     let newIndex = currentIndex + direction;
 
-    // Loop to ensure the index stays within bounds
     if (newIndex < 0) {
         newIndex = images.length - 1;
     } else if (newIndex >= images.length) {
@@ -263,6 +276,11 @@ function changeImage(direction) {
 
     showImage(newIndex);
 }
+
+// Enable zooming on mobile
+document.addEventListener('gesturestart', function(e) {
+    e.preventDefault();
+});
 </script>
 
 <!-- Footer -->
@@ -281,8 +299,7 @@ function changeImage(direction) {
 	</section>
 </section>
 
-<!-- Osadzony film z YouTube -->
-<div style="text-align: center; margin-top: 20px;">
+<!-- Osadzony film z YouTube !!!!!!!!!!!!!!!!!!!                    <div style="text-align: center; margin-top: 20px;">
     <div style="width: 60%; margin: 0 auto;">
         <div style="position: relative; padding-bottom: 56.25%; height: 0;">
             <iframe 
@@ -295,7 +312,8 @@ function changeImage(direction) {
             </iframe>
         </div>
     </div>
-</div>
+</div> -->
+
 
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
