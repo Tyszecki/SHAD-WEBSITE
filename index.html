@@ -8,39 +8,63 @@
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
     <style>
-        /* Styl dla sekcji z postami */
+        /* Modal CSS */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #bbb;
+        }
+
+        /* Flexbox layout */
         .posts {
             display: flex;
-            flex-wrap: wrap; /* Pozwala na zawijanie elementów */
-            gap: 20px; /* Odstęp między elementami */
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .posts article {
-            flex: 1 1 calc(50% - 20px); /* Dwa elementy w rzędzie na dużych ekranach */
-            box-sizing: border-box; /* Uwzględnia padding i border w szerokości */
+            flex: 1 1 calc(50% - 20px);
+            box-sizing: border-box;
         }
 
-        /* Responsywność - na mniejszych ekranach układ kolumnowy */
         @media (max-width: 768px) {
             .posts article {
-                flex: 1 1 100%; /* Jeden element w rzędzie na telefonach */
+                flex: 1 1 100%;
             }
         }
 
-        /* Styl dla filmu */
-        video {
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-
-        /* Styl dla obrazów */
-        .image.fit img {
+        video, .image.fit img {
             width: 100%;
             height: auto;
             display: block;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -85,7 +109,7 @@
                     <h2><a href="#" id="poczatekLink">POCZĄTEK<br /></a></h2>
                     <p>Pomysł na budowę jednostki zdolnej do szybkiego przemieszczania się w powietrzu, jednocześnie wykonującej swoje misje na akwenach wodnych narodził się na AOS Czernica podczas warsztatów badawczych przeprowadzonych przez Akademię Marynarki Wojennej w Gdyni we współpracy z Ośrodkiem Badawczo-Rozwojowym CTM.</p>
                 </header>
-                <a href="#" class="image main" id="czernicaImage"><img src="images/czernica.jpg" alt="" /></a>
+                <a href="#" class="image main" id="czernicaImage"><img src="images/czernica.jpg" alt="Czernica" /></a>
             </article>
 
             <!-- Posts -->
@@ -100,7 +124,7 @@
                     <header>
                         <h2><a href="#" id="openModalZastosowanie">Zastosowanie</a></h2>
                     </header>
-                    <a href="#" class="image fit"><img src="images/Zastosowanie.jpg" alt="Zastosowanie" id="zastosowanieImage" /></a>
+                    <a href="#" class="image fit" id="zastosowanieImage"><img src="images/Zastosowanie.jpg" alt="Zastosowanie" /></a>
                     <p>Konstrukcja BSP obejmuje specjalnie opracowane pływaki, umożliwiające unoszenie się na powierzchni wody.
                         BSP został zaprojektowany do pozyskiwania danych w toni wodnej za pomocą sonaru Ping360. Sterowanie odbywa się przy użyciu dedykowanego kontrolera zdalnego, a alternatywnie BSP może realizować autonomiczne misje według zaprogramowanego scenariusza. Dane sonarowe są przesyłane w czasie rzeczywistym do operatora przy stacji naziemnej, co umożliwia ich bieżącą analizę.</p>
                 </article>
@@ -108,7 +132,6 @@
                     <header>
                         <h2>Krótka prezentacja działania</h2>
                     </header>
-                    <!-- Dodaj film tutaj -->
                     <video controls width="100%" style="max-width: 100%; margin: 0 auto; display: block;">
                         <source src="lot1.mp4" type="video/mp4">
                         Twoja przeglądarka nie obsługuje tagu video.
@@ -129,10 +152,7 @@
         <!-- Footer -->
         <footer id="footer">
             <section>
-                <form
-                  action="https://formspree.io/f/xanenrzj"
-                  method="POST"
-                >
+                <form action="https://formspree.io/f/xanenrzj" method="POST">
                     <label for="email">Twój email:</label>
                     <input type="email" name="email" id="email" required placeholder="Twój email">
 
@@ -169,6 +189,22 @@
 
     </div>
 
+    <!-- Modale -->
+    <div id="modalSpecyfikacje" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalSpecImg" src="images/specyfikacje.jpg">
+    </div>
+
+    <div id="modalZastosowanie" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalZastImg" src="images/Zastosowanie.jpg">
+    </div>
+
+    <div id="modalCzernica" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalCzerImg" src="images/czernica.jpg">
+    </div>
+
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.scrollex.min.js"></script>
@@ -177,5 +213,60 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script>
+        // Funkcje do otwierania i zamykania modalów
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "flex";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        // Przypisanie zdarzeń dla Specyfikacji
+        document.getElementById('openModalSpecyfikacje').onclick = function(e) {
+            e.preventDefault();
+            openModal('modalSpecyfikacje');
+        };
+        document.getElementById('specyfikacjeImage').onclick = function(e) {
+            e.preventDefault();
+            openModal('modalSpecyfikacje');
+        };
+
+        // Przypisanie zdarzeń dla Zastosowania
+        document.getElementById('openModalZastosowanie').onclick = function(e) {
+            e.preventDefault();
+            openModal('modalZastosowanie');
+        };
+        document.getElementById('zastosowanieImage').onclick = function(e) {
+            e.preventDefault();
+            openModal('modalZastosowanie');
+        };
+
+        // Przypisanie zdarzeń dla Czernicy
+        document.getElementById('czernicaImage').onclick = function(e) {
+            e.preventDefault();
+            openModal('modalCzernica');
+        };
+        document.getElementById('poczatekLink').onclick = function(e) {
+            e.preventDefault();
+            openModal('modalCzernica');
+        };
+
+        // Zamknięcie modalów po kliknięciu na X
+        document.querySelectorAll('.close').forEach(function(closeBtn) {
+            closeBtn.onclick = function() {
+                this.parentElement.style.display = "none";
+            };
+        });
+
+        // Zamknięcie modalów po kliknięciu poza obrazem
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = "none";
+            }
+        };
+    </script>
 </body>
 </html>
