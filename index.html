@@ -7,22 +7,21 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LJ29N8M0N4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LJ29N8M0N4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LJ29N8M0N4');
+    </script>
 
-  gtag('config', 'G-LJ29N8M0N4');
-</script>
-
-        <!-- Dla większości przeglądarek -->
-        <link rel="icon" href="images/logo_shad_bckg.png" type="image/png" sizes="64x64">
-        <!-- Dla Apple urządzeń -->
-        <link rel="apple-touch-icon" href="images/logo_shad_bckg.png">
-        <!-- Dla Windows 8/10 -->
-        <meta name="msapplication-TileImage" content="images/logo_shad_bckg.png">
+    <!-- Dla większości przeglądarek -->
+    <link rel="icon" href="images/logo_shad_bckg.png" type="image/png" sizes="64x64">
+    <!-- Dla Apple urządzeń -->
+    <link rel="apple-touch-icon" href="images/logo_shad_bckg.png">
+    <!-- Dla Windows 8/10 -->
+    <meta name="msapplication-TileImage" content="images/logo_shad_bckg.png">
     
     <style>
         /* Modal CSS */
@@ -64,7 +63,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
-            align-items: stretch; /* Dodane dla równych wysokości */
+            align-items: stretch;
         }
 
         .posts article {
@@ -75,7 +74,7 @@
         }
 
         .posts article header {
-            min-height: 80px; /* Stała wysokość nagłówka */
+            min-height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -104,7 +103,7 @@
             height: auto;
             display: block;
             cursor: pointer;
-            flex-grow: 1; /* Rozciąga elementy wypełniając dostępną przestrzeń */
+            flex-grow: 1;
         }
 
         .video-container {
@@ -114,17 +113,76 @@
         }
 
         /* Gallery styles */
-        .gallery-thumbnail {
-            cursor: pointer;
-            margin-bottom: 10px;
-        }
-
-        .gallery-thumbnail:hover {
-            opacity: 0.8;
+        .gallery-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            position: relative;
         }
 
         .gallery-main {
+            position: relative;
+            max-width: 90%;
+            max-height: 80vh;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .gallery-main img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .gallery-nav button {
+            pointer-events: all;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            border-radius: 50%;
+            margin: 0 20px;
+            transition: background 0.3s;
+        }
+
+        .gallery-nav button:hover {
+            background: rgba(0,0,0,0.8);
+        }
+
+        .modal-title {
+            color: white;
+            text-align: center;
             margin-bottom: 20px;
+            font-size: 1.8em;
+            position: absolute;
+            top: 20px;
+            width: 100%;
+        }
+
+        .gallery-counter {
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1.2em;
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
         }
     </style>
 </head>
@@ -207,13 +265,11 @@
                         <img src="images/Model.jpg" alt="Model" id="ModelImage" />
                     </a>
                 </article>
-                    <article>
+                <article>
                     <header>
                         <h2><a href="#" id="openModalWyzroznienie">Wyróżnienie w konkursie "Młodzi Innowacyjni 2025"</a></h2>
                     </header>
-                    <div class="gallery-main">
-                        <a href="#" class="image fit" id="PIAP1Image"><img src="images/PIAP1.jpg" alt="Wyróżnienie" /></a>
-                    </div>
+                    <a href="#" class="image fit" id="PIAP1Image"><img src="images/PIAP1.jpg" alt="Wyróżnienie" /></a>
                     <p>Projekt "SHAD" został wyróżniony w XVII Ogólnopolskim Konkursie Prac Dyplomowych „Młodzi Innowacyjni 2025”. Nasz projekt oktokoptera wyposażonego w sonar hydroakustyczny zdobył wyróżnienie jako jedna z najlepszych prac dyplomowych w dziedzinie automatyki i robotyki w Polsce. Innowacyjny dron został zaprojektowany do precyzyjnego mapowania dna morskiego, inspekcji podwodnej infrastruktury oraz wsparcia działań ratowniczych. Rozwiązanie ma istotne znaczenie dla bezpieczeństwa portów i rozwoju nowoczesnej hydrografii. Praca powstała pod kierunkiem kmdr. por. dr. hab. inż. Pawła Piskura i została wysoko oceniona przez ekspertów za połączenie zaawansowanej robotyki z praktycznymi zastosowaniami w gospodarce morskiej.</p>
                 </article>
             </section>
@@ -260,7 +316,7 @@
 
     </div>
 
-   <!-- Modale -->
+    <!-- Modale -->
     <div id="modalSpecyfikacje" class="modal">
         <span class="close">&times;</span>
         <img class="modal-content" id="modalSpecImg" src="images/specyfikacje.jpg">
@@ -281,11 +337,14 @@
         <div class="gallery-container">
             <h2 class="modal-title">Wyróżnienie w konkursie "Młodzi Innowacyjni 2025"</h2>
             <div class="gallery-main">
-                <img class="modal-content" id="modalPIAP1Img" src="images/PIAP1.jpg" style="cursor: default;">
+                <img id="currentGalleryImage" src="images/PIAP1.jpg">
+                <div class="gallery-nav">
+                    <button id="prevBtn">&lt;</button>
+                    <button id="nextBtn">&gt;</button>
+                </div>
             </div>
-            <div class="gallery-thumbnails">
-                <img class="gallery-thumbnail" src="images/PIAP2.jpg" onclick="changeMainImage(this.src)">
-                <img class="gallery-thumbnail" src="images/PIAP3.jpg" onclick="changeMainImage(this.src)">
+            <div class="gallery-counter">
+                <span id="currentImageIndex">1</span> / <span id="totalImages">3</span>
             </div>
         </div>
     </div>
@@ -300,6 +359,35 @@
     <script src="assets/js/main.js"></script>
 
     <script>
+        // Galeria zdjęć
+        const galleryImages = [
+            'images/PIAP1.jpg',
+            'images/PIAP2.jpg',
+            'images/PIAP3.jpg'
+        ];
+        
+        let currentImage = 0;
+        const totalImages = galleryImages.length;
+        
+        function updateGallery() {
+            document.getElementById('currentGalleryImage').src = galleryImages[currentImage];
+            document.getElementById('currentImageIndex').textContent = currentImage + 1;
+            document.getElementById('totalImages').textContent = totalImages;
+        }
+        
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            currentImage = (currentImage - 1 + totalImages) % totalImages;
+            updateGallery();
+        });
+        
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            currentImage = (currentImage + 1) % totalImages;
+            updateGallery();
+        });
+        
+        // Inicjalizacja galerii
+        updateGallery();
+
         // Funkcje do otwierania i zamykania modalów
         function openModal(modalId) {
             document.getElementById(modalId).style.display = "flex";
