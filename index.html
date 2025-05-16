@@ -358,7 +358,7 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 
-    <script>
+   <script>
         // Galeria zdjęć
         const galleryImages = [
             'images/PIAP1.jpg',
@@ -440,7 +440,10 @@
         // Zamknięcie modalów po kliknięciu na X
         document.querySelectorAll('.close').forEach(function(closeBtn) {
             closeBtn.onclick = function() {
-                this.parentElement.style.display = "none";
+                const modal = this.closest('.modal');
+                if (modal) {
+                    modal.style.display = "none";
+                }
             };
         });
 
