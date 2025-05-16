@@ -260,7 +260,7 @@
 
     </div>
 
-    <!-- Modale -->
+   <!-- Modale -->
     <div id="modalSpecyfikacje" class="modal">
         <span class="close">&times;</span>
         <img class="modal-content" id="modalSpecImg" src="images/specyfikacje.jpg">
@@ -278,14 +278,14 @@
 
     <div id="modalWyzroznienie" class="modal">
         <span class="close">&times;</span>
-        <div style="text-align: center; color: white;">
-            <h2>Wyróżnienie w konkursie "Młodzi Innowacyjni 2025"</h2>
+        <div class="gallery-container">
+            <h2 class="modal-title">Wyróżnienie w konkursie "Młodzi Innowacyjni 2025"</h2>
             <div class="gallery-main">
-                <img class="modal-content" id="modalPIAP1Img" src="images/PIAP1.jpg" style="cursor: pointer;">
+                <img class="modal-content" id="modalPIAP1Img" src="images/PIAP1.jpg" style="cursor: default;">
             </div>
-            <div style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
-                <img class="gallery-thumbnail" src="images/PIAP2.jpg" style="width: 30%;" onclick="document.getElementById('modalPIAP1Img').src=this.src">
-                <img class="gallery-thumbnail" src="images/PIAP3.jpg" style="width: 30%;" onclick="document.getElementById('modalPIAP1Img').src=this.src">
+            <div class="gallery-thumbnails">
+                <img class="gallery-thumbnail" src="images/PIAP2.jpg" onclick="changeMainImage(this.src)">
+                <img class="gallery-thumbnail" src="images/PIAP3.jpg" onclick="changeMainImage(this.src)">
             </div>
         </div>
     </div>
