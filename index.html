@@ -112,6 +112,20 @@
             display: flex;
             flex-direction: column;
         }
+
+        /* Gallery styles */
+        .gallery-thumbnail {
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .gallery-thumbnail:hover {
+            opacity: 0.8;
+        }
+
+        .gallery-main {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body class="is-preload">
@@ -193,6 +207,15 @@
                         <img src="images/Model.jpg" alt="Model" id="ModelImage" />
                     </a>
                 </article>
+                    <article>
+                    <header>
+                        <h2><a href="#" id="openModalWyzroznienie">Wyróżnienie w konkursie "Młodzi Innowacyjni 2025"</a></h2>
+                    </header>
+                    <div class="gallery-main">
+                        <a href="#" class="image fit" id="PIAP1Image"><img src="images/PIAP1.jpg" alt="Wyróżnienie" /></a>
+                    </div>
+                    <p>Projekt "SHAD" został wyróżniony w XVII Ogólnopolskim Konkursie Prac Dyplomowych „Młodzi Innowacyjni 2025”. Nasz projekt oktokoptera wyposażonego w sonar hydroakustyczny zdobył wyróżnienie jako jedna z najlepszych prac dyplomowych w dziedzinie automatyki i robotyki w Polsce. Innowacyjny dron został zaprojektowany do precyzyjnego mapowania dna morskiego, inspekcji podwodnej infrastruktury oraz wsparcia działań ratowniczych. Rozwiązanie ma istotne znaczenie dla bezpieczeństwa portów i rozwoju nowoczesnej hydrografii. Praca powstała pod kierunkiem kmdr. por. dr. hab. inż. Pawła Piskura i została wysoko oceniona przez ekspertów za połączenie zaawansowanej robotyki z praktycznymi zastosowaniami w gospodarce morskiej.</p>
+                </article>
             </section>
 
         </div>
@@ -253,6 +276,20 @@
         <img class="modal-content" id="modalCzerImg" src="images/czernica.jpg">
     </div>
 
+    <div id="modalWyzroznienie" class="modal">
+        <span class="close">&times;</span>
+        <div style="text-align: center; color: white;">
+            <h2>Wyróżnienie w konkursie "Młodzi Innowacyjni 2025"</h2>
+            <div class="gallery-main">
+                <img class="modal-content" id="modalPIAP1Img" src="images/PIAP1.jpg" style="cursor: pointer;">
+            </div>
+            <div style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+                <img class="gallery-thumbnail" src="images/PIAP2.jpg" style="width: 30%;" onclick="document.getElementById('modalPIAP1Img').src=this.src">
+                <img class="gallery-thumbnail" src="images/PIAP3.jpg" style="width: 30%;" onclick="document.getElementById('modalPIAP1Img').src=this.src">
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.scrollex.min.js"></script>
@@ -300,6 +337,16 @@
         document.getElementById('poczatekLink').onclick = function(e) {
             e.preventDefault();
             openModal('modalCzernica');
+        };
+
+        // Przypisanie zdarzeń dla Wyróżnienia
+        document.getElementById('openModalWyzroznienie').onclick = function(e) {
+            e.preventDefault();
+            openModal('modalWyzroznienie');
+        };
+        document.getElementById('PIAP1Image').onclick = function(e) {
+            e.preventDefault();
+            openModal('modalWyzroznienie');
         };
 
         // Zamknięcie modalów po kliknięciu na X
