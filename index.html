@@ -52,6 +52,7 @@
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
+            z-index: 1001;
         }
 
         .close:hover {
@@ -443,7 +444,7 @@
             closeBtn.onclick = function() {
                 const modal = this.closest('.modal');
                 if (modal) {
-                    modal.style.display = "none";
+                    closeModal(modal.id);
                 }
             };
         });
@@ -451,7 +452,7 @@
         // Zamknięcie modalów po kliknięciu poza obrazem
         window.onclick = function(event) {
             if (event.target.className === 'modal') {
-                event.target.style.display = "none";
+                closeModal(event.target.id);
             }
         };
     </script>
