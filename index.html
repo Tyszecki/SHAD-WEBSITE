@@ -99,14 +99,6 @@
             }
         }
 
-        video, .image.fit img {
-            width: 100%;
-            height: auto;
-            display: block;
-            cursor: pointer;
-            flex-grow: 1;
-        }
-
         .video-container {
             flex-grow: 1;
             display: flex;
@@ -185,6 +177,49 @@
             bottom: 20px;
             width: 100%;
         }
+
+        /* Dodane style dla efektu hover */
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            flex-grow: 1;
+        }
+        
+        .image-description {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-out;
+            opacity: 0;
+        }
+        
+        .image-container:hover .image-description {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .image-fit {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .image-container:hover .image-fit {
+            transform: scale(1.02);
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
     </style>
 </head>
 <body class="is-preload">
@@ -228,31 +263,50 @@
                     <h2><a href="#" id="poczatekLink">POCZĄTEK<br /></a></h2>
                     <p>Pomysł na budowę jednostki zdolnej do szybkiego przemieszczania się w powietrzu, jednocześnie wykonującej swoje misje na akwenach wodnych narodził się na AOS Czernica podczas warsztatów badawczych przeprowadzonych przez Akademię Marynarki Wojennej w Gdyni we współpracy z Ośrodkiem Badawczo-Rozwojowym CTM.</p>
                 </header>
-                <a href="#" class="image main" id="czernicaImage"><img src="images/czernica.jpg" alt="Czernica" /></a>
+                <div class="image-container">
+                    <a href="#" class="image main" id="czernicaImage"><img src="images/czernica.jpg" alt="Czernica" /></a>
+                    <div class="image-description">
+                        <p>AOS Czernica - miejsce gdzie narodził się pomysł na projekt SHAD podczas warsztatów badawczych przeprowadzonych przez Akademię Marynarki Wojennej w Gdyni we współpracy z Ośrodkiem Badawczo-Rozwojowym CTM.</p>
+                    </div>
+                </div>
             </article>
 
             <!-- Posts -->
             <section class="posts">
-                      <article>
-              <header>
+                <article>
+                    <header>
                         <h2><a href="#" id="openModalWyzroznienie">Wyróżnienie w konkursie<br>"Młodzi Innowacyjni 2025"</a></h2>
                     </header>
-                    <a href="#" class="image fit" id="PIAP1Image"><img src="images/PIAP1.jpg" alt="Wyróżnienie" /></a>
-                    <p>Projekt "SHAD" został wyróżniony w XVII Ogólnopolskim Konkursie Prac Dyplomowych „Młodzi Innowacyjni 2025”. Nasz projekt oktokoptera wyposażonego w sonar hydroakustyczny zdobył wyróżnienie jako jedna z najlepszych prac dyplomowych w dziedzinie automatyki i robotyki w Polsce. Innowacyjny dron został zaprojektowany do precyzyjnego mapowania dna morskiego, inspekcji podwodnej infrastruktury oraz wsparcia działań ratowniczych. Rozwiązanie ma istotne znaczenie dla bezpieczeństwa portów i rozwoju nowoczesnej hydrografii. Praca powstała pod kierunkiem kmdr. por. dr. hab. inż. Pawła Piskura i została wysoko oceniona przez ekspertów za połączenie zaawansowanej robotyki z praktycznymi zastosowaniami w gospodarce morskiej.</p>
+                    <div class="image-container">
+                        <a href="#" class="image fit" id="PIAP1Image"><img src="images/PIAP1.jpg" alt="Wyróżnienie" /></a>
+                        <div class="image-description">
+                            <p>Projekt "SHAD" został wyróżniony w XVII Ogólnopolskim Konkursie Prac Dyplomowych „Młodzi Innowacyjni 2025”. Nasz projekt oktokoptera wyposażonego w sonar hydroakustyczny zdobył wyróżnienie jako jedna z najlepszych prac dyplomowych w dziedzinie automatyki i robotyki w Polsce.</p>
+                        </div>
+                    </div>
+                    <p>Innowacyjny dron został zaprojektowany do precyzyjnego mapowania dna morskiego, inspekcji podwodnej infrastruktury oraz wsparcia działań ratowniczych. Rozwiązanie ma istotne znaczenie dla bezpieczeństwa portów i rozwoju nowoczesnej hydrografii. Praca powstała pod kierunkiem kmdr. por. dr. hab. inż. Pawła Piskura i została wysoko oceniona przez ekspertów za połączenie zaawansowanej robotyki z praktycznymi zastosowaniami w gospodarce morskiej.</p>
                 </article>
                 <article>
                     <header>
                         <h2><a href="#" id="openModalSpecyfikacje">Specyfikacje techniczne</a></h2>
                     </header>
-                    <a href="#" class="image fit" id="specyfikacjeImage"><img src="images/specyfikacje.jpg" alt="Specyfikacje" /></a>
+                    <div class="image-container">
+                        <a href="#" class="image fit" id="specyfikacjeImage"><img src="images/specyfikacje.jpg" alt="Specyfikacje" /></a>
+                        <div class="image-description">
+                            <p>Pełne specyfikacje techniczne naszego drona SHAD, w tym parametry lotne, wymiary, wyposażenie i możliwości operacyjne.</p>
+                        </div>
+                    </div>
                 </article>
                 <article>
                     <header>
                         <h2><a href="#" id="openModalZastosowanie">Zastosowanie</a></h2>
                     </header>
-                    <a href="#" class="image fit" id="zastosowanieImage"><img src="images/Zastosowanie.jpg" alt="Zastosowanie" /></a>
-                    <p>Konstrukcja BSP obejmuje specjalnie opracowane pływaki, umożliwiające unoszenie się na powierzchni wody.
-                        BSP został zaprojektowany do pozyskiwania danych w toni wodnej za pomocą sonaru Ping360. Sterowanie odbywa się przy użyciu dedykowanego kontrolera zdalnego, a alternatywnie BSP może realizować autonomiczne misje według zaprogramowanego scenariusza. Dane sonarowe są przesyłane w czasie rzeczywistym do operatora przy stacji naziemnej, co umożliwia ich bieżącą analizę.</p>
+                    <div class="image-container">
+                        <a href="#" class="image fit" id="zastosowanieImage"><img src="images/Zastosowanie.jpg" alt="Zastosowanie" /></a>
+                        <div class="image-description">
+                            <p>Różne zastosowania naszego drona SHAD w praktyce, w tym mapowanie dna morskiego, inspekcje podwodnej infrastruktury i wsparcie działań ratowniczych.</p>
+                        </div>
+                    </div>
+                    <p>Konstrukcja BSP obejmuje specjalnie opracowane pływaki, umożliwiające unoszenie się na powierzchni wody. BSP został zaprojektowany do pozyskiwania danych w toni wodnej za pomocą sonaru Ping360. Sterowanie odbywa się przy użyciu dedykowanego kontrolera zdalnego, a alternatywnie BSP może realizować autonomiczne misje według zaprogramowanego scenariusza. Dane sonarowe są przesyłane w czasie rzeczywistym do operatora przy stacji naziemnej, co umożliwia ich bieżącą analizę.</p>
                 </article>
                 <article>
                     <header>
@@ -269,13 +323,16 @@
                     <header>
                         <h2><a href="https://tyszecki.github.io/Model-website/" id="openModalModel">Model 3D</a></h2>
                     </header>
-                    <a href="https://tyszecki.github.io/Model-website/" class="image fit">
-                        <img src="images/Model.jpg" alt="Model" id="ModelImage" />
-                    </a>
+                    <div class="image-container">
+                        <a href="https://tyszecki.github.io/Model-website/" class="image fit">
+                            <img src="images/Model.jpg" alt="Model" id="ModelImage" />
+                        </a>
+                        <div class="image-description">
+                            <p>Interaktywny model 3D naszego drona SHAD. Kliknij aby zobaczyć szczegóły konstrukcji.</p>
+                        </div>
+                    </div>
                 </article>
-          
             </section>
-
         </div>
 
         <!-- Footer -->
