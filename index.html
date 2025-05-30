@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <html lang="pl">
 <head>
     <meta charset="utf-8" />
@@ -16,247 +15,56 @@
       gtag('config', 'G-LJ29N8M0N4');
     </script>
 
-    <!-- Dla większości przeglądarek -->
     <link rel="icon" href="images/logo_shad_bckg.png" type="image/png" sizes="64x64">
-    <!-- Dla Apple urządzeń -->
     <link rel="apple-touch-icon" href="images/logo_shad_bckg.png">
-    <!-- Dla Windows 8/10 -->
     <meta name="msapplication-TileImage" content="images/logo_shad_bckg.png">
     
     <style>
-        /* Modal CSS */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .close:hover {
-            color: #bbb;
-        }
-
-        /* Flexbox layout */
-        .posts {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            align-items: stretch;
-        }
-
-        .posts article {
-            flex: 1 1 calc(50% - 20px);
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .posts article header {
-            min-height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .posts article header h2 {
-            font-size: 1.4em;
-            white-space: nowrap;
-            margin: 0;
-            text-align: center;
-            width: 100%;
-        }
-
-        @media (max-width: 768px) {
-            .posts article {
-                flex: 1 1 100%;
-            }
-            
-            .posts article header h2 {
-                font-size: 1.2em;
-            }
-        }
-
-        .video-container {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Gallery styles */
-        .gallery-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            justify-content: center;
-            position: relative;
-        }
-
-        .gallery-main {
-            position: relative;
-            max-width: 90%;
-            max-height: 80vh;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .gallery-main img {
-            max-width: 100%;
-            max-height: 80vh;
-            object-fit: contain;
-        }
-
-        .gallery-nav {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            pointer-events: none;
-        }
-
-        .gallery-nav button {
-            pointer-events: all;
-            background: rgba(0,0,0,0.5);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            font-size: 24px;
-            cursor: pointer;
-            border-radius: 50%;
-            margin: 0 20px;
-            transition: background 0.3s;
-        }
-
-        .gallery-nav button:hover {
-            background: rgba(0,0,0,0.8);
-        }
-
-        .modal-title {
-            color: white;
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            position: absolute;
-            top: 20px;
-            width: 100%;
-        }
-
-        .gallery-counter {
-            color: white;
-            text-align: center;
-            margin-top: 15px;
-            font-size: 1.2em;
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-        }
-
-        /* Dodane style dla efektu hover */
-        .image-container {
-            position: relative;
-            overflow: hidden;
-            flex-grow: 1;
-        }
-        
-        .image-description {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 15px;
-            transform: translateY(100%);
-            transition: transform 0.3s ease-out;
-            opacity: 0;
-        }
-        
-        .image-container:hover .image-description {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .image-fit, .image-main {
-            width: 100%;
-            height: auto;
-            display: block;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        
-        .image-container:hover .image-fit,
-        .image-container:hover .image-main {
-            transform: scale(1.02);
-        }
-
-        video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Style dla wyboru języka - ZMODYFIKOWANE */
+        /* ZMODYFIKOWANE STYLE MENU JĘZYKOWEGO - ROZWIJA SIĘ W LEWO */
         .language-selector {
             position: relative;
             display: inline-block;
             margin-left: 15px;
+            z-index: 1000;
         }
 
         .language-button {
-            background: none;
+            background: rgba(255,255,255,0.1);
             border: none;
-            color: inherit;
+            color: white;
             cursor: pointer;
             display: flex;
             align-items: center;
-            padding: 5px;
+            padding: 8px 12px;
+            border-radius: 4px;
             position: relative;
-            z-index: 100;
+            z-index: 1001;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .language-button:hover {
+            background: rgba(255,255,255,0.2);
         }
 
         .language-button img {
             width: 20px;
             height: 15px;
-            margin-right: 5px;
+            margin-right: 8px;
         }
 
         .language-dropdown {
             display: none;
-            position: absolute;
-            left: -520px; /* Zmienione z right na left */
-            top: 100%;
-            background-color: #f9f9f9;
-            min-width: 120px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 99;
+            position: fixed; /* Zmienione z absolute na fixed */
+            left: 20px; /* Odstęp od lewej krawędzi */
+            top: 100px; /* Odstęp od góry */
+            background-color: #2a2f4a;
+            min-width: 140px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            z-index: 1002;
             border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: fadeIn 0.3s ease;
         }
 
         .language-dropdown.show {
@@ -264,26 +72,34 @@
         }
 
         .language-dropdown a {
-            color: black;
-            padding: 8px 12px;
+            color: white;
+            padding: 10px 15px;
             text-decoration: none;
             display: flex;
             align-items: center;
+            transition: all 0.3s;
         }
 
         .language-dropdown a:hover {
-            background-color: #f1f1f1;
+            background-color: rgba(255,255,255,0.1);
         }
 
         .language-dropdown a img {
             width: 20px;
             height: 15px;
-            margin-right: 8px;
+            margin-right: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @media (max-width: 768px) {
-            .language-selector {
-                margin-left: 10px;
+            .language-dropdown {
+                left: 10px;
+                top: 80px;
+                min-width: 120px;
             }
         }
     </style>
@@ -292,26 +108,6 @@
 
     <!-- Wrapper -->
     <div id="wrapper" class="fade-in">
-
-        <!-- Intro -->
-        <div id="intro">
-            <h1 data-lang="pl">BSP SHAD</h1>
-            <h1 data-lang="en" style="display:none">UAV SHAD</h1>
-            <h1 data-lang="de" style="display:none">UAV SHAD</h1>
-            <p data-lang="pl">Bezzałogowy statek powietrzny do akwizycji danych sonarem hydroakustycznym</p>
-            <p data-lang="en" style="display:none">Unmanned Aerial Vehicle for hydroacoustic sonar data acquisition</p>
-            <p data-lang="de" style="display:none">Unbemanntes Luftfahrzeug zur hydroakustischen Sonardatenerfassung</p>
-            <ul class="actions">
-                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-            </ul>
-        </div>
-
-        <!-- Header -->
-        <header id="header">
-            <a href="index.html" class="logo" data-lang="pl">BSP SHAD</a>
-            <a href="index.html" class="logo" data-lang="en" style="display:none">UAV SHAD</a>
-            <a href="index.html" class="logo" data-lang="de" style="display:none">UAV SHAD</a>
-        </header>
 
         <!-- Nav -->
         <nav id="nav">
@@ -336,15 +132,15 @@
                         <span id="current-language">PL</span>
                     </button>
                     <div class="language-dropdown" id="languageDropdown">
-                        <a href="#" onclick="changeLanguage('pl'); return false;">
+                        <a href="#" data-lang="pl">
                             <img src="https://flagcdn.com/w20/pl.png" alt="Polish">
                             Polski
                         </a>
-                        <a href="#" onclick="changeLanguage('en'); return false;">
+                        <a href="#" data-lang="en">
                             <img src="https://flagcdn.com/w20/gb.png" alt="English">
                             English
                         </a>
-                        <a href="#" onclick="changeLanguage('de'); return false;">
+                        <a href="#" data-lang="de">
                             <img src="https://flagcdn.com/w20/de.png" alt="German">
                             Deutsch
                         </a>
@@ -352,6 +148,7 @@
                 </li>
             </ul>
         </nav>
+
 
         <!-- Main -->
         <div id="main">
@@ -565,11 +362,9 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 
-   <script>
-        // Reset języka do polskiego przy każdym wejściu na stronę
-        localStorage.removeItem('selectedLanguage');
-        
-        // Funkcja zmiany języka
+
+    <script>
+        // FUNKCJA ZMIANY JĘZYKA
         function changeLanguage(lang) {
             // Ukrywamy wszystkie elementy z atrybutem data-lang
             document.querySelectorAll('[data-lang]').forEach(el => {
@@ -599,127 +394,45 @@
                 langText.textContent = 'DE';
             }
             
-            // Zamykamy menu językowe
-            document.getElementById('languageDropdown').classList.remove('show');
-            
             // Zapisujemy wybór języka w localStorage
             localStorage.setItem('selectedLanguage', lang);
-        }
-        
-        // Sprawdzamy, czy w localStorage jest zapisany język
-        const savedLang = localStorage.getItem('selectedLanguage');
-        if (savedLang) {
-            changeLanguage(savedLang);
-        } else {
-            // Domyślnie ustawiamy polski
-            changeLanguage('pl');
-        }
-
-        // Obsługa kliknięcia przycisku językowego
-        document.getElementById('languageButton').addEventListener('click', function(e) {
-            e.stopPropagation();
-            document.getElementById('languageDropdown').classList.toggle('show');
-        });
-
-        // Zamknięcie menu językowego po kliknięciu gdzie indziej
-        document.addEventListener('click', function() {
+            
+            // Zamykamy menu
             document.getElementById('languageDropdown').classList.remove('show');
-        });
-
-        // Galeria zdjęć
-        const galleryImages = [
-            'images/PIAP1.jpg',
-            'images/PIAP2.jpg',
-            'images/PIAP3.jpg'
-        ];
-        
-        let currentImage = 0;
-        const totalImages = galleryImages.length;
-        
-        function updateGallery() {
-            document.getElementById('currentGalleryImage').src = galleryImages[currentImage];
-            document.getElementById('currentImageIndex').textContent = currentImage + 1;
-            document.getElementById('totalImages').textContent = totalImages;
         }
         
-        document.getElementById('prevBtn').addEventListener('click', function() {
-            currentImage = (currentImage - 1 + totalImages) % totalImages;
-            updateGallery();
-        });
-        
-        document.getElementById('nextBtn').addEventListener('click', function() {
-            currentImage = (currentImage + 1) % totalImages;
-            updateGallery();
-        });
-        
-        // Inicjalizacja galerii
-        updateGallery();
-
-        // Funkcje do otwierania i zamykania modalów
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = "flex";
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = "none";
-        }
-
-        // Przypisanie zdarzeń dla Specyfikacji
-        document.getElementById('openModalSpecyfikacje').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalSpecyfikacje');
-        };
-        document.getElementById('specyfikacjeImage').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalSpecyfikacje');
-        };
-
-        // Przypisanie zdarzeń dla Zastosowania
-        document.getElementById('openModalZastosowanie').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalZastosowanie');
-        };
-        document.getElementById('zastosowanieImage').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalZastosowanie');
-        };
-
-        // Przypisanie zdarzeń dla Czernicy
-        document.getElementById('czernicaImage').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalCzernica');
-        };
-        document.getElementById('poczatekLink').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalCzernica');
-        };
-
-        // Przypisanie zdarzeń dla Wyróżnienia
-        document.getElementById('openModalWyzroznienie').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalWyzroznienie');
-        };
-        document.getElementById('PIAP1Image').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalWyzroznienie');
-        };
-
-        // Zamknięcie modalów po kliknięciu na X
-        document.querySelectorAll('.close').forEach(function(closeBtn) {
-            closeBtn.onclick = function() {
-                const modal = this.closest('.modal');
-                if (modal) {
-                    closeModal(modal.id);
-                }
-            };
-        });
-
-        // Zamknięcie modalów po kliknięciu poza obrazem
-        window.onclick = function(event) {
-            if (event.target.className === 'modal') {
-                closeModal(event.target.id);
+        // INICJALIZACJA
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ustawiamy domyślny język (polski) tylko przy pierwszym wejściu
+            const savedLang = localStorage.getItem('selectedLanguage');
+            if (!savedLang || performance.navigation.type === 1) {
+                changeLanguage('pl');
+            } else {
+                changeLanguage(savedLang);
             }
-        };
+            
+            // Obsługa kliknięcia przycisku językowego
+            document.getElementById('languageButton').addEventListener('click', function(e) {
+                e.stopPropagation();
+                document.getElementById('languageDropdown').classList.toggle('show');
+            });
+            
+            // Obsługa wyboru języka
+            document.querySelectorAll('.language-dropdown a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const lang = this.getAttribute('data-lang');
+                    changeLanguage(lang);
+                });
+            });
+            
+            // Zamykanie menu po kliknięciu gdziekolwiek indziej
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.language-selector')) {
+                    document.getElementById('languageDropdown').classList.remove('show');
+                }
+            });
+        });
     </script>
 </body>
 </html>
