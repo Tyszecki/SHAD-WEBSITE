@@ -222,7 +222,7 @@
             display: block;
         }
 
-        /* Style dla wyboru języka */
+        /* Style dla wyboru języka - ZMODYFIKOWANE */
         .language-selector {
             position: relative;
             display: inline-block;
@@ -237,6 +237,8 @@
             display: flex;
             align-items: center;
             padding: 5px;
+            position: relative;
+            z-index: 100;
         }
 
         .language-button img {
@@ -248,12 +250,17 @@
         .language-dropdown {
             display: none;
             position: absolute;
-            right: 0;
+            left: -120px; /* Zmienione z right na left */
+            top: 100%;
             background-color: #f9f9f9;
             min-width: 120px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
+            z-index: 99;
             border-radius: 4px;
+        }
+
+        .language-dropdown.show {
+            display: block;
         }
 
         .language-dropdown a {
@@ -272,10 +279,6 @@
             width: 20px;
             height: 15px;
             margin-right: 8px;
-        }
-
-        .language-selector:hover .language-dropdown {
-            display: block;
         }
 
         @media (max-width: 768px) {
@@ -328,11 +331,11 @@
             <ul class="icons">
                 <li><a href="https://linktr.ee/BSPSHAD" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
                 <li class="language-selector">
-                    <button class="language-button">
+                    <button class="language-button" id="languageButton">
                         <img src="https://flagcdn.com/w20/pl.png" alt="Polish" id="current-flag">
                         <span id="current-language">PL</span>
                     </button>
-                    <div class="language-dropdown">
+                    <div class="language-dropdown" id="languageDropdown">
                         <a href="#" onclick="changeLanguage('pl'); return false;">
                             <img src="https://flagcdn.com/w20/pl.png" alt="Polish">
                             Polski
@@ -563,6 +566,9 @@
     <script src="assets/js/main.js"></script>
 
    <script>
+        // Reset języka do polskiego przy każdym wejściu na stronę
+        localStorage.removeItem('selectedLanguage');
+        
         // Funkcja zmiany języka
         function changeLanguage(lang) {
             // Ukrywamy wszystkie elementy z atrybutem data-lang
@@ -593,6 +599,9 @@
                 langText.textContent = 'DE';
             }
             
+            // Zamykamy menu językowe
+            document.getElementById('languageDropdown').classList.remove('show');
+            
             // Zapisujemy wybór języka w localStorage
             localStorage.setItem('selectedLanguage', lang);
         }
@@ -601,7 +610,21 @@
         const savedLang = localStorage.getItem('selectedLanguage');
         if (savedLang) {
             changeLanguage(savedLang);
+        } else {
+            // Domyślnie ustawiamy polski
+            changeLanguage('pl');
         }
+
+        // Obsługa kliknięcia przycisku językowego
+        document.getElementById('languageButton').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('languageDropdown').classList.toggle('show');
+        });
+
+        // Zamknięcie menu językowego po kliknięciu gdzie indziej
+        document.addEventListener('click', function() {
+            document.getElementById('languageDropdown').classList.remove('show');
+        });
 
         // Galeria zdjęć
         const galleryImages = [
