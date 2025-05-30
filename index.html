@@ -223,11 +223,11 @@
         }
 
         /* Poprawione style dla wyboru języka */
-        .language-selector {
+         .language-selector {
             position: relative;
             display: inline-block;
             margin-left: 15px;
-            z-index: 1000;
+            z-index: 9999; /* Bardzo wysoka wartość aby być na wierzchu */
         }
 
         .language-button {
@@ -238,6 +238,8 @@
             display: flex;
             align-items: center;
             padding: 5px;
+            position: relative;
+            z-index: 10000; /* Wyższy niż kontener */
         }
 
         .language-button img {
@@ -250,11 +252,11 @@
             display: none;
             position: absolute;
             right: 0;
-            bottom: 100%;
+            bottom: 100%; /* Rozwija się w górę */
             background-color: #f9f9f9;
             min-width: 120px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
+            z-index: 10001; /* Najwyższy priorytet */
             border-radius: 4px;
         }
 
@@ -285,6 +287,7 @@
                 margin-left: 10px;
             }
             
+            /* Dla małych ekranów możemy zmienić kierunek rozwijania */
             .language-dropdown {
                 bottom: auto;
                 top: 100%;
@@ -318,44 +321,44 @@
         </header>
 
         <!-- Nav -->
-        <nav id="nav">
-            <ul class="links">
-                <li class="active"><a href="index.html" data-lang="pl">Informacje</a></li>
-                <li class="active"><a href="index.html" data-lang="en" style="display:none">Information</a></li>
-                <li class="active"><a href="index.html" data-lang="de" style="display:none">Informationen</a></li>
-                
-                <li><a href="generic.html" data-lang="pl">Zdjęcia</a></li>
-                <li><a href="generic.html" data-lang="en" style="display:none">Photos</a></li>
-                <li><a href="generic.html" data-lang="de" style="display:none">Fotos</a></li>
-                
-                <li><a href="elements.html" data-lang="pl">O nas</a></li>
-                <li><a href="elements.html" data-lang="en" style="display:none">About us</a></li>
-                <li><a href="elements.html" data-lang="de" style="display:none">Über uns</a></li>
-            </ul>
-            <ul class="icons">
-                <li><a href="https://linktr.ee/BSPSHAD" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                <li class="language-selector">
-                    <button class="language-button">
-                        <img src="https://flagcdn.com/w20/pl.png" alt="Polish" id="current-flag">
-                        <span id="current-language">PL</span>
-                    </button>
-                    <div class="language-dropdown">
-                        <a href="#" onclick="changeLanguage('pl'); return false;">
-                            <img src="https://flagcdn.com/w20/pl.png" alt="Polish">
-                            Polski
-                        </a>
-                        <a href="#" onclick="changeLanguage('en'); return false;">
-                            <img src="https://flagcdn.com/w20/gb.png" alt="English">
-                            English
-                        </a>
-                        <a href="#" onclick="changeLanguage('de'); return false;">
-                            <img src="https://flagcdn.com/w20/de.png" alt="German">
-                            Deutsch
-                        </a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
+       <nav id="nav">
+        <ul class="links">
+            <li class="active"><a href="index.html" data-lang="pl">Informacje</a></li>
+            <li class="active"><a href="index.html" data-lang="en" style="display:none">Information</a></li>
+            <li class="active"><a href="index.html" data-lang="de" style="display:none">Informationen</a></li>
+            
+            <li><a href="generic.html" data-lang="pl">Zdjęcia</a></li>
+            <li><a href="generic.html" data-lang="en" style="display:none">Photos</a></li>
+            <li><a href="generic.html" data-lang="de" style="display:none">Fotos</a></li>
+            
+            <li><a href="elements.html" data-lang="pl">O nas</a></li>
+            <li><a href="elements.html" data-lang="en" style="display:none">About us</a></li>
+            <li><a href="elements.html" data-lang="de" style="display:none">Über uns</a></li>
+        </ul>
+        <ul class="icons">
+            <li><a href="https://linktr.ee/BSPSHAD" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+            <li class="language-selector">
+                <button class="language-button">
+                    <img src="https://flagcdn.com/w20/pl.png" alt="Polish" id="current-flag">
+                    <span id="current-language">PL</span>
+                </button>
+                <div class="language-dropdown">
+                    <a href="#" onclick="changeLanguage('pl'); return false;">
+                        <img src="https://flagcdn.com/w20/pl.png" alt="Polish">
+                        Polski
+                    </a>
+                    <a href="#" onclick="changeLanguage('en'); return false;">
+                        <img src="https://flagcdn.com/w20/gb.png" alt="English">
+                        English
+                    </a>
+                    <a href="#" onclick="changeLanguage('de'); return false;">
+                        <img src="https://flagcdn.com/w20/de.png" alt="German">
+                        Deutsch
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
 
         <!-- Main -->
         <div id="main">
