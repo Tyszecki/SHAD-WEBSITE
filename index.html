@@ -222,13 +222,7 @@
             display: block;
         }
 
-        /* Style dla wyboru języka */
-        .language-selector {
-            position: relative;
-            display: inline-block;
-            margin-left: 15px;
-        }
-
+        /* Style dla przycisku języka */
         .language-button {
             background: none;
             border: none;
@@ -237,51 +231,18 @@
             display: flex;
             align-items: center;
             padding: 5px;
+            transition: transform 0.2s;
+            margin-left: 15px;
+        }
+
+        .language-button:hover {
+            transform: scale(1.05);
         }
 
         .language-button img {
             width: 20px;
             height: 15px;
             margin-right: 5px;
-        }
-
-        .language-dropdown {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #f9f9f9;
-            min-width: 120px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            border-radius: 4px;
-        }
-
-        .language-dropdown a {
-            color: black;
-            padding: 8px 12px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .language-dropdown a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .language-dropdown a img {
-            width: 20px;
-            height: 15px;
-            margin-right: 8px;
-        }
-
-        .language-selector:hover .language-dropdown {
-            display: block;
-        }
-
-        @media (max-width: 768px) {
-            .language-selector {
-                margin-left: 10px;
-            }
         }
     </style>
 </head>
@@ -295,11 +256,22 @@
             <h1 data-lang="pl">BSP SHAD</h1>
             <h1 data-lang="en" style="display:none">UAV SHAD</h1>
             <h1 data-lang="de" style="display:none">UAV SHAD</h1>
+            <h1 data-lang="sv" style="display:none">UAV SHAD</h1>
+            <h1 data-lang="no" style="display:none">UAV SHAD</h1>
+            <h1 data-lang="fr" style="display:none">UAV SHAD</h1>
             <p data-lang="pl">Bezzałogowy statek powietrzny do akwizycji danych sonarem hydroakustycznym</p>
             <p data-lang="en" style="display:none">Unmanned Aerial Vehicle for hydroacoustic sonar data acquisition</p>
             <p data-lang="de" style="display:none">Unbemanntes Luftfahrzeug zur hydroakustischen Sonardatenerfassung</p>
+            <p data-lang="sv" style="display:none">Obemannat luftfartyg för hydroakustisk sonardatainsamling</p>
+            <p data-lang="no" style="display:none">Ubemannet luftfartøy for hydroakustisk sonardatainnsamling</p>
+            <p data-lang="fr" style="display:none">Véhicule aérien sans pilote pour l'acquisition de données sonar hydroacoustiques</p>
             <ul class="actions">
-                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly" data-lang="pl">Kontynuuj</a></li>
+                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly" data-lang="en" style="display:none">Continue</a></li>
+                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly" data-lang="de" style="display:none">Weiter</a></li>
+                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly" data-lang="sv" style="display:none">Fortsätt</a></li>
+                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly" data-lang="no" style="display:none">Fortsett</a></li>
+                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly" data-lang="fr" style="display:none">Continuer</a></li>
             </ul>
         </div>
 
@@ -308,6 +280,9 @@
             <a href="index.html" class="logo" data-lang="pl">BSP SHAD</a>
             <a href="index.html" class="logo" data-lang="en" style="display:none">UAV SHAD</a>
             <a href="index.html" class="logo" data-lang="de" style="display:none">UAV SHAD</a>
+            <a href="index.html" class="logo" data-lang="sv" style="display:none">UAV SHAD</a>
+            <a href="index.html" class="logo" data-lang="no" style="display:none">UAV SHAD</a>
+            <a href="index.html" class="logo" data-lang="fr" style="display:none">UAV SHAD</a>
         </header>
 
         <!-- Nav -->
@@ -316,36 +291,31 @@
                 <li class="active"><a href="index.html" data-lang="pl">Informacje</a></li>
                 <li class="active"><a href="index.html" data-lang="en" style="display:none">Information</a></li>
                 <li class="active"><a href="index.html" data-lang="de" style="display:none">Informationen</a></li>
+                <li class="active"><a href="index.html" data-lang="sv" style="display:none">Information</a></li>
+                <li class="active"><a href="index.html" data-lang="no" style="display:none">Informasjon</a></li>
+                <li class="active"><a href="index.html" data-lang="fr" style="display:none">Information</a></li>
                 
                 <li><a href="generic.html" data-lang="pl">Zdjęcia</a></li>
                 <li><a href="generic.html" data-lang="en" style="display:none">Photos</a></li>
                 <li><a href="generic.html" data-lang="de" style="display:none">Fotos</a></li>
+                <li><a href="generic.html" data-lang="sv" style="display:none">Foton</a></li>
+                <li><a href="generic.html" data-lang="no" style="display:none">Bilder</a></li>
+                <li><a href="generic.html" data-lang="fr" style="display:none">Photos</a></li>
                 
                 <li><a href="elements.html" data-lang="pl">O nas</a></li>
                 <li><a href="elements.html" data-lang="en" style="display:none">About us</a></li>
                 <li><a href="elements.html" data-lang="de" style="display:none">Über uns</a></li>
+                <li><a href="elements.html" data-lang="sv" style="display:none">Om oss</a></li>
+                <li><a href="elements.html" data-lang="no" style="display:none">Om oss</a></li>
+                <li><a href="elements.html" data-lang="fr" style="display:none">À propos</a></li>
             </ul>
             <ul class="icons">
                 <li><a href="https://linktr.ee/BSPSHAD" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                <li class="language-selector">
-                    <button class="language-button">
-                        <img src="https://flagcdn.com/w20/pl.png" alt="Polish" id="current-flag">
+                <li>
+                    <button class="language-button" id="languageToggle">
+                        <img src="https://flagcdn.com/w20/pl.png" alt="Language" id="current-flag">
                         <span id="current-language">PL</span>
                     </button>
-                    <div class="language-dropdown">
-                        <a href="#" onclick="changeLanguage('pl'); return false;">
-                            <img src="https://flagcdn.com/w20/pl.png" alt="Polish">
-                            Polski
-                        </a>
-                        <a href="#" onclick="changeLanguage('en'); return false;">
-                            <img src="https://flagcdn.com/w20/gb.png" alt="English">
-                            English
-                        </a>
-                        <a href="#" onclick="changeLanguage('de'); return false;">
-                            <img src="https://flagcdn.com/w20/de.png" alt="German">
-                            Deutsch
-                        </a>
-                    </div>
                 </li>
             </ul>
         </nav>
@@ -359,12 +329,21 @@
                     <span class="date" data-lang="pl">7 Maja, 2024</span>
                     <span class="date" data-lang="en" style="display:none">May 7, 2024</span>
                     <span class="date" data-lang="de" style="display:none">7. Mai 2024</span>
+                    <span class="date" data-lang="sv" style="display:none">7 maj 2024</span>
+                    <span class="date" data-lang="no" style="display:none">7. mai 2024</span>
+                    <span class="date" data-lang="fr" style="display:none">7 mai 2024</span>
                     <h2><a href="#" id="poczatekLink" data-lang="pl">POCZĄTEK<br /></a></h2>
                     <h2><a href="#" id="poczatekLink" data-lang="en" style="display:none">BEGINNING<br /></a></h2>
                     <h2><a href="#" id="poczatekLink" data-lang="de" style="display:none">ANFANG<br /></a></h2>
+                    <h2><a href="#" id="poczatekLink" data-lang="sv" style="display:none">BÖRJAN<br /></a></h2>
+                    <h2><a href="#" id="poczatekLink" data-lang="no" style="display:none">START<br /></a></h2>
+                    <h2><a href="#" id="poczatekLink" data-lang="fr" style="display:none">DÉBUT<br /></a></h2>
                     <p data-lang="pl">Pomysł na budowę jednostki zdolnej do szybkiego przemieszczania się w powietrzu, jednocześnie wykonującej swoje misje na akwenach wodnych narodził się na AOS Czernica podczas warsztatów badawczych przeprowadzonych przez Akademię Marynarki Wojennej w Gdyni we współpracy z Ośrodkiem Badawczo-Rozwojowym CTM.</p>
                     <p data-lang="en" style="display:none">The idea to build a unit capable of rapid movement in the air while performing its missions on water bodies was born at AOS Czernica during research workshops conducted by the Polish Naval Academy in Gdynia in cooperation with the CTM Research and Development Center.</p>
                     <p data-lang="de" style="display:none">Die Idee zum Bau einer Einheit, die sich schnell in der Luft bewegen und gleichzeitig ihre Missionen auf Gewässern durchführen kann, entstand auf der AOS Czernica während Forschungsworkshops, die von der Polnischen Marineakademie in Gdynia in Zusammenarbeit mit dem Forschungs- und Entwicklungszentrum CTM durchgeführt wurden.</p>
+                    <p data-lang="sv" style="display:none">Idén att bygga en enhet som kan röra sig snabbt i luften samtidigt som den utför sina uppdrag på vatten föddes på AOS Czernica under forskningsworkshops som genomfördes av det polska sjökrigsakademiet i Gdynia i samarbete med CTM Research and Development Center.</p>
+                    <p data-lang="no" style="display:none">Ideen om å bygge en enhet som kan bevege seg raskt i luften mens den utfører sine oppdrag på vann ble født på AOS Czernica under forskningsverksteder gjennomført av det polske sjøkrigsakademiet i Gdynia i samarbeid med CTM Research and Development Center.</p>
+                    <p data-lang="fr" style="display:none">L'idée de construire une unité capable de se déplacer rapidement dans les airs tout en effectuant ses missions sur des plans d'eau est née à l'AOS Czernica lors d'ateliers de recherche menés par l'Académie navale polonaise à Gdynia en coopération avec le Centre de recherche et développement CTM.</p>
                 </header>
                 <div class="image-container">
                     <a href="#" class="image main" id="czernicaImage"><img src="images/czernica.jpg" alt="Czernica" /></a>
@@ -372,6 +351,9 @@
                         <p data-lang="pl">Pomysł na budowę jednostki zdolnej do szybkiego przemieszczania się w powietrzu, jednocześnie wykonującej swoje misje na akwenach wodnych narodził się na AOS Czernica podczas warsztatów badawczych.</p>
                         <p data-lang="en" style="display:none">The idea to build a unit capable of rapid movement in the air while performing its missions on water bodies was born at AOS Czernica during research workshops.</p>
                         <p data-lang="de" style="display:none">Die Idee zum Bau einer Einheit, die sich schnell in der Luft bewegen und gleichzeitig ihre Missionen auf Gewässern durchführen kann, entstand auf der AOS Czernica während Forschungsworkshops.</p>
+                        <p data-lang="sv" style="display:none">Idén att bygga en enhet som kan röra sig snabbt i luften samtidigt som den utför sina uppdrag på vatten föddes på AOS Czernica under forskningsworkshops.</p>
+                        <p data-lang="no" style="display:none">Ideen om å bygge en enhet som kan bevege seg raskt i luften mens den utfører sine oppdrag på vann ble født på AOS Czernica under forskningsverksteder.</p>
+                        <p data-lang="fr" style="display:none">L'idée de construire une unité capable de se déplacer rapidement dans les airs tout en effectuant ses missions sur des plans d'eau est née à l'AOS Czernica lors d'ateliers de recherche.</p>
                     </div>
                 </div>
             </article>
@@ -383,6 +365,9 @@
                         <h2><a href="#" id="openModalWyzroznienie" data-lang="pl">Wyróżnienie w konkursie<br>"Młodzi Innowacyjni 2025"</a></h2>
                         <h2><a href="#" id="openModalWyzroznienie" data-lang="en" style="display:none">Award in competition<br>"Young Innovators 2025"</a></h2>
                         <h2><a href="#" id="openModalWyzroznienie" data-lang="de" style="display:none">Auszeichnung im Wettbewerb<br>"Junge Innovatoren 2025"</a></h2>
+                        <h2><a href="#" id="openModalWyzroznienie" data-lang="sv" style="display:none">Utmärkelse i tävlingen<br>"Unga Innovatörer 2025"</a></h2>
+                        <h2><a href="#" id="openModalWyzroznienie" data-lang="no" style="display:none">Pris i konkurransen<br>"Unge Innovatører 2025"</a></h2>
+                        <h2><a href="#" id="openModalWyzroznienie" data-lang="fr" style="display:none">Prix dans le concours<br>"Jeunes Innovateurs 2025"</a></h2>
                     </header>
                     <div class="image-container">
                         <a href="#" class="image fit" id="PIAP1Image"><img src="images/PIAP1.jpg" alt="Wyróżnienie" /></a>
@@ -396,6 +381,15 @@
                             <p style="font-size: 0.5em; display:none" data-lang="de">
                                 Das Projekt "SHAD" wurde im 17. Nationalen Diplomwettbewerb "Junge Innovatoren 2025" ausgezeichnet. Die innovative Drohne wurde für die präzise Kartierung des Meeresbodens, die Inspektion der Unterwasserinfrastruktur und die Unterstützung von Rettungseinsätzen entwickelt. Die Lösung ist von großer Bedeutung für die Hafensicherheit und die Entwicklung der modernen Hydrographie. Die Arbeit wurde von Experten hoch bewertet, weil sie fortschrittliche Robotik mit praktischen Anwendungen in der maritimen Wirtschaft verbindet.
                             </p>
+                            <p style="font-size: 0.5em; display:none" data-lang="sv">
+                                Projektet "SHAD" belönades i den 17:e nationella diplomtävlingen "Unga Innovatörer 2025". Den innovativa drogen designades för precisk kartläggning av havsbotten, inspektion av undervattensinfrastruktur och stöd för räddningsinsatser. Lösningen är av betydande betydelse för hamnsäkerhet och utvecklingen av modern hydrografi. Arbetet högt värderades av experter för att kombinera avancerad robotteknik med praktiska tillämpningar inom den marina ekonomin.
+                            </p>
+                            <p style="font-size: 0.5em; display:none" data-lang="no">
+                                Prosjektet "SHAD" ble tildelt prisen i den 17. nasjonale diplomkonkurransen "Unge Innovatører 2025". Den innovative dronen ble designet for presis kartlegging av havbunnen, inspeksjon av undervannsinfrastruktur og støtte til redningsoperasjoner. Løsningen er av betydelig betydning for havens sikkerhet og utviklingen av moderne hydrografi. Arbeidet ble høyt vurdert av eksperter for å kombinere avansert robotikk med praktiske anvendelser innen maritim økonomi.
+                            </p>
+                            <p style="font-size: 0.5em; display:none" data-lang="fr">
+                                Le projet "SHAD" a été récompensé lors du 17e concours national de thèses de diplôme "Jeunes Innovateurs 2025". Le drone innovant a été conçu pour la cartographie précise des fonds marins, l'inspection des infrastructures sous-marines et le soutien des opérations de sauvetage. La solution est d'une importance significative pour la sécurité portuaire et le développement de l'hydrographie moderne. Le travail a été très apprécié par les experts pour avoir combiné la robotique avancée avec des applications pratiques dans l'économie maritime.
+                            </p>
                         </div>
                     </div>
                 </article>
@@ -404,6 +398,9 @@
                         <h2><a href="#" id="openModalSpecyfikacje" data-lang="pl">Specyfikacje techniczne</a></h2>
                         <h2><a href="#" id="openModalSpecyfikacje" data-lang="en" style="display:none">Technical specifications</a></h2>
                         <h2><a href="#" id="openModalSpecyfikacje" data-lang="de" style="display:none">Technische Spezifikationen</a></h2>
+                        <h2><a href="#" id="openModalSpecyfikacje" data-lang="sv" style="display:none">Tekniska specifikationer</a></h2>
+                        <h2><a href="#" id="openModalSpecyfikacje" data-lang="no" style="display:none">Tekniske spesifikasjoner</a></h2>
+                        <h2><a href="#" id="openModalSpecyfikacje" data-lang="fr" style="display:none">Spécifications techniques</a></h2>
                     </header>
                     <div class="image-container">
                         <a href="#" class="image fit" id="specyfikacjeImage"><img src="images/specyfikacje.jpg" alt="Specyfikacje" /></a>
@@ -411,6 +408,9 @@
                             <p data-lang="pl">Specyfikacje techniczne naszego drona SHAD.</p>
                             <p data-lang="en" style="display:none">Technical specifications of our SHAD drone.</p>
                             <p data-lang="de" style="display:none">Technische Spezifikationen unserer SHAD-Drohne.</p>
+                            <p data-lang="sv" style="display:none">Tekniska specifikationer för vår SHAD-drönare.</p>
+                            <p data-lang="no" style="display:none">Tekniske spesifikasjoner for vår SHAD-drone.</p>
+                            <p data-lang="fr" style="display:none">Spécifications techniques de notre drone SHAD.</p>
                         </div>
                     </div>
                 </article>
@@ -419,6 +419,9 @@
                         <h2><a href="#" id="openModalZastosowanie" data-lang="pl">Zastosowanie</a></h2>
                         <h2><a href="#" id="openModalZastosowanie" data-lang="en" style="display:none">Applications</a></h2>
                         <h2><a href="#" id="openModalZastosowanie" data-lang="de" style="display:none">Anwendungen</a></h2>
+                        <h2><a href="#" id="openModalZastosowanie" data-lang="sv" style="display:none">Tillämpningar</a></h2>
+                        <h2><a href="#" id="openModalZastosowanie" data-lang="no" style="display:none">Anvendelser</a></h2>
+                        <h2><a href="#" id="openModalZastosowanie" data-lang="fr" style="display:none">Applications</a></h2>
                     </header>
                     <div class="image-container">
                         <a href="#" class="image fit" id="zastosowanieImage"><img src="images/Zastosowanie.jpg" alt="Zastosowanie" /></a>
@@ -432,6 +435,15 @@
                             <p style="font-size: 0.5em; display:none" data-lang="de">
                                 Das UAV-Design umfasst speziell entwickelte Schwimmer, die es ermöglichen, auf der Wasseroberfläche zu schwimmen. Die UAV wurde entwickelt, um Daten in der Wassersäule mit dem Ping360-Sonar zu erfassen. Die Steuerung erfolgt über eine dedizierte Fernbedienung, oder alternativ kann die UAV autonome Missionen nach einem programmierten Szenario durchführen. Die Sonardaten werden in Echtzeit an den Operator an der Bodenstation übertragen, was eine sofortige Analyse ermöglicht.
                             </p>
+                            <p style="font-size: 0.5em; display:none" data-lang="sv">
+                                UAV-designet inkluderar speciellt utvecklade flottörer som gör det möjligt att flyta på vattenytan. UAV:n designades för att samla in data i vattenpelaren med Ping360-sonaren. Kontrollen sker med en dedikerad fjärrkontroll, eller alternativt kan UAV:n utföra autonoma uppdrag enligt ett programmerat scenario. Sonardata överförs i realtid till operatören vid markstationen, vilket möjliggör omedelbar analys.
+                            </p>
+                            <p style="font-size: 0.5em; display:none" data-lang="no">
+                                UAV-designet inkluderer spesielt utviklede flottører som gjør det mulig å flyte på vannoverflaten. UAV-en ble designet for å samle inn data i vannsøylen ved hjelp av Ping360-sonaren. Kontrollen utføres ved hjelp av en dedikert fjernkontroll, eller alternativt kan UAV-en utføre autonome oppdrag i henhold til et programmert scenario. Sonardata overføres i sanntid til operatøren ved bakkestasjonen, noe som muliggjør umiddelbar analyse.
+                            </p>
+                            <p style="font-size: 0.5em; display:none" data-lang="fr">
+                                La conception de l'UAV comprend des flotteurs spécialement développés qui lui permettent de flotter à la surface de l'eau. L'UAV a été conçu pour acquérir des données dans la colonne d'eau à l'aide du sonar Ping360. Le contrôle s'effectue à l'aide d'une télécommande dédiée, ou alternativement l'UAV peut effectuer des missions autonomes selon un scénario programmé. Les données sonar sont transmises en temps réel à l'opérateur à la station au sol, permettant une analyse immédiate.
+                            </p>
                         </div>
                     </div>
                 </article>
@@ -440,6 +452,9 @@
                         <h2 data-lang="pl">Krótka prezentacja</h2>
                         <h2 data-lang="en" style="display:none">Short presentation</h2>
                         <h2 data-lang="de" style="display:none">Kurze Präsentation</h2>
+                        <h2 data-lang="sv" style="display:none">Kort presentation</h2>
+                        <h2 data-lang="no" style="display:none">Kort presentasjon</h2>
+                        <h2 data-lang="fr" style="display:none">Courte présentation</h2>
                     </header>
                     <div class="video-container">
                         <video controls width="100%" style="max-width: 100%; display: block;">
@@ -447,6 +462,9 @@
                             <span data-lang="pl">Twoja przeglądarka nie obsługuje tagu video.</span>
                             <span data-lang="en" style="display:none">Your browser does not support the video tag.</span>
                             <span data-lang="de" style="display:none">Ihr Browser unterstützt das Video-Tag nicht.</span>
+                            <span data-lang="sv" style="display:none">Din webbläsare stöder inte video-taggen.</span>
+                            <span data-lang="no" style="display:none">Nettleseren din støtter ikke video-taggen.</span>
+                            <span data-lang="fr" style="display:none">Votre navigateur ne prend pas en charge la balise vidéo.</span>
                         </video>
                     </div>
                 </article>
@@ -455,6 +473,9 @@
                         <h2><a href="https://tyszecki.github.io/Model-website/" id="openModalModel" data-lang="pl">Model 3D</a></h2>
                         <h2><a href="https://tyszecki.github.io/Model-website/" id="openModalModel" data-lang="en" style="display:none">3D Model</a></h2>
                         <h2><a href="https://tyszecki.github.io/Model-website/" id="openModalModel" data-lang="de" style="display:none">3D-Modell</a></h2>
+                        <h2><a href="https://tyszecki.github.io/Model-website/" id="openModalModel" data-lang="sv" style="display:none">3D-modell</a></h2>
+                        <h2><a href="https://tyszecki.github.io/Model-website/" id="openModalModel" data-lang="no" style="display:none">3D-modell</a></h2>
+                        <h2><a href="https://tyszecki.github.io/Model-website/" id="openModalModel" data-lang="fr" style="display:none">Modèle 3D</a></h2>
                     </header>
                     <div class="image-container">
                         <a href="https://tyszecki.github.io/Model-website/" class="image fit">
@@ -464,6 +485,9 @@
                             <p data-lang="pl">Interaktywny model 3D naszego drona SHAD.</p>
                             <p data-lang="en" style="display:none">Interactive 3D model of our SHAD drone.</p>
                             <p data-lang="de" style="display:none">Interaktives 3D-Modell unserer SHAD-Drohne.</p>
+                            <p data-lang="sv" style="display:none">Interaktiv 3D-modell av vår SHAD-drönare.</p>
+                            <p data-lang="no" style="display:none">Interaktiv 3D-modell av vår SHAD-drone.</p>
+                            <p data-lang="fr" style="display:none">Modèle 3D interactif de notre drone SHAD.</p>
                         </div>
                     </div>
                 </article>
@@ -477,16 +501,25 @@
                     <label for="email" data-lang="pl">Twój email:</label>
                     <label for="email" data-lang="en" style="display:none">Your email:</label>
                     <label for="email" data-lang="de" style="display:none">Ihre E-Mail:</label>
+                    <label for="email" data-lang="sv" style="display:none">Din e-post:</label>
+                    <label for="email" data-lang="no" style="display:none">Din e-post:</label>
+                    <label for="email" data-lang="fr" style="display:none">Votre email:</label>
                     <input type="email" name="email" id="email" required placeholder="Email">
 
                     <label for="message" data-lang="pl">Twoja wiadomość:</label>
                     <label for="message" data-lang="en" style="display:none">Your message:</label>
                     <label for="message" data-lang="de" style="display:none">Ihre Nachricht:</label>
+                    <label for="message" data-lang="sv" style="display:none">Ditt meddelande:</label>
+                    <label for="message" data-lang="no" style="display:none">Din melding:</label>
+                    <label for="message" data-lang="fr" style="display:none">Votre message:</label>
                     <textarea name="message" id="message" required placeholder="Message"></textarea>
 
                     <button type="submit" data-lang="pl">Wyślij</button>
                     <button type="submit" data-lang="en" style="display:none">Send</button>
                     <button type="submit" data-lang="de" style="display:none">Senden</button>
+                    <button type="submit" data-lang="sv" style="display:none">Skicka</button>
+                    <button type="submit" data-lang="no" style="display:none">Send</button>
+                    <button type="submit" data-lang="fr" style="display:none">Envoyer</button>
                 </form>
             </section>
             <section class="split contact">
@@ -494,6 +527,9 @@
                     <h3 data-lang="pl">Adres</h3>
                     <h3 data-lang="en" style="display:none">Address</h3>
                     <h3 data-lang="de" style="display:none">Adresse</h3>
+                    <h3 data-lang="sv" style="display:none">Adress</h3>
+                    <h3 data-lang="no" style="display:none">Adresse</h3>
+                    <h3 data-lang="fr" style="display:none">Adresse</h3>
                     <p>Inżyniera Jana Śmidowicza 69, 81-127 Gdynia</p>
                 </section>
                 <section style="display: flex; justify-content: space-between; align-items: flex-start;">
@@ -540,6 +576,9 @@
             <h2 class="modal-title" data-lang="pl">Wyróżnienie w konkursie "Młodzi Innowacyjni 2025"</h2>
             <h2 class="modal-title" data-lang="en" style="display:none">Award in competition "Young Innovators 2025"</h2>
             <h2 class="modal-title" data-lang="de" style="display:none">Auszeichnung im Wettbewerb "Junge Innovatoren 2025"</h2>
+            <h2 class="modal-title" data-lang="sv" style="display:none">Utmärkelse i tävlingen "Unga Innovatörer 2025"</h2>
+            <h2 class="modal-title" data-lang="no" style="display:none">Pris i konkurransen "Unge Innovatører 2025"</h2>
+            <h2 class="modal-title" data-lang="fr" style="display:none">Prix dans le concours "Jeunes Innovateurs 2025"</h2>
             <div class="gallery-main">
                 <img id="currentGalleryImage" src="images/PIAP1.jpg">
                 <div class="gallery-nav">
@@ -562,16 +601,28 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 
-   <script>
-        // Funkcja zmiany języka
-        function changeLanguage(lang) {
+    <script>
+        // Kolejność języków
+        const languages = [
+            { code: 'pl', name: 'PL', flag: 'https://flagcdn.com/w20/pl.png', alt: 'Polish' },
+            { code: 'en', name: 'EN', flag: 'https://flagcdn.com/w20/gb.png', alt: 'English' },
+            { code: 'de', name: 'DE', flag: 'https://flagcdn.com/w20/de.png', alt: 'German' },
+            { code: 'sv', name: 'SV', flag: 'https://flagcdn.com/w20/se.png', alt: 'Swedish' },
+            { code: 'no', name: 'NO', flag: 'https://flagcdn.com/w20/no.png', alt: 'Norwegian' },
+            { code: 'fr', name: 'FR', flag: 'https://flagcdn.com/w20/fr.png', alt: 'French' }
+        ];
+
+        // Funkcja zmieniająca język
+        function changeLanguage(langIndex) {
+            const lang = languages[langIndex];
+            
             // Ukrywamy wszystkie elementy z atrybutem data-lang
             document.querySelectorAll('[data-lang]').forEach(el => {
                 el.style.display = 'none';
             });
             
             // Pokazujemy tylko elementy dla wybranego języka
-            document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+            document.querySelectorAll(`[data-lang="${lang.code}"]`).forEach(el => {
                 el.style.display = '';
             });
             
@@ -579,124 +630,154 @@
             const flagImg = document.getElementById('current-flag');
             const langText = document.getElementById('current-language');
             
-            if (lang === 'pl') {
-                flagImg.src = 'https://flagcdn.com/w20/pl.png';
-                flagImg.alt = 'Polish';
-                langText.textContent = 'PL';
-            } else if (lang === 'en') {
-                flagImg.src = 'https://flagcdn.com/w20/gb.png';
-                flagImg.alt = 'English';
-                langText.textContent = 'EN';
-            } else if (lang === 'de') {
-                flagImg.src = 'https://flagcdn.com/w20/de.png';
-                flagImg.alt = 'German';
-                langText.textContent = 'DE';
-            }
+            flagImg.src = lang.flag;
+            flagImg.alt = lang.alt;
+            langText.textContent = lang.name;
             
             // Zapisujemy wybór języka w localStorage
-            localStorage.setItem('selectedLanguage', lang);
-        }
-        
-        // Sprawdzamy, czy w localStorage jest zapisany język
-        const savedLang = localStorage.getItem('selectedLanguage');
-        if (savedLang) {
-            changeLanguage(savedLang);
+            localStorage.setItem('selectedLanguage', langIndex);
         }
 
-        // Galeria zdjęć
-        const galleryImages = [
-            'images/PIAP1.jpg',
-            'images/PIAP2.jpg',
-            'images/PIAP3.jpg'
-        ];
-        
-        let currentImage = 0;
-        const totalImages = galleryImages.length;
-        
-        function updateGallery() {
-            document.getElementById('currentGalleryImage').src = galleryImages[currentImage];
-            document.getElementById('currentImageIndex').textContent = currentImage + 1;
-            document.getElementById('totalImages').textContent = totalImages;
-        }
-        
-        document.getElementById('prevBtn').addEventListener('click', function() {
-            currentImage = (currentImage - 1 + totalImages) % totalImages;
-            updateGallery();
-        });
-        
-        document.getElementById('nextBtn').addEventListener('click', function() {
-            currentImage = (currentImage + 1) % totalImages;
-            updateGallery();
-        });
-        
-        // Inicjalizacja galerii
-        updateGallery();
+        // Inicjalizacja - domyślnie polski
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentLangIndex = 0;
+            const savedLangIndex = localStorage.getItem('selectedLanguage');
+            
+            // Jeśli jest zapisany język, używamy go
+            if (savedLangIndex !== null) {
+                currentLangIndex = parseInt(savedLangIndex);
+            }
+            
+            // Ustawiamy początkowy język
+            changeLanguage(currentLangIndex);
+            
+            // Obsługa kliknięcia przycisku językowego
+            document.getElementById('languageToggle').addEventListener('click', function() {
+                currentLangIndex = (currentLangIndex + 1) % languages.length;
+                changeLanguage(currentLangIndex);
+            });
 
-        // Funkcje do otwierania i zamykania modalów
+            // Inicjalizacja galerii
+            initGallery();
+            
+            // Inicjalizacja modalów
+            initModals();
+        });
+
+        // Funkcje dla galerii zdjęć
+        function initGallery() {
+            const galleryImages = [
+                'images/PIAP1.jpg',
+                'images/PIAP2.jpg',
+                'images/PIAP3.jpg'
+            ];
+            
+            let currentImage = 0;
+            const totalImages = galleryImages.length;
+            
+            function updateGallery() {
+                const currentImageElement = document.getElementById('currentGalleryImage');
+                const currentIndexElement = document.getElementById('currentImageIndex');
+                const totalImagesElement = document.getElementById('totalImages');
+                
+                if (currentImageElement && currentIndexElement && totalImagesElement) {
+                    currentImageElement.src = galleryImages[currentImage];
+                    currentIndexElement.textContent = currentImage + 1;
+                    totalImagesElement.textContent = totalImages;
+                }
+            }
+            
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', function() {
+                    currentImage = (currentImage - 1 + totalImages) % totalImages;
+                    updateGallery();
+                });
+                
+                nextBtn.addEventListener('click', function() {
+                    currentImage = (currentImage + 1) % totalImages;
+                    updateGallery();
+                });
+            }
+            
+            updateGallery();
+        }
+
+        // Funkcje dla modalów
+        function initModals() {
+            // Przypisanie zdarzeń dla Specyfikacji
+            document.getElementById('openModalSpecyfikacje').addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal('modalSpecyfikacje');
+            });
+            document.getElementById('specyfikacjeImage').addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal('modalSpecyfikacje');
+            });
+
+            // Przypisanie zdarzeń dla Zastosowania
+            document.getElementById('openModalZastosowanie').addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal('modalZastosowanie');
+            });
+            document.getElementById('zastosowanieImage').addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal('modalZastosowanie');
+            });
+
+            // Przypisanie zdarzeń dla Czernicy
+            document.getElementById('czernicaImage').addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal('modalCzernica');
+            });
+            document.getElementById('poczatekLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal('modalCzernica');
+            });
+
+            // Przypisanie zdarzeń dla Wyróżnienia
+            document.getElementById('openModalWyzroznienie').addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal('modalWyzroznienie');
+            });
+            document.getElementById('PIAP1Image').addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal('modalWyzroznienie');
+            });
+
+            // Zamknięcie modalów po kliknięciu na X
+            document.querySelectorAll('.close').forEach(function(closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    if (modal) {
+                        closeModal(modal.id);
+                    }
+                });
+            });
+
+            // Zamknięcie modalów po kliknięciu poza obrazem
+            window.addEventListener('click', function(event) {
+                if (event.target.className === 'modal') {
+                    closeModal(event.target.id);
+                }
+            });
+        }
+
         function openModal(modalId) {
-            document.getElementById(modalId).style.display = "flex";
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = "flex";
+            }
         }
 
         function closeModal(modalId) {
-            document.getElementById(modalId).style.display = "none";
-        }
-
-        // Przypisanie zdarzeń dla Specyfikacji
-        document.getElementById('openModalSpecyfikacje').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalSpecyfikacje');
-        };
-        document.getElementById('specyfikacjeImage').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalSpecyfikacje');
-        };
-
-        // Przypisanie zdarzeń dla Zastosowania
-        document.getElementById('openModalZastosowanie').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalZastosowanie');
-        };
-        document.getElementById('zastosowanieImage').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalZastosowanie');
-        };
-
-        // Przypisanie zdarzeń dla Czernicy
-        document.getElementById('czernicaImage').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalCzernica');
-        };
-        document.getElementById('poczatekLink').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalCzernica');
-        };
-
-        // Przypisanie zdarzeń dla Wyróżnienia
-        document.getElementById('openModalWyzroznienie').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalWyzroznienie');
-        };
-        document.getElementById('PIAP1Image').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalWyzroznienie');
-        };
-
-        // Zamknięcie modalów po kliknięciu na X
-        document.querySelectorAll('.close').forEach(function(closeBtn) {
-            closeBtn.onclick = function() {
-                const modal = this.closest('.modal');
-                if (modal) {
-                    closeModal(modal.id);
-                }
-            };
-        });
-
-        // Zamknięcie modalów po kliknięciu poza obrazem
-        window.onclick = function(event) {
-            if (event.target.className === 'modal') {
-                closeModal(event.target.id);
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = "none";
             }
-        };
+        }
     </script>
 </body>
 </html>
