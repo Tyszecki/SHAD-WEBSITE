@@ -221,6 +221,68 @@
             height: auto;
             display: block;
         }
+
+        /* Style dla wyboru języka */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+            margin-left: 15px;
+        }
+
+        .language-button {
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+        }
+
+        .language-button img {
+            width: 20px;
+            height: 15px;
+            margin-right: 5px;
+        }
+
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #f9f9f9;
+            min-width: 120px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+        }
+
+        .language-dropdown a {
+            color: black;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .language-dropdown a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .language-dropdown a img {
+            width: 20px;
+            height: 15px;
+            margin-right: 8px;
+        }
+
+        .language-selector:hover .language-dropdown {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .language-selector {
+                margin-left: 10px;
+            }
+        }
     </style>
 </head>
 <body class="is-preload">
@@ -230,8 +292,12 @@
 
         <!-- Intro -->
         <div id="intro">
-            <h1>BSP SHAD</h1>
-            <p>Bezzałogowy statek powietrzny do akwizycji danych sonarem hydroakustycznym</p>
+            <h1 data-lang="pl">BSP SHAD</h1>
+            <h1 data-lang="en" style="display:none">UAV SHAD</h1>
+            <h1 data-lang="de" style="display:none">UAV SHAD</h1>
+            <p data-lang="pl">Bezzałogowy statek powietrzny do akwizycji danych sonarem hydroakustycznym</p>
+            <p data-lang="en" style="display:none">Unmanned Aerial Vehicle for hydroacoustic sonar data acquisition</p>
+            <p data-lang="de" style="display:none">Unbemanntes Luftfahrzeug zur hydroakustischen Sonardatenerfassung</p>
             <ul class="actions">
                 <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
             </ul>
@@ -239,18 +305,48 @@
 
         <!-- Header -->
         <header id="header">
-            <a href="index.html" class="logo">BSP SHAD</a>
+            <a href="index.html" class="logo" data-lang="pl">BSP SHAD</a>
+            <a href="index.html" class="logo" data-lang="en" style="display:none">UAV SHAD</a>
+            <a href="index.html" class="logo" data-lang="de" style="display:none">UAV SHAD</a>
         </header>
 
         <!-- Nav -->
         <nav id="nav">
             <ul class="links">
-                <li class="active"><a href="index.html">Informacje</a></li>
-                <li><a href="generic.html">Zdjęcia</a></li>
-                <li><a href="elements.html">O nas</a></li>
+                <li class="active"><a href="index.html" data-lang="pl">Informacje</a></li>
+                <li class="active"><a href="index.html" data-lang="en" style="display:none">Information</a></li>
+                <li class="active"><a href="index.html" data-lang="de" style="display:none">Informationen</a></li>
+                
+                <li><a href="generic.html" data-lang="pl">Zdjęcia</a></li>
+                <li><a href="generic.html" data-lang="en" style="display:none">Photos</a></li>
+                <li><a href="generic.html" data-lang="de" style="display:none">Fotos</a></li>
+                
+                <li><a href="elements.html" data-lang="pl">O nas</a></li>
+                <li><a href="elements.html" data-lang="en" style="display:none">About us</a></li>
+                <li><a href="elements.html" data-lang="de" style="display:none">Über uns</a></li>
             </ul>
             <ul class="icons">
-                <li><a href="https://linktr.ee/BSPSHAD" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>               
+                <li><a href="https://linktr.ee/BSPSHAD" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                <li class="language-selector">
+                    <button class="language-button">
+                        <img src="https://flagcdn.com/w20/pl.png" alt="Polish" id="current-flag">
+                        <span id="current-language">PL</span>
+                    </button>
+                    <div class="language-dropdown">
+                        <a href="#" onclick="changeLanguage('pl'); return false;">
+                            <img src="https://flagcdn.com/w20/pl.png" alt="Polish">
+                            Polski
+                        </a>
+                        <a href="#" onclick="changeLanguage('en'); return false;">
+                            <img src="https://flagcdn.com/w20/gb.png" alt="English">
+                            English
+                        </a>
+                        <a href="#" onclick="changeLanguage('de'); return false;">
+                            <img src="https://flagcdn.com/w20/de.png" alt="German">
+                            Deutsch
+                        </a>
+                    </div>
+                </li>
             </ul>
         </nav>
 
@@ -260,14 +356,22 @@
             <!-- Featured Post -->
             <article class="post featured">
                 <header class="major">
-                    <span class="date">7 Maja, 2024</span>
-                    <h2><a href="#" id="poczatekLink">POCZĄTEK<br /></a></h2>
-                    <p>Pomysł na budowę jednostki zdolnej do szybkiego przemieszczania się w powietrzu, jednocześnie wykonującej swoje misje na akwenach wodnych narodził się na AOS Czernica podczas warsztatów badawczych przeprowadzonych przez Akademię Marynarki Wojennej w Gdyni we współpracy z Ośrodkiem Badawczo-Rozwojowym CTM.</p>
+                    <span class="date" data-lang="pl">7 Maja, 2024</span>
+                    <span class="date" data-lang="en" style="display:none">May 7, 2024</span>
+                    <span class="date" data-lang="de" style="display:none">7. Mai 2024</span>
+                    <h2><a href="#" id="poczatekLink" data-lang="pl">POCZĄTEK<br /></a></h2>
+                    <h2><a href="#" id="poczatekLink" data-lang="en" style="display:none">BEGINNING<br /></a></h2>
+                    <h2><a href="#" id="poczatekLink" data-lang="de" style="display:none">ANFANG<br /></a></h2>
+                    <p data-lang="pl">Pomysł na budowę jednostki zdolnej do szybkiego przemieszczania się w powietrzu, jednocześnie wykonującej swoje misje na akwenach wodnych narodził się na AOS Czernica podczas warsztatów badawczych przeprowadzonych przez Akademię Marynarki Wojennej w Gdyni we współpracy z Ośrodkiem Badawczo-Rozwojowym CTM.</p>
+                    <p data-lang="en" style="display:none">The idea to build a unit capable of rapid movement in the air while performing its missions on water bodies was born at AOS Czernica during research workshops conducted by the Polish Naval Academy in Gdynia in cooperation with the CTM Research and Development Center.</p>
+                    <p data-lang="de" style="display:none">Die Idee zum Bau einer Einheit, die sich schnell in der Luft bewegen und gleichzeitig ihre Missionen auf Gewässern durchführen kann, entstand auf der AOS Czernica während Forschungsworkshops, die von der Polnischen Marineakademie in Gdynia in Zusammenarbeit mit dem Forschungs- und Entwicklungszentrum CTM durchgeführt wurden.</p>
                 </header>
                 <div class="image-container">
                     <a href="#" class="image main" id="czernicaImage"><img src="images/czernica.jpg" alt="Czernica" /></a>
                     <div class="image-description">
-                        <p>Pomysł na budowę jednostki zdolnej do szybkiego przemieszczania się w powietrzu, jednocześnie wykonującej swoje misje na akwenach wodnych narodził się na AOS Czernica podczas warsztatów badawczych.</p>
+                        <p data-lang="pl">Pomysł na budowę jednostki zdolnej do szybkiego przemieszczania się w powietrzu, jednocześnie wykonującej swoje misje na akwenach wodnych narodził się na AOS Czernica podczas warsztatów badawczych.</p>
+                        <p data-lang="en" style="display:none">The idea to build a unit capable of rapid movement in the air while performing its missions on water bodies was born at AOS Czernica during research workshops.</p>
+                        <p data-lang="de" style="display:none">Die Idee zum Bau einer Einheit, die sich schnell in der Luft bewegen und gleichzeitig ihre Missionen auf Gewässern durchführen kann, entstand auf der AOS Czernica während Forschungsworkshops.</p>
                     </div>
                 </div>
             </article>
@@ -276,63 +380,90 @@
             <section class="posts">
                 <article>
                     <header>
-                        <h2><a href="#" id="openModalWyzroznienie">Wyróżnienie w konkursie<br>"Młodzi Innowacyjni 2025"</a></h2>
+                        <h2><a href="#" id="openModalWyzroznienie" data-lang="pl">Wyróżnienie w konkursie<br>"Młodzi Innowacyjni 2025"</a></h2>
+                        <h2><a href="#" id="openModalWyzroznienie" data-lang="en" style="display:none">Award in competition<br>"Young Innovators 2025"</a></h2>
+                        <h2><a href="#" id="openModalWyzroznienie" data-lang="de" style="display:none">Auszeichnung im Wettbewerb<br>"Junge Innovatoren 2025"</a></h2>
                     </header>
                     <div class="image-container">
                         <a href="#" class="image fit" id="PIAP1Image"><img src="images/PIAP1.jpg" alt="Wyróżnienie" /></a>
                         <div class="image-description">
-                            <p style="font-size: 0.5em;">
-    Projekt "SHAD" został wyróżniony w XVII Ogólnopolskim Konkursie Prac Dyplomowych „Młodzi Innowacyjni 2025". Innowacyjny dron został zaprojektowany do precyzyjnego mapowania dna morskiego, inspekcji podwodnej infrastruktury oraz wsparcia działań ratowniczych. Rozwiązanie ma istotne znaczenie dla bezpieczeństwa portów i rozwoju nowoczesnej hydrografii. Praca została wysoko oceniona przez ekspertów za połączenie zaawansowanej robotyki z praktycznymi zastosowaniami w gospodarce morskiej.
-</p>
+                            <p style="font-size: 0.5em;" data-lang="pl">
+                                Projekt "SHAD" został wyróżniony w XVII Ogólnopolskim Konkursie Prac Dyplomowych „Młodzi Innowacyjni 2025". Innowacyjny dron został zaprojektowany do precyzyjnego mapowania dna morskiego, inspekcji podwodnej infrastruktury oraz wsparcia działań ratowniczych. Rozwiązanie ma istotne znaczenie dla bezpieczeństwa portów i rozwoju nowoczesnej hydrografii. Praca została wysoko oceniona przez ekspertów za połączenie zaawansowanej robotyki z praktycznymi zastosowaniami w gospodarce morskiej.
+                            </p>
+                            <p style="font-size: 0.5em; display:none" data-lang="en">
+                                The "SHAD" project was awarded in the 17th National Diploma Thesis Competition "Young Innovators 2025". The innovative drone was designed for precise seabed mapping, underwater infrastructure inspection and support of rescue operations. The solution is of significant importance for port security and the development of modern hydrography. The work was highly rated by experts for combining advanced robotics with practical applications in the maritime economy.
+                            </p>
+                            <p style="font-size: 0.5em; display:none" data-lang="de">
+                                Das Projekt "SHAD" wurde im 17. Nationalen Diplomwettbewerb "Junge Innovatoren 2025" ausgezeichnet. Die innovative Drohne wurde für die präzise Kartierung des Meeresbodens, die Inspektion der Unterwasserinfrastruktur und die Unterstützung von Rettungseinsätzen entwickelt. Die Lösung ist von großer Bedeutung für die Hafensicherheit und die Entwicklung der modernen Hydrographie. Die Arbeit wurde von Experten hoch bewertet, weil sie fortschrittliche Robotik mit praktischen Anwendungen in der maritimen Wirtschaft verbindet.
+                            </p>
                         </div>
                     </div>
                 </article>
                 <article>
                     <header>
-                        <h2><a href="#" id="openModalSpecyfikacje">Specyfikacje techniczne</a></h2>
+                        <h2><a href="#" id="openModalSpecyfikacje" data-lang="pl">Specyfikacje techniczne</a></h2>
+                        <h2><a href="#" id="openModalSpecyfikacje" data-lang="en" style="display:none">Technical specifications</a></h2>
+                        <h2><a href="#" id="openModalSpecyfikacje" data-lang="de" style="display:none">Technische Spezifikationen</a></h2>
                     </header>
                     <div class="image-container">
                         <a href="#" class="image fit" id="specyfikacjeImage"><img src="images/specyfikacje.jpg" alt="Specyfikacje" /></a>
                         <div class="image-description">
-                            <p>Specyfikacje techniczne naszego drona SHAD.</p>
+                            <p data-lang="pl">Specyfikacje techniczne naszego drona SHAD.</p>
+                            <p data-lang="en" style="display:none">Technical specifications of our SHAD drone.</p>
+                            <p data-lang="de" style="display:none">Technische Spezifikationen unserer SHAD-Drohne.</p>
                         </div>
                     </div>
                 </article>
                 <article>
                     <header>
-                        <h2><a href="#" id="openModalZastosowanie">Zastosowanie</a></h2>
+                        <h2><a href="#" id="openModalZastosowanie" data-lang="pl">Zastosowanie</a></h2>
+                        <h2><a href="#" id="openModalZastosowanie" data-lang="en" style="display:none">Applications</a></h2>
+                        <h2><a href="#" id="openModalZastosowanie" data-lang="de" style="display:none">Anwendungen</a></h2>
                     </header>
                     <div class="image-container">
                         <a href="#" class="image fit" id="zastosowanieImage"><img src="images/Zastosowanie.jpg" alt="Zastosowanie" /></a>
                         <div class="image-description">
-                            <p style="font-size: 0.5em;">
-    Konstrukcja BSP obejmuje specjalnie opracowane pływaki, umożliwiające unoszenie się na powierzchni wody. BSP został zaprojektowany do pozyskiwania danych w toni wodnej za pomocą sonaru Ping360. Sterowanie odbywa się przy użyciu dedykowanego kontrolera zdalnego, a alternatywnie BSP może realizować autonomiczne misje według zaprogramowanego scenariusza. Dane sonarowe są przesyłane w czasie rzeczywistym do operatora przy stacji naziemnej, co umożliwia ich bieżącą analizę.
-</p>
+                            <p style="font-size: 0.5em;" data-lang="pl">
+                                Konstrukcja BSP obejmuje specjalnie opracowane pływaki, umożliwiające unoszenie się na powierzchni wody. BSP został zaprojektowany do pozyskiwania danych w toni wodnej za pomocą sonaru Ping360. Sterowanie odbywa się przy użyciu dedykowanego kontrolera zdalnego, a alternatywnie BSP może realizować autonomiczne misje według zaprogramowanego scenariusza. Dane sonarowe są przesyłane w czasie rzeczywistym do operatora przy stacji naziemnej, co umożliwia ich bieżącą analizę.
+                            </p>
+                            <p style="font-size: 0.5em; display:none" data-lang="en">
+                                The UAV design includes specially developed floats that allow it to float on the water surface. The UAV was designed to acquire data in the water column using the Ping360 sonar. Control is carried out using a dedicated remote controller, or alternatively the UAV can perform autonomous missions according to a programmed scenario. Sonar data is transmitted in real time to the operator at the ground station, enabling immediate analysis.
+                            </p>
+                            <p style="font-size: 0.5em; display:none" data-lang="de">
+                                Das UAV-Design umfasst speziell entwickelte Schwimmer, die es ermöglichen, auf der Wasseroberfläche zu schwimmen. Die UAV wurde entwickelt, um Daten in der Wassersäule mit dem Ping360-Sonar zu erfassen. Die Steuerung erfolgt über eine dedizierte Fernbedienung, oder alternativ kann die UAV autonome Missionen nach einem programmierten Szenario durchführen. Die Sonardaten werden in Echtzeit an den Operator an der Bodenstation übertragen, was eine sofortige Analyse ermöglicht.
+                            </p>
                         </div>
                     </div>
-                    
                 </article>
                 <article>
                     <header>
-                        <h2>Krótka prezentacja</h2>
+                        <h2 data-lang="pl">Krótka prezentacja</h2>
+                        <h2 data-lang="en" style="display:none">Short presentation</h2>
+                        <h2 data-lang="de" style="display:none">Kurze Präsentation</h2>
                     </header>
                     <div class="video-container">
                         <video controls width="100%" style="max-width: 100%; display: block;">
                             <source src="lot1.mp4" type="video/mp4">
-                            Twoja przeglądarka nie obsługuje tagu video.
+                            <span data-lang="pl">Twoja przeglądarka nie obsługuje tagu video.</span>
+                            <span data-lang="en" style="display:none">Your browser does not support the video tag.</span>
+                            <span data-lang="de" style="display:none">Ihr Browser unterstützt das Video-Tag nicht.</span>
                         </video>
                     </div>
                 </article>
                 <article>
                     <header>
-                        <h2><a href="https://tyszecki.github.io/Model-website/" id="openModalModel">Model 3D</a></h2>
+                        <h2><a href="https://tyszecki.github.io/Model-website/" id="openModalModel" data-lang="pl">Model 3D</a></h2>
+                        <h2><a href="https://tyszecki.github.io/Model-website/" id="openModalModel" data-lang="en" style="display:none">3D Model</a></h2>
+                        <h2><a href="https://tyszecki.github.io/Model-website/" id="openModalModel" data-lang="de" style="display:none">3D-Modell</a></h2>
                     </header>
                     <div class="image-container">
                         <a href="https://tyszecki.github.io/Model-website/" class="image fit">
                             <img src="images/Model.jpg" alt="Model" id="ModelImage" />
                         </a>
                         <div class="image-description">
-                            <p>Interaktywny model 3D naszego drona SHAD.</p>
+                            <p data-lang="pl">Interaktywny model 3D naszego drona SHAD.</p>
+                            <p data-lang="en" style="display:none">Interactive 3D model of our SHAD drone.</p>
+                            <p data-lang="de" style="display:none">Interaktives 3D-Modell unserer SHAD-Drohne.</p>
                         </div>
                     </div>
                 </article>
@@ -343,18 +474,26 @@
         <footer id="footer">
             <section>
                 <form action="https://formspree.io/f/xanenrzj" method="POST">
-                    <label for="email">Twój email:</label>
-                    <input type="email" name="email" id="email" required placeholder="Twój email">
+                    <label for="email" data-lang="pl">Twój email:</label>
+                    <label for="email" data-lang="en" style="display:none">Your email:</label>
+                    <label for="email" data-lang="de" style="display:none">Ihre E-Mail:</label>
+                    <input type="email" name="email" id="email" required placeholder="Email">
 
-                    <label for="message">Twoja wiadomość:</label>
-                    <textarea name="message" id="message" required placeholder="Napisz wiadomość"></textarea>
+                    <label for="message" data-lang="pl">Twoja wiadomość:</label>
+                    <label for="message" data-lang="en" style="display:none">Your message:</label>
+                    <label for="message" data-lang="de" style="display:none">Ihre Nachricht:</label>
+                    <textarea name="message" id="message" required placeholder="Message"></textarea>
 
-                    <button type="submit">Wyślij</button>
+                    <button type="submit" data-lang="pl">Wyślij</button>
+                    <button type="submit" data-lang="en" style="display:none">Send</button>
+                    <button type="submit" data-lang="de" style="display:none">Senden</button>
                 </form>
             </section>
             <section class="split contact">
                 <section class="alt">
-                    <h3>Adres</h3>
+                    <h3 data-lang="pl">Adres</h3>
+                    <h3 data-lang="en" style="display:none">Address</h3>
+                    <h3 data-lang="de" style="display:none">Adresse</h3>
                     <p>Inżyniera Jana Śmidowicza 69, 81-127 Gdynia</p>
                 </section>
                 <section style="display: flex; justify-content: space-between; align-items: flex-start;">
@@ -398,7 +537,9 @@
     <div id="modalWyzroznienie" class="modal">
         <span class="close">&times;</span>
         <div class="gallery-container">
-            <h2 class="modal-title">Wyróżnienie w konkursie "Młodzi Innowacyjni 2025"</h2>
+            <h2 class="modal-title" data-lang="pl">Wyróżnienie w konkursie "Młodzi Innowacyjni 2025"</h2>
+            <h2 class="modal-title" data-lang="en" style="display:none">Award in competition "Young Innovators 2025"</h2>
+            <h2 class="modal-title" data-lang="de" style="display:none">Auszeichnung im Wettbewerb "Junge Innovatoren 2025"</h2>
             <div class="gallery-main">
                 <img id="currentGalleryImage" src="images/PIAP1.jpg">
                 <div class="gallery-nav">
@@ -422,6 +563,46 @@
     <script src="assets/js/main.js"></script>
 
    <script>
+        // Funkcja zmiany języka
+        function changeLanguage(lang) {
+            // Ukrywamy wszystkie elementy z atrybutem data-lang
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Pokazujemy tylko elementy dla wybranego języka
+            document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+                el.style.display = '';
+            });
+            
+            // Aktualizujemy flagę i tekst przycisku
+            const flagImg = document.getElementById('current-flag');
+            const langText = document.getElementById('current-language');
+            
+            if (lang === 'pl') {
+                flagImg.src = 'https://flagcdn.com/w20/pl.png';
+                flagImg.alt = 'Polish';
+                langText.textContent = 'PL';
+            } else if (lang === 'en') {
+                flagImg.src = 'https://flagcdn.com/w20/gb.png';
+                flagImg.alt = 'English';
+                langText.textContent = 'EN';
+            } else if (lang === 'de') {
+                flagImg.src = 'https://flagcdn.com/w20/de.png';
+                flagImg.alt = 'German';
+                langText.textContent = 'DE';
+            }
+            
+            // Zapisujemy wybór języka w localStorage
+            localStorage.setItem('selectedLanguage', lang);
+        }
+        
+        // Sprawdzamy, czy w localStorage jest zapisany język
+        const savedLang = localStorage.getItem('selectedLanguage');
+        if (savedLang) {
+            changeLanguage(savedLang);
+        }
+
         // Galeria zdjęć
         const galleryImages = [
             'images/PIAP1.jpg',
