@@ -66,29 +66,43 @@
             align-items: stretch;
         }
 
-        .posts article {
-            flex: 1 1 calc(50% - 20px);
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-        }
-
-       .posts article header {
-    min-height: 80px;
+        /* Zmień styl sekcji posts article */
+.posts article {
+    flex: 1 1 calc(50% - 20px);
+    box-sizing: border-box;
     display: flex;
-    align-items: center;
-    justify-content: center; /* To wyśrodkuje horyzontalnie */
-    text-align: center; /* To wyśrodkuje tekst w nagłówku */
-    width: 100%; /* Pełna szerokość */
-    padding: 0 10px; /* Dodaj trochę paddingów po bokach */
+    flex-direction: column;
+    align-items: center; /* Dodaj to */
+    text-align: center; /* Dodaj to */
 }
 
+/* Popraw nagłówek */
+.posts article header {
+    min-height: 80px;
+    display: flex;
+    flex-direction: column; /* Zmień na column */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* Popraw style h2 */
 .posts article header h2 {
     font-size: 1.4em;
-    margin: 0;
-    width: 100%; /* Pełna szerokość */
-    text-align: center; /* Wyśrodkowanie tekstu */
-    /* Usunąłem white-space: nowrap jeśli było */
+    margin: 0 auto; /* Zmień na auto dla wyśrodkowania */
+    padding: 0;
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Upewnij się, że linki są wyśrodkowane */
+.posts article header h2 a {
+    display: block;
+    width: 100%;
+    text-align: center;
 }
 
         @media (max-width: 768px) {
@@ -213,7 +227,7 @@
     word-wrap: break-word; /* Zawijanie długich słów */
     white-space: normal; /* Zezwala na zawijanie tekstu */
 }
-        }
+        
         
         .image-container:hover .image-description {
             transform: translateY(0);
@@ -239,67 +253,89 @@
             display: block;
         }
 
-        /* Style dla wyboru języka */
+       /* Style dla wyboru języka - POPRAWIONE */
+/* Style dla wyboru języka - ZMODYFIKOWANE */
+.language-selector {
+    position: relative;
+    display: inline-block;
+    margin-left: 15px;
+    z-index: 1000;
+}
+
+   .language-button {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}             /* Brak ramki */
+ 
+
+.language-button span {
+    display: none !important;             /* Ukryj tekst (PL/EN/DE) */
+}
+
+.language-button img {
+    width: 24px;                          /* Rozmiar flagi */
+    height: 18px;                         /* Proporcje 4:3 */
+    display: block;                       /* Usuń odstępy wokół obrazka */
+}
+
+    .language-button:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+  .language-dropdown {
+    display: none;
+    position: absolute;
+    right: 100%;  /* Wysuwa się w lewo od przycisku */
+    top: 0;       /* Wyrównanie do góry przycisku */
+    background-color: #3E3A3B;
+    min-width: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1001;
+    border-radius: 4px;
+    border: 1px solid #3E3A3B;
+    padding: 5px;
+    flex-direction: row;  /* Ustawienie poziome */
+    gap: 10px;
+    margin-right: 10px;   /* Odstęp od przycisku */
+}
+
+  .language-selector.active .language-dropdown {
+    display: flex;  /* Użyj flex, aby elementy były w jednej linii */
+}
+
+    .language-dropdown a {
+        color: white;
+        padding: 5px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s;
+        width: 32px; /* Zwiększone z 24px */
+        height: 22px; /* Zwiększone z 16px */
+    }
+
+    .language-dropdown a:hover {
+        background-color: #3a3f5a;
+    }
+
+    .language-dropdown a img {
+        width: 32px; /* Zwiększone z 20px - 2x większe */
+        height: 22px; /* Zwiększone z 15px - 2x większe */
+    }
+
+    /* Ukrywamy tekst w linkach */
+    .language-dropdown a span {
+        display: none;
+    }
+
+    /* Dla telefonów - klikalne */
+    @media (max-width: 768px) {
         .language-selector {
-            position: relative;
-            display: inline-block;
-            margin-left: 15px;
+            margin-left: 10px;
         }
-
-        .language-button {
-            background: none;
-            border: none;
-            color: inherit;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            padding: 5px;
-        }
-
-        .language-button img {
-            width: 20px;
-            height: 15px;
-            margin-right: 5px;
-        }
-
-        .language-dropdown {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #f9f9f9;
-            min-width: 120px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            border-radius: 4px;
-        }
-
-        .language-dropdown a {
-            color: black;
-            padding: 8px 12px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .language-dropdown a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .language-dropdown a img {
-            width: 20px;
-            height: 15px;
-            margin-right: 8px;
-        }
-
-        .language-selector:hover .language-dropdown {
-            display: block;
-        }
-
-        @media (max-width: 768px) {
-            .language-selector {
-                margin-left: 10px;
-            }
-        }
+    }
     </style>
 </head>
 <body class="is-preload">
@@ -308,62 +344,82 @@
     <div id="wrapper" class="fade-in">
 
         <!-- Intro -->
-        <div id="intro">
-            <h1 data-lang="pl">BSP SHAD</h1>
-            <h1 data-lang="en" style="display:none">UAV SHAD</h1>
-            <h1 data-lang="de" style="display:none">UAV SHAD</h1>
-            <p data-lang="pl">Bezzałogowy statek powietrzny do akwizycji danych sonarem hydroakustycznym</p>
-            <p data-lang="en" style="display:none">Unmanned Aerial Vehicle for hydroacoustic sonar data acquisition</p>
-            <p data-lang="de" style="display:none">Unbemanntes Luftfahrzeug zur hydroakustischen Sonardatenerfassung</p>
+       <div id="intro">
+    <h1 data-lang="pl">BSP SHAD</h1>
+    <h1 data-lang="en" style="display:none">UAV SHAD</h1>
+    <h1 data-lang="de" style="display:none">UAV SHAD</h1>
+    <h1 data-lang="it" style="display:none">UAV SHAD</h1> <!-- Dodane -->
+    <h1 data-lang="sv" style="display:none">UAV SHAD</h1> <!-- Dodane -->
+    <p data-lang="pl">Bezzałogowy statek powietrzny do akwizycji danych sonarem hydroakustycznym</p>
+    <p data-lang="en" style="display:none">Unmanned Aerial Vehicle for hydroacoustic sonar data acquisition</p>
+    <p data-lang="de" style="display:none">Unbemanntes Luftfahrzeug zur hydroakustischen Sonardatenerfassung</p>
+    <p data-lang="it" style="display:none">Velivolo senza pilota per acquisizione dati sonar idroacustici</p> <!-- Dodane -->
+    <p data-lang="sv" style="display:none">Obemannat flygplan för hydroakustisk sonardatainsamling</p> <!-- Dodane -->
             <ul class="actions">
                 <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
             </ul>
         </div>
 
         <!-- Header -->
-        <header id="header">
-            <a href="index.html" class="logo" data-lang="pl">BSP SHAD</a>
-            <a href="index.html" class="logo" data-lang="en" style="display:none">UAV SHAD</a>
-            <a href="index.html" class="logo" data-lang="de" style="display:none">UAV SHAD</a>
-        </header>
+       <header id="header">
+    <a href="index.html" class="logo" data-lang="pl">BSP SHAD</a>
+    <a href="index.html" class="logo" data-lang="en" style="display:none">UAV SHAD</a>
+    <a href="index.html" class="logo" data-lang="de" style="display:none">UAV SHAD</a>
+    <a href="index.html" class="logo" data-lang="it" style="display:none">UAV SHAD</a> <!-- Dodane -->
+    <a href="index.html" class="logo" data-lang="sv" style="display:none">UAV SHAD</a> <!-- Dodane -->
+</header>
 
         <!-- Nav -->
-        <nav id="nav">
-            <ul class="links">
-                <li class="active"><a href="index.html" data-lang="pl">Informacje</a></li>
-                <li class="active"><a href="index.html" data-lang="en" style="display:none">Information</a></li>
-                <li class="active"><a href="index.html" data-lang="de" style="display:none">Informationen</a></li>
-                
-                <li><a href="generic.html" data-lang="pl">Zdjęcia</a></li>
-                <li><a href="generic.html" data-lang="en" style="display:none">Photos</a></li>
-                <li><a href="generic.html" data-lang="de" style="display:none">Fotos</a></li>
-                
-                <li><a href="elements.html" data-lang="pl">O nas</a></li>
-                <li><a href="elements.html" data-lang="en" style="display:none">About us</a></li>
-                <li><a href="elements.html" data-lang="de" style="display:none">Über uns</a></li>
-            </ul>
+       <nav id="nav">
+    <ul class="links">
+        <li class="active"><a href="index.html" data-lang="pl">Informacje</a></li>
+        <li class="active"><a href="index.html" data-lang="en" style="display:none">Information</a></li>
+        <li class="active"><a href="index.html" data-lang="de" style="display:none">Informationen</a></li>
+        <li class="active"><a href="index.html" data-lang="it" style="display:none">Informazioni</a></li> <!-- Dodane -->
+        <li class="active"><a href="index.html" data-lang="sv" style="display:none">Information</a></li> <!-- Dodane -->
+        
+        <li><a href="generic.html" data-lang="pl">Zdjęcia</a></li>
+        <li><a href="generic.html" data-lang="en" style="display:none">Photos</a></li>
+        <li><a href="generic.html" data-lang="de" style="display:none">Fotos</a></li>
+        <li><a href="generic.html" data-lang="it" style="display:none">Foto</a></li> <!-- Dodane -->
+        <li><a href="generic.html" data-lang="sv" style="display:none">Foton</a></li> <!-- Dodane -->
+        
+        <li><a href="elements.html" data-lang="pl">O nas</a></li>
+        <li><a href="elements.html" data-lang="en" style="display:none">About us</a></li>
+        <li><a href="elements.html" data-lang="de" style="display:none">Über uns</a></li>
+        <li><a href="elements.html" data-lang="it" style="display:none">Chi siamo</a></li> <!-- Dodane -->
+        <li><a href="elements.html" data-lang="sv" style="display:none">Om oss</a></li> <!-- Dodane -->
+    </ul>
             <ul class="icons">
                 <li><a href="https://linktr.ee/BSPSHAD" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                <li class="language-selector">
-                    <button class="language-button">
-                        <img src="https://flagcdn.com/w20/pl.png" alt="Polish" id="current-flag">
-                        <span id="current-language">PL</span>
-                    </button>
-                    <div class="language-dropdown">
-                        <a href="#" onclick="changeLanguage('pl'); return false;">
-                            <img src="https://flagcdn.com/w20/pl.png" alt="Polish">
-                            Polski
-                        </a>
-                        <a href="#" onclick="changeLanguage('en'); return false;">
-                            <img src="https://flagcdn.com/w20/gb.png" alt="English">
-                            English
-                        </a>
-                        <a href="#" onclick="changeLanguage('de'); return false;">
-                            <img src="https://flagcdn.com/w20/de.png" alt="German">
-                            Deutsch
-                        </a>
-                    </div>
-                </li>
+               <li class="language-selector">
+    <button class="language-button" aria-expanded="false" aria-controls="language-dropdown">
+        <img src="https://flagcdn.com/w20/pl.png" alt="Polish" id="current-flag">
+        <span id="current-language">PL</span>
+    </button>
+    <div class="language-dropdown" id="language-dropdown">
+        <a href="#" onclick="changeLanguage('pl'); return false;">
+            <img src="https://flagcdn.com/w20/pl.png" alt="Polish">
+            <span>Polski</span>
+        </a>
+        <a href="#" onclick="changeLanguage('en'); return false;">
+            <img src="https://flagcdn.com/w20/gb.png" alt="English">
+            <span>English</span>
+        </a>
+        <a href="#" onclick="changeLanguage('de'); return false;">
+            <img src="https://flagcdn.com/w20/de.png" alt="German">
+            <span>Deutsch</span>
+        </a>
+        <a href="#" onclick="changeLanguage('it'); return false;"> <!-- Dodane -->
+            <img src="https://flagcdn.com/w20/it.png" alt="Italian">
+            <span>Italiano</span>
+        </a>
+        <a href="#" onclick="changeLanguage('sv'); return false;"> <!-- Dodane -->
+            <img src="https://flagcdn.com/w20/se.png" alt="Swedish">
+            <span>Svenska</span>
+        </a>
+    </div>
+</li>
             </ul>
         </nav>
 
@@ -373,23 +429,40 @@
             <!-- Featured Post -->
             <article class="post featured">
                 <header class="major">
-                    <span class="date" data-lang="pl">7 Maja, 2024</span>
-                    <span class="date" data-lang="en" style="display:none">May 7, 2024</span>
-                    <span class="date" data-lang="de" style="display:none">7. Mai 2024</span>
-                    <h2><a href="#" id="poczatekLink" data-lang="pl">POCZĄTEK<br /></a></h2>
-                    <h2><a href="#" id="poczatekLink" data-lang="en" style="display:none">BEGINNING<br /></a></h2>
-                    <h2><a href="#" id="poczatekLink" data-lang="de" style="display:none">ANFANG<br /></a></h2>
-                    <p data-lang="pl">Pomysł na budowę jednostki zdolnej do szybkiego przemieszczania się w powietrzu, jednocześnie wykonującej swoje misje na akwenach wodnych narodził się na AOS Czernica podczas warsztatów badawczych przeprowadzonych przez Akademię Marynarki Wojennej w Gdyni we współpracy z Ośrodkiem Badawczo-Rozwojowym CTM.</p>
-                    <p data-lang="en" style="display:none">The idea to build a unit capable of rapid movement in the air while performing its missions on water bodies was born at AOS Czernica during research workshops conducted by the Polish Naval Academy in Gdynia in cooperation with the CTM Research and Development Center.</p>
-                    <p data-lang="de" style="display:none">Die Idee zum Bau einer Einheit, die sich schnell in der Luft bewegen und gleichzeitig ihre Missionen auf Gewässern durchführen kann, entstand auf der AOS Czernica während Forschungsworkshops, die von der Polnischen Marineakademie in Gdynia in Zusammenarbeit mit dem Forschungs- und Entwicklungszentrum CTM durchgeführt wurden.</p>
+                  <span class="date" data-lang="pl">7 Maja, 2024</span>
+<span class="date" data-lang="en" style="display:none">May 7, 2024</span>
+<span class="date" data-lang="de" style="display:none">7. Mai 2024</span>
+<span class="date" data-lang="it" style="display:none">7 maggio 2024</span> <!-- Włoski -->
+<span class="date" data-lang="sv" style="display:none">7 maj 2024</span> <!-- Szwedzki -->
+
+<h2><a href="#" id="poczatekLink" data-lang="pl">POCZĄTEK<br /></a></h2>
+<h2><a href="#" id="poczatekLink" data-lang="en" style="display:none">BEGINNING<br /></a></h2>
+<h2><a href="#" id="poczatekLink" data-lang="de" style="display:none">ANFANG<br /></a></h2>
+<h2><a href="#" id="poczatekLink" data-lang="it" style="display:none">INIZIO<br /></a></h2> <!-- Włoski -->
+<h2><a href="#" id="poczatekLink" data-lang="sv" style="display:none">BÖRJAN<br /></a></h2> <!-- Szwedzki -->
+                   <p data-lang="pl">Pomysł na budowę jednostki zdolnej do szybkiego przemieszczania się w powietrzu, jednocześnie wykonującej swoje misje na akwenach wodnych narodził się na AOS Czernica podczas warsztatów badawczych przeprowadzonych przez Akademię Marynarki Wojennej w Gdyni we współpracy z Ośrodkiem Badawczo-Rozwojowym CTM.</p>
+
+<p data-lang="en" style="display:none">The idea to build a unit capable of rapid movement in the air while performing its missions on water bodies was born at AOS Czernica during research workshops conducted by the Polish Naval Academy in Gdynia in cooperation with the CTM Research and Development Center.</p>
+
+<p data-lang="de" style="display:none">Die Idee zum Bau einer Einheit, die sich schnell in der Luft bewegen und gleichzeitig ihre Missionen auf Gewässern durchführen kann, entstand auf der AOS Czernica während Forschungsworkshops, die von der Polnischen Marineakademie in Gdynia in Zusammenarbeit mit dem Forschungs- und Entwicklungszentrum CTM durchgeführt wurden.</p>
+
+<p data-lang="it" style="display:none">L'idea di costruire un'unità in grado di muoversi rapidamente in aria mentre svolge le sue missioni su specchi d'acqua è nata all'AOS Czernica durante i workshop di ricerca condotti dall'Accademia Navale Polacca di Gdynia in collaborazione con il Centro di Ricerca e Sviluppo CTM.</p> <!-- Włoski -->
+
+<p data-lang="sv" style="display:none">Idén att bygga en enhet som kan förflytta sig snabbt i luften samtidigt som den utför sina uppdrag på vattenområden föddes vid AOS Czernica under forskningsworkshops genomförda av den polska marinakademin i Gdynia i samarbete med CTM Research and Development Center.</p> <!-- Szwedzki -->
                 </header>
                 <div class="image-container">
                     <a href="#" class="image main" id="czernicaImage"><img src="images/czernica.jpg" alt="Czernica" /></a>
                     <div class="image-description">
-                        <p data-lang="pl">Pomysł na budowę jednostki zdolnej do szybkiego przemieszczania się w powietrzu, jednocześnie wykonującej swoje misje na akwenach wodnych narodził się na AOS Czernica podczas warsztatów badawczych.</p>
-                        <p data-lang="en" style="display:none">The idea to build a unit capable of rapid movement in the air while performing its missions on water bodies was born at AOS Czernica during research workshops.</p>
-                        <p data-lang="de" style="display:none">Die Idee zum Bau einer Einheit, die sich schnell in der Luft bewegen und gleichzeitig ihre Missionen auf Gewässern durchführen kann, entstand auf der AOS Czernica während Forschungsworkshops.</p>
-                    </div>
+    <p data-lang="pl">Pomysł na budowę jednostki zdolnej do szybkiego przemieszczania się w powietrzu, jednocześnie wykonującej swoje misje na akwenach wodnych narodził się na AOS Czernica podczas warsztatów badawczych.</p>
+    
+    <p data-lang="en" style="display:none">The idea to build a unit capable of rapid movement in the air while performing its missions on water bodies was born at AOS Czernica during research workshops.</p>
+    
+    <p data-lang="de" style="display:none">Die Idee zum Bau einer Einheit, die sich schnell in der Luft bewegen und gleichzeitig ihre Missionen auf Gewässern durchführen kann, entstand auf der AOS Czernica während Forschungsworkshops.</p>
+    
+    <p data-lang="it" style="display:none">L'idea di costruire un'unità in grado di muoversi rapidamente in aria mentre svolge le sue missioni su specchi d'acqua è nata all'AOS Czernica durante i workshop di ricerca.</p> <!-- Włoski -->
+    
+    <p data-lang="sv" style="display:none">Idén att bygga en enhet som kan förflytta sig snabbt i luften samtidigt som den utför sina uppdrag på vattenområden föddes vid AOS Czernica under forskningsworkshops.</p> <!-- Szwedzki -->
+</div>
                 </div>
             </article>
 
@@ -579,141 +652,163 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 
-   <script>
-        // Funkcja zmiany języka
-        function changeLanguage(lang) {
-            // Ukrywamy wszystkie elementy z atrybutem data-lang
-            document.querySelectorAll('[data-lang]').forEach(el => {
-                el.style.display = 'none';
-            });
-            
-            // Pokazujemy tylko elementy dla wybranego języka
-            document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
-                el.style.display = '';
-            });
-            
-            // Aktualizujemy flagę i tekst przycisku
-            const flagImg = document.getElementById('current-flag');
-            const langText = document.getElementById('current-language');
-            
-            if (lang === 'pl') {
-                flagImg.src = 'https://flagcdn.com/w20/pl.png';
-                flagImg.alt = 'Polish';
-                langText.textContent = 'PL';
-            } else if (lang === 'en') {
-                flagImg.src = 'https://flagcdn.com/w20/gb.png';
-                flagImg.alt = 'English';
-                langText.textContent = 'EN';
-            } else if (lang === 'de') {
-                flagImg.src = 'https://flagcdn.com/w20/de.png';
-                flagImg.alt = 'German';
-                langText.textContent = 'DE';
-            }
-            
-            // Zapisujemy wybór języka w localStorage
-            localStorage.setItem('selectedLanguage', lang);
-        }
-        
-        // Sprawdzamy, czy w localStorage jest zapisany język
-        const savedLang = localStorage.getItem('selectedLanguage');
-        if (savedLang) {
-            changeLanguage(savedLang);
-        }
+  <script>
+    // Dodanie obsługi kliknięcia przycisku języka
+    document.querySelector('.language-button').addEventListener('click', function(e) {
+        e.stopPropagation();
+        document.querySelector('.language-selector').classList.toggle('active');
+    });
 
-        // Galeria zdjęć
-        const galleryImages = [
-            'images/PIAP1.jpg',
-            'images/PIAP2.jpg',
-            'images/PIAP3.jpg'
-        ];
+    // Zamknięcie menu po kliknięciu gdzie indziej
+    document.addEventListener('click', function() {
+        document.querySelector('.language-selector').classList.remove('active');
+    });
+
+    // Funkcja zmiany języka
+    function changeLanguage(lang) {
+        // Ukrywamy wszystkie elementy z atrybutem data-lang
+        document.querySelectorAll('[data-lang]').forEach(el => {
+            el.style.display = 'none';
+        });
         
-        let currentImage = 0;
-        const totalImages = galleryImages.length;
+        // Pokazujemy tylko elementy dla wybranego języka
+        document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+            el.style.display = '';
+        });
         
-        function updateGallery() {
-            document.getElementById('currentGalleryImage').src = galleryImages[currentImage];
-            document.getElementById('currentImageIndex').textContent = currentImage + 1;
-            document.getElementById('totalImages').textContent = totalImages;
+        // Aktualizujemy flagę i tekst przycisku
+        const flagImg = document.getElementById('current-flag');
+        const langText = document.getElementById('current-language');
+        
+        if (lang === 'pl') {
+            flagImg.src = 'https://flagcdn.com/w40/pl.png';
+            flagImg.alt = 'Polish';
+            langText.textContent = 'PL';
+        } else if (lang === 'en') {
+            flagImg.src = 'https://flagcdn.com/w40/gb.png';
+            flagImg.alt = 'English';
+            langText.textContent = 'EN';
+        } else if (lang === 'de') {
+            flagImg.src = 'https://flagcdn.com/w40/de.png';
+            flagImg.alt = 'German';
+            langText.textContent = 'DE';
+        } else if (lang === 'it') {
+            flagImg.src = 'https://flagcdn.com/w40/it.png';
+            flagImg.alt = 'Italian';
+            langText.textContent = 'IT';
+        } else if (lang === 'sv') {
+            flagImg.src = 'https://flagcdn.com/w40/se.png';
+            flagImg.alt = 'Swedish';
+            langText.textContent = 'SV';
         }
         
-        document.getElementById('prevBtn').addEventListener('click', function() {
-            currentImage = (currentImage - 1 + totalImages) % totalImages;
-            updateGallery();
-        });
+        // Zamykamy menu po wyborze
+        document.querySelector('.language-selector').classList.remove('active');
         
-        document.getElementById('nextBtn').addEventListener('click', function() {
-            currentImage = (currentImage + 1) % totalImages;
-            updateGallery();
-        });
-        
-        // Inicjalizacja galerii
+        // Zapisujemy wybór języka w localStorage
+        localStorage.setItem('selectedLanguage', lang);
+    }
+    
+    // Sprawdzamy, czy w localStorage jest zapisany język
+    const savedLang = localStorage.getItem('selectedLanguage');
+    if (savedLang) {
+        changeLanguage(savedLang);
+    }
+
+    // Galeria zdjęć
+    const galleryImages = [
+        'images/PIAP1.jpg',
+        'images/PIAP2.jpg',
+        'images/PIAP3.jpg'
+    ];
+    
+    let currentImage = 0;
+    const totalImages = galleryImages.length;
+    
+    function updateGallery() {
+        document.getElementById('currentGalleryImage').src = galleryImages[currentImage];
+        document.getElementById('currentImageIndex').textContent = currentImage + 1;
+        document.getElementById('totalImages').textContent = totalImages;
+    }
+    
+    document.getElementById('prevBtn').addEventListener('click', function() {
+        currentImage = (currentImage - 1 + totalImages) % totalImages;
         updateGallery();
+    });
+    
+    document.getElementById('nextBtn').addEventListener('click', function() {
+        currentImage = (currentImage + 1) % totalImages;
+        updateGallery();
+    });
+    
+    // Inicjalizacja galerii
+    updateGallery();
 
-        // Funkcje do otwierania i zamykania modalów
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = "flex";
-        }
+    // Funkcje do otwierania i zamykania modalów
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = "flex";
+    }
 
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = "none";
-        }
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+    }
 
-        // Przypisanie zdarzeń dla Specyfikacji
-        document.getElementById('openModalSpecyfikacje').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalSpecyfikacje');
-        };
-        document.getElementById('specyfikacjeImage').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalSpecyfikacje');
-        };
+    // Przypisanie zdarzeń dla Specyfikacji
+    document.getElementById('openModalSpecyfikacje').onclick = function(e) {
+        e.preventDefault();
+        openModal('modalSpecyfikacje');
+    };
+    document.getElementById('specyfikacjeImage').onclick = function(e) {
+        e.preventDefault();
+        openModal('modalSpecyfikacje');
+    };
 
-        // Przypisanie zdarzeń dla Zastosowania
-        document.getElementById('openModalZastosowanie').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalZastosowanie');
-        };
-        document.getElementById('zastosowanieImage').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalZastosowanie');
-        };
+    // Przypisanie zdarzeń dla Zastosowania
+    document.getElementById('openModalZastosowanie').onclick = function(e) {
+        e.preventDefault();
+        openModal('modalZastosowanie');
+    };
+    document.getElementById('zastosowanieImage').onclick = function(e) {
+        e.preventDefault();
+        openModal('modalZastosowanie');
+    };
 
-        // Przypisanie zdarzeń dla Czernicy
-        document.getElementById('czernicaImage').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalCzernica');
-        };
-        document.getElementById('poczatekLink').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalCzernica');
-        };
+    // Przypisanie zdarzeń dla Czernicy
+    document.getElementById('czernicaImage').onclick = function(e) {
+        e.preventDefault();
+        openModal('modalCzernica');
+    };
+    document.getElementById('poczatekLink').onclick = function(e) {
+        e.preventDefault();
+        openModal('modalCzernica');
+    };
 
-        // Przypisanie zdarzeń dla Wyróżnienia
-        document.getElementById('openModalWyzroznienie').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalWyzroznienie');
-        };
-        document.getElementById('PIAP1Image').onclick = function(e) {
-            e.preventDefault();
-            openModal('modalWyzroznienie');
-        };
+    // Przypisanie zdarzeń dla Wyróżnienia
+    document.getElementById('openModalWyzroznienie').onclick = function(e) {
+        e.preventDefault();
+        openModal('modalWyzroznienie');
+    };
+    document.getElementById('PIAP1Image').onclick = function(e) {
+        e.preventDefault();
+        openModal('modalWyzroznienie');
+    };
 
-        // Zamknięcie modalów po kliknięciu na X
-        document.querySelectorAll('.close').forEach(function(closeBtn) {
-            closeBtn.onclick = function() {
-                const modal = this.closest('.modal');
-                if (modal) {
-                    closeModal(modal.id);
-                }
-            };
-        });
-
-        // Zamknięcie modalów po kliknięciu poza obrazem
-        window.onclick = function(event) {
-            if (event.target.className === 'modal') {
-                closeModal(event.target.id);
+    // Zamknięcie modalów po kliknięciu na X
+    document.querySelectorAll('.close').forEach(function(closeBtn) {
+        closeBtn.onclick = function() {
+            const modal = this.closest('.modal');
+            if (modal) {
+                closeModal(modal.id);
             }
         };
-    </script>
+    });
+
+    // Zamknięcie modalów po kliknięciu poza obrazem
+    window.onclick = function(event) {
+        if (event.target.className === 'modal') {
+            closeModal(event.target.id);
+        }
+    };
+</script>
 </body>
 </html>
