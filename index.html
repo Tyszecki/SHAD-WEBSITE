@@ -73,20 +73,23 @@
             flex-direction: column;
         }
 
-        .posts article header {
-            min-height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+       .posts article header {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* To wyśrodkuje horyzontalnie */
+    text-align: center; /* To wyśrodkuje tekst w nagłówku */
+    width: 100%; /* Pełna szerokość */
+    padding: 0 10px; /* Dodaj trochę paddingów po bokach */
+}
 
-        .posts article header h2 {
-            font-size: 1.4em;
-            white-space: nowrap;
-            margin: 0;
-            text-align: center;
-            width: 100%;
-        }
+.posts article header h2 {
+    font-size: 1.4em;
+    margin: 0;
+    width: 100%; /* Pełna szerokość */
+    text-align: center; /* Wyśrodkowanie tekstu */
+    /* Usunąłem white-space: nowrap jeśli było */
+}
 
         @media (max-width: 768px) {
             .posts article {
