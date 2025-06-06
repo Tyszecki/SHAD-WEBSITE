@@ -335,65 +335,67 @@
 			<script src="assets/js/main.js"></script>
 			<script>
 				// Funkcja zmiany języka
-				function changeLanguage(lang) {
-					// Ukrywamy wszystkie elementy z atrybutem data-lang
-					document.querySelectorAll('[data-lang]').forEach(el => {
-						el.style.display = 'none';
-					});
-					
-					// Pokazujemy tylko elementy dla wybranego języka
-					document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
-						el.style.display = '';
-					});
-					
-					// Aktualizujemy flagę i tekst przycisku
-					const flagImg = document.getElementById('current-flag');
-					const langText = document.getElementById('current-language');
-					
-					if (lang === 'pl') {
-						flagImg.src = 'https://flagcdn.com/w40/pl.png';
-						flagImg.alt = 'Polish';
-						langText.textContent = 'PL';
-					} else if (lang === 'en') {
-						flagImg.src = 'https://flagcdn.com/w40/gb.png';
-						flagImg.alt = 'English';
-						langText.textContent = 'EN';
-					} else if (lang === 'de') {
-						flagImg.src = 'https://flagcdn.com/w40/de.png';
-						flagImg.alt = 'German';
-						langText.textContent = 'DE';
-					} else if (lang === 'it') {
-						flagImg.src = 'https://flagcdn.com/w40/it.png';
-						flagImg.alt = 'Italian';
-						langText.textContent = 'IT';
-					} else if (lang === 'sv') {
-						flagImg.src = 'https://flagcdn.com/w40/se.png';
-						flagImg.alt = 'Swedish';
-						langText.textContent = 'SV';
-					}
-					
-					// Zamykamy menu po wyborze
-					document.querySelector('.language-selector').classList.remove('active');
-					
-					// Zapisujemy wybór języka w localStorage
-					localStorage.setItem('selectedLanguage', lang);
-				}
-				
-				// Sprawdzamy, czy w localStorage jest zapisany język
-				const savedLang = localStorage.getItem('selectedLanguage');
-				if (savedLang) {
-					changeLanguage(savedLang);
-				}
+				 // Dodanie obsługi kliknięcia przycisku języka
+    document.querySelector('.language-button').addEventListener('click', function(e) {
+        e.stopPropagation();
+        document.querySelector('.language-selector').classList.toggle('active');
+    });
 
-				// Obsługa kliknięcia przycisku języka
-				document.querySelector('.language-button').addEventListener('click', function(e) {
-					e.stopPropagation();
-					document.querySelector('.language-selector').classList.toggle('active');
-				});
+    // Zamknięcie menu po kliknięciu gdzie indziej
+    document.addEventListener('click', function() {
+        document.querySelector('.language-selector').classList.remove('active');
+    });
 
-				// Zamknięcie menu po kliknięciu gdzie indziej
-				document.addEventListener('click', function() {
-					document.querySelector('.language-selector').classList.remove('active');
+    // Funkcja zmiany języka
+    function changeLanguage(lang) {
+        // Ukrywamy wszystkie elementy z atrybutem data-lang
+        document.querySelectorAll('[data-lang]').forEach(el => {
+            el.style.display = 'none';
+        });
+        
+        // Pokazujemy tylko elementy dla wybranego języka
+        document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+            el.style.display = '';
+        });
+        
+        // Aktualizujemy flagę i tekst przycisku
+        const flagImg = document.getElementById('current-flag');
+        const langText = document.getElementById('current-language');
+        
+        if (lang === 'pl') {
+            flagImg.src = 'https://flagcdn.com/w40/pl.png';
+            flagImg.alt = 'Polish';
+            langText.textContent = 'PL';
+        } else if (lang === 'en') {
+            flagImg.src = 'https://flagcdn.com/w40/gb.png';
+            flagImg.alt = 'English';
+            langText.textContent = 'EN';
+        } else if (lang === 'de') {
+            flagImg.src = 'https://flagcdn.com/w40/de.png';
+            flagImg.alt = 'German';
+            langText.textContent = 'DE';
+        } else if (lang === 'it') {
+            flagImg.src = 'https://flagcdn.com/w40/it.png';
+            flagImg.alt = 'Italian';
+            langText.textContent = 'IT';
+        } else if (lang === 'sv') {
+            flagImg.src = 'https://flagcdn.com/w40/se.png';
+            flagImg.alt = 'Swedish';
+            langText.textContent = 'SV';
+        }
+        
+        // Zamykamy menu po wyborze
+        document.querySelector('.language-selector').classList.remove('active');
+        
+        // Zapisujemy wybór języka w localStorage
+        localStorage.setItem('selectedLanguage', lang);
+    }
+    
+    // Sprawdzamy, czy w localStorage jest zapisany język
+    const savedLang = localStorage.getItem('selectedLanguage');
+    if (savedLang) {
+        changeLanguage(savedLang);
+    }
 				});
 			</script>
 	</body>
