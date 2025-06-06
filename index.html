@@ -212,22 +212,31 @@
     transform: translateY(100%);
     transition: transform 0.3s ease-out;
     opacity: 0;
-    text-align: center; /* Dodane wyśrodkowanie tekstu */
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 30%; /* Ustawienie minimalnej wysokości */
+    min-height: 30%;
 }
 
 .image-description p {
     margin: 0;
     width: 100%;
-    max-width: 100%; /* Zapobiega wychodzeniu poza kontener */
-    word-wrap: break-word; /* Zawijanie długich słów */
-    white-space: normal; /* Zezwala na zawijanie tekstu */
+    max-width: 100%;
+    word-wrap: break-word;
+    white-space: normal;
 }
-        
+
+/* Na urządzeniach mobilnych pokazuj opis zawsze */
+@media (max-width: 768px) {
+    .image-description {
+        transform: translateY(0);
+        opacity: 1;
+        position: relative;
+        background: rgba(0, 0, 0, 0.5);
+    }
+}
         
         .image-container:hover .image-description {
             transform: translateY(0);
@@ -253,8 +262,7 @@
             display: block;
         }
 
-       /* Style dla wyboru języka - POPRAWIONE */
-/* Style dla wyboru języka - ZMODYFIKOWANE */
+       /* Style dla wyboru języka */
 .language-selector {
     position: relative;
     display: inline-block;
@@ -262,32 +270,32 @@
     z-index: 1000;
 }
 
-   .language-button {
+.language-button {
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
-}             /* Brak ramki */
- 
+}             
 
 .language-button span {
-    display: none !important;             /* Ukryj tekst (PL/EN/DE) */
+    display: none !important;
 }
 
 .language-button img {
-    width: 24px;                          /* Rozmiar flagi */
-    height: 18px;                         /* Proporcje 4:3 */
-    display: block;                       /* Usuń odstępy wokół obrazka */
+    width: 24px;
+    height: 18px;
+    display: block;
 }
 
-    .language-button:hover {
-        background: rgba(255, 255, 255, 0.3);
-    }
+.language-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
 
-  .language-dropdown {
+/* Dla komputerów - menu rozsuwa się w lewo */
+.language-dropdown {
     display: none;
     position: absolute;
-    right: 100%;  /* Wysuwa się w lewo od przycisku */
-    top: 0;       /* Wyrównanie do góry przycisku */
+    right: 100%;
+    top: 0;
     background-color: #3E3A3B;
     min-width: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -295,47 +303,50 @@
     border-radius: 4px;
     border: 1px solid #3E3A3B;
     padding: 5px;
-    flex-direction: row;  /* Ustawienie poziome */
+    flex-direction: row;
     gap: 10px;
-    margin-right: 10px;   /* Odstęp od przycisku */
+    margin-right: 10px;
 }
 
-  .language-selector.active .language-dropdown {
-    display: flex;  /* Użyj flex, aby elementy były w jednej linii */
+/* Dla telefonów - menu rozsuwa się w dół */
+@media (max-width: 768px) {
+    .language-dropdown {
+        right: 0;
+        top: 100%;
+        flex-direction: column;
+        margin-right: 0;
+        margin-top: 5px;
+    }
 }
 
-    .language-dropdown a {
-        color: white;
-        padding: 5px;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background 0.3s;
-        width: 32px; /* Zwiększone z 24px */
-        height: 22px; /* Zwiększone z 16px */
-    }
+.language-selector.active .language-dropdown {
+    display: flex;
+}
 
-    .language-dropdown a:hover {
-        background-color: #3a3f5a;
-    }
+.language-dropdown a {
+    color: white;
+    padding: 5px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+    width: 32px;
+    height: 22px;
+}
 
-    .language-dropdown a img {
-        width: 32px; /* Zwiększone z 20px - 2x większe */
-        height: 22px; /* Zwiększone z 15px - 2x większe */
-    }
+.language-dropdown a:hover {
+    background-color: #3a3f5a;
+}
 
-    /* Ukrywamy tekst w linkach */
-    .language-dropdown a span {
-        display: none;
-    }
+.language-dropdown a img {
+    width: 32px;
+    height: 22px;
+}
 
-    /* Dla telefonów - klikalne */
-    @media (max-width: 768px) {
-        .language-selector {
-            margin-left: 10px;
-        }
-    }
+.language-dropdown a span {
+    display: none;
+}
     </style>
 </head>
 <body class="is-preload">
@@ -348,13 +359,13 @@
     <h1 data-lang="pl">BSP SHAD</h1>
     <h1 data-lang="en" style="display:none">UAV SHAD</h1>
     <h1 data-lang="de" style="display:none">UAV SHAD</h1>
-    <h1 data-lang="it" style="display:none">UAV SHAD</h1> <!-- Dodane -->
-    <h1 data-lang="sv" style="display:none">UAV SHAD</h1> <!-- Dodane -->
+    <h1 data-lang="it" style="display:none">UAV SHAD</h1>
+    <h1 data-lang="sv" style="display:none">UAV SHAD</h1>
     <p data-lang="pl">Bezzałogowy statek powietrzny do akwizycji danych sonarem hydroakustycznym</p>
     <p data-lang="en" style="display:none">Unmanned Aerial Vehicle for hydroacoustic sonar data acquisition</p>
     <p data-lang="de" style="display:none">Unbemanntes Luftfahrzeug zur hydroakustischen Sonardatenerfassung</p>
-    <p data-lang="it" style="display:none">Velivolo senza pilota per acquisizione dati sonar idroacustici</p> <!-- Dodane -->
-    <p data-lang="sv" style="display:none">Obemannat flygplan för hydroakustisk sonardatainsamling</p> <!-- Dodane -->
+    <p data-lang="it" style="display:none">Velivolo senza pilota per acquisizione dati sonar idroacustici</p>
+    <p data-lang="sv" style="display:none">Obemannat flygplan för hydroakustisk sonardatainsamling</p>
             <ul class="actions">
                 <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
             </ul>
@@ -365,8 +376,8 @@
     <a href="index.html" class="logo" data-lang="pl">BSP SHAD</a>
     <a href="index.html" class="logo" data-lang="en" style="display:none">UAV SHAD</a>
     <a href="index.html" class="logo" data-lang="de" style="display:none">UAV SHAD</a>
-    <a href="index.html" class="logo" data-lang="it" style="display:none">UAV SHAD</a> <!-- Dodane -->
-    <a href="index.html" class="logo" data-lang="sv" style="display:none">UAV SHAD</a> <!-- Dodane -->
+    <a href="index.html" class="logo" data-lang="it" style="display:none">UAV SHAD</a>
+    <a href="index.html" class="logo" data-lang="sv" style="display:none">UAV SHAD</a>
 </header>
 
         <!-- Nav -->
@@ -375,20 +386,20 @@
         <li class="active"><a href="index.html" data-lang="pl">Informacje</a></li>
         <li class="active"><a href="index.html" data-lang="en" style="display:none">Information</a></li>
         <li class="active"><a href="index.html" data-lang="de" style="display:none">Informationen</a></li>
-        <li class="active"><a href="index.html" data-lang="it" style="display:none">Informazioni</a></li> <!-- Dodane -->
-        <li class="active"><a href="index.html" data-lang="sv" style="display:none">Information</a></li> <!-- Dodane -->
+        <li class="active"><a href="index.html" data-lang="it" style="display:none">Informazioni</a></li>
+        <li class="active"><a href="index.html" data-lang="sv" style="display:none">Information</a></li>
         
         <li><a href="generic.html" data-lang="pl">Zdjęcia</a></li>
         <li><a href="generic.html" data-lang="en" style="display:none">Photos</a></li>
         <li><a href="generic.html" data-lang="de" style="display:none">Fotos</a></li>
-        <li><a href="generic.html" data-lang="it" style="display:none">Foto</a></li> <!-- Dodane -->
-        <li><a href="generic.html" data-lang="sv" style="display:none">Foton</a></li> <!-- Dodane -->
+        <li><a href="generic.html" data-lang="it" style="display:none">Foto</a></li>
+        <li><a href="generic.html" data-lang="sv" style="display:none">Foton</a></li>
         
         <li><a href="elements.html" data-lang="pl">O nas</a></li>
         <li><a href="elements.html" data-lang="en" style="display:none">About us</a></li>
         <li><a href="elements.html" data-lang="de" style="display:none">Über uns</a></li>
-        <li><a href="elements.html" data-lang="it" style="display:none">Chi siamo</a></li> <!-- Dodane -->
-        <li><a href="elements.html" data-lang="sv" style="display:none">Om oss</a></li> <!-- Dodane -->
+        <li><a href="elements.html" data-lang="it" style="display:none">Chi siamo</a></li>
+        <li><a href="elements.html" data-lang="sv" style="display:none">Om oss</a></li>
     </ul>
             <ul class="icons">
                 <li><a href="https://linktr.ee/BSPSHAD" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
@@ -410,11 +421,11 @@
             <img src="https://flagcdn.com/w20/de.png" alt="German">
             <span>Deutsch</span>
         </a>
-        <a href="#" onclick="changeLanguage('it'); return false;"> <!-- Dodane -->
+        <a href="#" onclick="changeLanguage('it'); return false;">
             <img src="https://flagcdn.com/w20/it.png" alt="Italian">
             <span>Italiano</span>
         </a>
-        <a href="#" onclick="changeLanguage('sv'); return false;"> <!-- Dodane -->
+        <a href="#" onclick="changeLanguage('sv'); return false;">
             <img src="https://flagcdn.com/w20/se.png" alt="Swedish">
             <span>Svenska</span>
         </a>
@@ -451,7 +462,7 @@
 <p data-lang="sv" style="display:none">Idén att bygga en enhet som kan förflytta sig snabbt i luften samtidigt som den utför sina uppdrag på vattenområden föddes vid AOS Czernica under forskningsworkshops genomförda av den polska marinakademin i Gdynia i samarbete med CTM Research and Development Center.</p> <!-- Szwedzki -->
                 </header>
                 <div class="image-container">
-                    <a href="#" class="image main" id="czernicaImage"><img src="images/czernica.jpg" alt="Czernica" /></a>
+                    <a href="#" class="image main" id="czernicaImage"><img src="images/czernica.jpg" alt="Czernica"  /></a>
                     <div class="image-description">
     <p data-lang="pl">Pomysł na budowę jednostki zdolnej do szybkiego przemieszczania się w powietrzu, jednocześnie wykonującej swoje misje na akwenach wodnych narodził się na AOS Czernica podczas warsztatów badawczych.</p>
     
