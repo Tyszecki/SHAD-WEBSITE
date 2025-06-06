@@ -4,9 +4,13 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html lang="pl">
 	<head>
-		<title>Zdjęcia</title>
+		<title data-lang="pl">Zdjęcia</title>
+		<title data-lang="en" style="display:none">Photos</title>
+		<title data-lang="de" style="display:none">Fotos</title>
+		<title data-lang="it" style="display:none">Foto</title>
+		<title data-lang="sv" style="display:none">Foton</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -145,6 +149,86 @@
 				padding: 10px;
 				box-sizing: border-box;
 			}
+
+			/* Style dla wyboru języka */
+			.language-selector {
+				position: relative;
+				display: inline-block;
+				margin-left: 15px;
+				z-index: 1000;
+			}
+
+			.language-button {
+				border: none !important;
+				outline: none !important;
+				box-shadow: none !important;
+			}
+
+			.language-button span {
+				display: none !important;
+			}
+
+			.language-button img {
+				width: 24px;
+				height: 18px;
+				display: block;
+			}
+
+			.language-button:hover {
+				background: rgba(255, 255, 255, 0.3);
+			}
+
+			.language-dropdown {
+				display: none;
+				position: absolute;
+				right: 100%;
+				top: 0;
+				background-color: #3E3A3B;
+				min-width: auto;
+				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+				z-index: 1001;
+				border-radius: 4px;
+				border: 1px solid #3E3A3B;
+				padding: 5px;
+				flex-direction: row;
+				gap: 10px;
+				margin-right: 10px;
+			}
+
+			.language-selector.active .language-dropdown {
+				display: flex;
+			}
+
+			.language-dropdown a {
+				color: white;
+				padding: 5px;
+				text-decoration: none;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				transition: background 0.3s;
+				width: 32px;
+				height: 22px;
+			}
+
+			.language-dropdown a:hover {
+				background-color: #3a3f5a;
+			}
+
+			.language-dropdown a img {
+				width: 32px;
+				height: 22px;
+			}
+
+			.language-dropdown a span {
+				display: none;
+			}
+
+			@media (max-width: 768px) {
+				.language-selector {
+					margin-left: 10px;
+				}
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -154,17 +238,64 @@
 
 				<!-- Header -->
 					<header id="header">
-						<a href="index.html" class="logo">BSP SHAD</a>
+						<a href="index.html" class="logo" data-lang="pl">BSP SHAD</a>
+						<a href="index.html" class="logo" data-lang="en" style="display:none">UAV SHAD</a>
+						<a href="index.html" class="logo" data-lang="de" style="display:none">UAV SHAD</a>
+						<a href="index.html" class="logo" data-lang="it" style="display:none">UAV SHAD</a>
+						<a href="index.html" class="logo" data-lang="sv" style="display:none">UAV SHAD</a>
 					</header>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li><a href="index.html">Informacje</a></li>
-							<li class="active"><a href="generic.html">Zdjęcia</a></li>
-							<li><a href="elements.html">O nas</a></li>
+							<li><a href="index.html" data-lang="pl">Informacje</a></li>
+							<li><a href="index.html" data-lang="en" style="display:none">Information</a></li>
+							<li><a href="index.html" data-lang="de" style="display:none">Informationen</a></li>
+							<li><a href="index.html" data-lang="it" style="display:none">Informazioni</a></li>
+							<li><a href="index.html" data-lang="sv" style="display:none">Information</a></li>
+							
+							<li class="active"><a href="generic.html" data-lang="pl">Zdjęcia</a></li>
+							<li class="active"><a href="generic.html" data-lang="en" style="display:none">Photos</a></li>
+							<li class="active"><a href="generic.html" data-lang="de" style="display:none">Fotos</a></li>
+							<li class="active"><a href="generic.html" data-lang="it" style="display:none">Foto</a></li>
+							<li class="active"><a href="generic.html" data-lang="sv" style="display:none">Foton</a></li>
+							
+							<li><a href="elements.html" data-lang="pl">O nas</a></li>
+							<li><a href="elements.html" data-lang="en" style="display:none">About us</a></li>
+							<li><a href="elements.html" data-lang="de" style="display:none">Über uns</a></li>
+							<li><a href="elements.html" data-lang="it" style="display:none">Chi siamo</a></li>
+							<li><a href="elements.html" data-lang="sv" style="display:none">Om oss</a></li>
 						</ul>
 						<ul class="icons">
+							<li><a href="https://linktr.ee/BSPSHAD" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li class="language-selector">
+								<button class="language-button" aria-expanded="false" aria-controls="language-dropdown">
+									<img src="https://flagcdn.com/w20/pl.png" alt="Polish" id="current-flag">
+									<span id="current-language">PL</span>
+								</button>
+								<div class="language-dropdown" id="language-dropdown">
+									<a href="#" onclick="changeLanguage('pl'); return false;">
+										<img src="https://flagcdn.com/w20/pl.png" alt="Polish">
+										<span>Polski</span>
+									</a>
+									<a href="#" onclick="changeLanguage('en'); return false;">
+										<img src="https://flagcdn.com/w20/gb.png" alt="English">
+										<span>English</span>
+									</a>
+									<a href="#" onclick="changeLanguage('de'); return false;">
+										<img src="https://flagcdn.com/w20/de.png" alt="German">
+										<span>Deutsch</span>
+									</a>
+									<a href="#" onclick="changeLanguage('it'); return false;">
+										<img src="https://flagcdn.com/w20/it.png" alt="Italian">
+										<span>Italiano</span>
+									</a>
+									<a href="#" onclick="changeLanguage('sv'); return false;">
+										<img src="https://flagcdn.com/w20/se.png" alt="Swedish">
+										<span>Svenska</span>
+									</a>
+								</div>
+							</li>
 						</ul> 	
 					</nav>
 
@@ -174,7 +305,11 @@
 				<!-- Post -->
 <section class="post">
     <header class="major">
-        <h1>Zdjęcia</h1>
+        <h1 data-lang="pl">Zdjęcia</h1>
+        <h1 data-lang="en" style="display:none">Photos</h1>
+        <h1 data-lang="de" style="display:none">Fotos</h1>
+        <h1 data-lang="it" style="display:none">Foto</h1>
+        <h1 data-lang="sv" style="display:none">Foton</h1>
     </header>
 
 <!-- Image -->
@@ -294,6 +429,68 @@ function changeImage(direction) {
 document.addEventListener('gesturestart', function(e) {
     e.preventDefault();
 });
+
+// Funkcja zmiany języka
+function changeLanguage(lang) {
+    // Ukrywamy wszystkie elementy z atrybutem data-lang
+    document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = 'none';
+    });
+    
+    // Pokazujemy tylko elementy dla wybranego języka
+    document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+        el.style.display = '';
+    });
+    
+    // Aktualizujemy flagę i tekst przycisku
+    const flagImg = document.getElementById('current-flag');
+    const langText = document.getElementById('current-language');
+    
+    if (lang === 'pl') {
+        flagImg.src = 'https://flagcdn.com/w40/pl.png';
+        flagImg.alt = 'Polish';
+        langText.textContent = 'PL';
+    } else if (lang === 'en') {
+        flagImg.src = 'https://flagcdn.com/w40/gb.png';
+        flagImg.alt = 'English';
+        langText.textContent = 'EN';
+    } else if (lang === 'de') {
+        flagImg.src = 'https://flagcdn.com/w40/de.png';
+        flagImg.alt = 'German';
+        langText.textContent = 'DE';
+    } else if (lang === 'it') {
+        flagImg.src = 'https://flagcdn.com/w40/it.png';
+        flagImg.alt = 'Italian';
+        langText.textContent = 'IT';
+    } else if (lang === 'sv') {
+        flagImg.src = 'https://flagcdn.com/w40/se.png';
+        flagImg.alt = 'Swedish';
+        langText.textContent = 'SV';
+    }
+    
+    // Zamykamy menu po wyborze
+    document.querySelector('.language-selector').classList.remove('active');
+    
+    // Zapisujemy wybór języka w localStorage
+    localStorage.setItem('selectedLanguage', lang);
+}
+
+// Dodanie obsługi kliknięcia przycisku języka
+document.querySelector('.language-button').addEventListener('click', function(e) {
+    e.stopPropagation();
+    document.querySelector('.language-selector').classList.toggle('active');
+});
+
+// Zamknięcie menu po kliknięciu gdzie indziej
+document.addEventListener('click', function() {
+    document.querySelector('.language-selector').classList.remove('active');
+});
+
+// Sprawdzamy, czy w localStorage jest zapisany język
+const savedLang = localStorage.getItem('selectedLanguage');
+if (savedLang) {
+    changeLanguage(savedLang);
+}
 </script>
 
 <!-- Footer -->
@@ -311,22 +508,6 @@ document.addEventListener('gesturestart', function(e) {
 		</div>
 	</section>
 </section>
-
-<!-- Osadzony film z YouTube !!!!!!!!!!!!!!!!!!!                    <div style="text-align: center; margin-top: 20px;">
-    <div style="width: 60%; margin: 0 auto;">
-        <div style="position: relative; padding-bottom: 56.25%; height: 0;">
-            <iframe 
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-                src="https://www.youtube.com/embed/h86pY55dm1A" 
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
-        </div>
-    </div>
-</div> -->
-
 
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
