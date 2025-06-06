@@ -55,6 +55,82 @@
 				.post {
 					padding: 1.5rem !important;
 				}
+
+				/* Style dla menu językowego na mobile */
+				.language-selector {
+					margin-left: 10px !important;
+				}
+
+				.language-dropdown {
+					right: 0 !important;
+					left: auto !important;
+					flex-direction: column !important;
+				}
+			}
+
+			/* Style dla wyboru języka */
+			.language-selector {
+				position: relative;
+				display: inline-block;
+				margin-left: 15px;
+			}
+
+			.language-button {
+				background: none;
+				border: none;
+				padding: 0;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+			}
+
+			.language-button img {
+				width: 24px;
+				height: 18px;
+				display: block;
+			}
+
+			.language-button span {
+				margin-left: 5px;
+				color: white;
+				font-size: 14px;
+			}
+
+			.language-dropdown {
+				display: none;
+				position: absolute;
+				left: 0;
+				top: 100%;
+				background-color: #3E3A3B;
+				min-width: 120px;
+				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+				z-index: 1001;
+				border-radius: 4px;
+				padding: 5px;
+				margin-top: 5px;
+			}
+
+			.language-selector.active .language-dropdown {
+				display: block;
+			}
+
+			.language-dropdown a {
+				color: white;
+				padding: 8px 10px;
+				text-decoration: none;
+				display: flex;
+				align-items: center;
+				transition: background 0.3s;
+			}
+
+			.language-dropdown a:hover {
+				background-color: #3a3f5a;
+			}
+
+			.language-dropdown a img {
+				width: 20px;
+				height: 15px;
+				margin-right: 8px;
 			}
 		</style>
 	</head>
@@ -93,7 +169,7 @@
 							<li><a href="elements.html" data-lang="it" style="display:none">Chi siamo</a></li>
 							<li><a href="elements.html" data-lang="sv" style="display:none">Om oss</a></li>
 						</ul>
-						 <ul class="icons">
+						<ul class="icons">
 							<li><a href="https://linktr.ee/BSPSHAD" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
 							<li class="language-selector">
 								<button class="language-button" aria-expanded="false" aria-controls="language-dropdown">
@@ -123,7 +199,7 @@
 									</a>
 								</div>
 							</li>
-						</ul> 	
+						</ul>
 					</nav>
 
 				<!-- Main -->
@@ -159,16 +235,16 @@
     <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center;" data-lang="pl">
         Zdjęcie pamiątkowe na spotkaniu z Panem Prezydentem Andrzejem Dudą
     </p>
-    <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center;" data-lang="en" style="display:none">
+    <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center; display:none" data-lang="en">
         Commemorative photo during the meeting with President Andrzej Duda
     </p>
-    <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center;" data-lang="de" style="display:none">
+    <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center; display:none" data-lang="de">
         Erinnerungsfoto beim Treffen mit Präsident Andrzej Duda
     </p>
-    <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center;" data-lang="it" style="display:none">
+    <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center; display:none" data-lang="it">
         Foto ricordo durante l'incontro con il Presidente Andrzej Duda
     </p>
-    <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center;" data-lang="sv" style="display:none">
+    <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center; display:none" data-lang="sv">
         Minnesfoto vid mötet med president Andrzej Duda
     </p>
 </div>
@@ -343,6 +419,17 @@
 				if (savedLang) {
 					changeLanguage(savedLang);
 				}
+
+				// Obsługa kliknięcia przycisku języka
+				document.querySelector('.language-button').addEventListener('click', function(e) {
+					e.stopPropagation();
+					document.querySelector('.language-selector').classList.toggle('active');
+				});
+
+				// Zamknięcie menu po kliknięciu gdzie indziej
+				document.addEventListener('click', function() {
+					document.querySelector('.language-selector').classList.remove('active');
+				});
 			</script>
 	</body>
 </html>
