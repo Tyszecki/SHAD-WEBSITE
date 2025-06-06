@@ -4,9 +4,13 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html lang="pl">
 	<head>
-		<title>O nas</title>
+		<title data-lang="pl">O nas</title>
+		<title data-lang="en" style="display:none">About us</title>
+		<title data-lang="de" style="display:none">Über uns</title>
+		<title data-lang="it" style="display:none">Chi siamo</title>
+		<title data-lang="sv" style="display:none">Om oss</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -61,21 +65,64 @@
 
 					<!-- Header -->
 					<header id="header">
-						<a href="index.html" class="logo">BSP SHAD</a>
+						<a href="index.html" class="logo" data-lang="pl">BSP SHAD</a>
+						<a href="index.html" class="logo" data-lang="en" style="display:none">UAV SHAD</a>
+						<a href="index.html" class="logo" data-lang="de" style="display:none">UAV SHAD</a>
+						<a href="index.html" class="logo" data-lang="it" style="display:none">UAV SHAD</a>
+						<a href="index.html" class="logo" data-lang="sv" style="display:none">UAV SHAD</a>
 					</header>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li><a href="index.html">Informacje</a></li>
-							<li class="active"><a href="generic.html">Zdjęcia</a></li>
-							<li><a href="elements.html">O nas</a></li>
+							<li><a href="index.html" data-lang="pl">Informacje</a></li>
+							<li><a href="index.html" data-lang="en" style="display:none">Information</a></li>
+							<li><a href="index.html" data-lang="de" style="display:none">Informationen</a></li>
+							<li><a href="index.html" data-lang="it" style="display:none">Informazioni</a></li>
+							<li><a href="index.html" data-lang="sv" style="display:none">Information</a></li>
+							
+							<li class="active"><a href="generic.html" data-lang="pl">Zdjęcia</a></li>
+							<li class="active"><a href="generic.html" data-lang="en" style="display:none">Photos</a></li>
+							<li class="active"><a href="generic.html" data-lang="de" style="display:none">Fotos</a></li>
+							<li class="active"><a href="generic.html" data-lang="it" style="display:none">Foto</a></li>
+							<li class="active"><a href="generic.html" data-lang="sv" style="display:none">Foton</a></li>
+							
+							<li><a href="elements.html" data-lang="pl">O nas</a></li>
+							<li><a href="elements.html" data-lang="en" style="display:none">About us</a></li>
+							<li><a href="elements.html" data-lang="de" style="display:none">Über uns</a></li>
+							<li><a href="elements.html" data-lang="it" style="display:none">Chi siamo</a></li>
+							<li><a href="elements.html" data-lang="sv" style="display:none">Om oss</a></li>
 						</ul>
-						 <ul class="icons"><!--
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>-->
+						 <ul class="icons">
+							<li><a href="https://linktr.ee/BSPSHAD" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li class="language-selector">
+								<button class="language-button" aria-expanded="false" aria-controls="language-dropdown">
+									<img src="https://flagcdn.com/w20/pl.png" alt="Polish" id="current-flag">
+									<span id="current-language">PL</span>
+								</button>
+								<div class="language-dropdown" id="language-dropdown">
+									<a href="#" onclick="changeLanguage('pl'); return false;">
+										<img src="https://flagcdn.com/w20/pl.png" alt="Polish">
+										<span>Polski</span>
+									</a>
+									<a href="#" onclick="changeLanguage('en'); return false;">
+										<img src="https://flagcdn.com/w20/gb.png" alt="English">
+										<span>English</span>
+									</a>
+									<a href="#" onclick="changeLanguage('de'); return false;">
+										<img src="https://flagcdn.com/w20/de.png" alt="German">
+										<span>Deutsch</span>
+									</a>
+									<a href="#" onclick="changeLanguage('it'); return false;">
+										<img src="https://flagcdn.com/w20/it.png" alt="Italian">
+										<span>Italiano</span>
+									</a>
+									<a href="#" onclick="changeLanguage('sv'); return false;">
+										<img src="https://flagcdn.com/w20/se.png" alt="Swedish">
+										<span>Svenska</span>
+									</a>
+								</div>
+							</li>
 						</ul> 	
 					</nav>
 
@@ -85,7 +132,11 @@
 						<!-- Post -->
 							<section class="post">
 								<header class="major">
-									<h1>O nas</h1>
+									<h1 data-lang="pl">O nas</h1>
+									<h1 data-lang="en" style="display:none">About us</h1>
+									<h1 data-lang="de" style="display:none">Über uns</h1>
+									<h1 data-lang="it" style="display:none">Chi siamo</h1>
+									<h1 data-lang="sv" style="display:none">Om oss</h1>
 								</header>
 
 								<!-- Text stuff -->
@@ -105,8 +156,20 @@
     <img src="images/123.JPG" alt="Wspólne zdjęcie" class="responsive-img" style="width: 80%; height: auto;">
     
     <!-- Podpis pod zdjęciem -->
-    <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center;">
+    <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center;" data-lang="pl">
         Zdjęcie pamiątkowe na spotkaniu z Panem Prezydentem Andrzejem Dudą
+    </p>
+    <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center;" data-lang="en" style="display:none">
+        Commemorative photo during the meeting with President Andrzej Duda
+    </p>
+    <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center;" data-lang="de" style="display:none">
+        Erinnerungsfoto beim Treffen mit Präsident Andrzej Duda
+    </p>
+    <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center;" data-lang="it" style="display:none">
+        Foto ricordo durante l'incontro con il Presidente Andrzej Duda
+    </p>
+    <p style="font-size: 14px; color: #888; margin-top: 10px; text-align: center;" data-lang="sv" style="display:none">
+        Minnesfoto vid mötet med president Andrzej Duda
     </p>
 </div>
 
@@ -114,17 +177,33 @@
 <div class="flex-container" style="display: flex; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap;">
     <!-- Opis Macieja Tyszeckiego -->
     <div style="width: 48%; padding: 10px;">
-        <h2><strong>inż. Maciej Tyszecki</strong></h2>
+        <h2><strong data-lang="pl">inż. Maciej Tyszecki</strong></h2>
+        <h2><strong data-lang="en" style="display:none">eng. Maciej Tyszecki</strong></h2>
+        <h2><strong data-lang="de" style="display:none">Ing. Maciej Tyszecki</strong></h2>
+        <h2><strong data-lang="it" style="display:none">ing. Maciej Tyszecki</strong></h2>
+        <h2><strong data-lang="sv" style="display:none">ing. Maciej Tyszecki</strong></h2>
         <p><b>Email:</b> <a href="mailto:mtyszecki@gmail.com">mtyszecki@gmail.com</a></p>
         <p><b>ORCID:</b> 0009-0009-1333-4783</p>
-        <p>Absolwent Akademii Marynarki Wojennej na kierunku Automatyka i Robotyka na Wydziale Mechaniczno-Elektrycznym. Aktualnie kontynuuje studia magisterskie na tym samym kierunku. Posiada doświadczenie w zakresie bezzałogowych systemów latających oraz w projektowaniu, modelowaniu i budowie nawodnych pojazdów bezzałogowych.</p>
+        <p data-lang="pl">Absolwent Akademii Marynarki Wojennej na kierunku Automatyka i Robotyka na Wydziale Mechaniczno-Elektrycznym. Aktualnie kontynuuje studia magisterskie na tym samym kierunku. Posiada doświadczenie w zakresie bezzałogowych systemów latających oraz w projektowaniu, modelowaniu i budowie nawodnych pojazdów bezzałogowych.</p>
+        <p data-lang="en" style="display:none">Graduate of the Polish Naval Academy in the field of Automation and Robotics at the Faculty of Mechanical and Electrical Engineering. Currently continuing master's studies in the same field. Has experience in unmanned aerial systems and in the design, modeling and construction of unmanned surface vehicles.</p>
+        <p data-lang="de" style="display:none">Absolvent der Polnischen Marineakademie im Fach Automatisierung und Robotik an der Fakultät für Mechanik und Elektrotechnik. Derzeit setzt er sein Masterstudium im gleichen Fach fort. Er verfügt über Erfahrung mit unbemannten Flugsystemen sowie mit der Konstruktion, Modellierung und dem Bau unbemannter Oberflächenfahrzeuge.</p>
+        <p data-lang="it" style="display:none">Laureato all'Accademia Navale Polacca nel campo dell'Automazione e Robotica presso la Facoltà di Ingegneria Meccanica ed Elettrica. Attualmente sta continuando gli studi magistrali nello stesso campo. Ha esperienza nei sistemi aerei senza pilota e nella progettazione, modellazione e costruzione di veicoli di superficie senza pilota.</p>
+        <p data-lang="sv" style="display:none">Examen från Polish Naval Academy inom området Automation och robotteknik vid fakulteten för mekanik och elektroteknik. Fortsätter för närvarande masterstudier inom samma område. Har erfarenhet av obemannade flygsystem och av design, modellering och konstruktion av obemannade ytfarkoster.</p>
     </div>
     <!-- Opis Jakuba Tkaczyka -->
     <div style="width: 48%; padding: 10px;">
-        <h2><strong>inż. Jakub Tkaczyk</strong></h2>
+        <h2><strong data-lang="pl">inż. Jakub Tkaczyk</strong></h2>
+        <h2><strong data-lang="en" style="display:none">eng. Jakub Tkaczyk</strong></h2>
+        <h2><strong data-lang="de" style="display:none">Ing. Jakub Tkaczyk</strong></h2>
+        <h2><strong data-lang="it" style="display:none">ing. Jakub Tkaczyk</strong></h2>
+        <h2><strong data-lang="sv" style="display:none">ing. Jakub Tkaczyk</strong></h2>
         <p><b>Email:</b> <a href="mailto:kuba.tkaczy@gmail.com">kuba.tkaczy@gmail.com</a></p>
         <p><b>ORCID:</b> 0009-0000-4008-4112</p>
-        <p>Absolwent Akademii Marynarki Wojennej na kierunku Automatyka i Robotyka na Wydziale Mechaniczno-Elektrycznym. Aktualnie kontynuuje studia magisterskie na tym samym kierunku. Posiada doświadczenie w zakresie bezzałogowych systemów latających, jednak specjalizuje się w technologiach podwodnych. Ma także doświadczenie w projektowaniu, modelowaniu i programowaniu robotów oraz w przetwarzaniu sygnałów.</p>
+        <p data-lang="pl">Absolwent Akademii Marynarki Wojennej na kierunku Automatyka i Robotyka na Wydziale Mechaniczno-Elektrycznym. Aktualnie kontynuuje studia magisterskie na tym samym kierunku. Posiada doświadczenie w zakresie bezzałogowych systemów latających, jednak specjalizuje się w technologiach podwodnych. Ma także doświadczenie w projektowaniu, modelowaniu i programowaniu robotów oraz w przetwarzaniu sygnałów.</p>
+        <p data-lang="en" style="display:none">Graduate of the Polish Naval Academy in the field of Automation and Robotics at the Faculty of Mechanical and Electrical Engineering. Currently continuing master's studies in the same field. Has experience in unmanned aerial systems, but specializes in underwater technologies. Also has experience in designing, modeling and programming robots and in signal processing.</p>
+        <p data-lang="de" style="display:none">Absolvent der Polnischen Marineakademie im Fach Automatisierung und Robotik an der Fakultät für Mechanik und Elektrotechnik. Derzeit setzt er sein Masterstudium im gleichen Fach fort. Er verfügt über Erfahrung mit unbemannten Flugsystemen, spezialisiert sich jedoch auf Unterwassertechnologien. Er hat auch Erfahrung in der Konstruktion, Modellierung und Programmierung von Robotern sowie in der Signalverarbeitung.</p>
+        <p data-lang="it" style="display:none">Laureato all'Accademia Navale Polacca nel campo dell'Automazione e Robotica presso la Facoltà di Ingegneria Meccanica ed Elettrica. Attualmente sta continuando gli studi magistrali nello stesso campo. Ha esperienza nei sistemi aerei senza pilota, ma si specializza nelle tecnologie subacquee. Ha anche esperienza nella progettazione, modellazione e programmazione di robot e nell'elaborazione dei segnali.</p>
+        <p data-lang="sv" style="display:none">Examen från Polish Naval Academy inom området Automation och robotteknik vid fakulteten för mekanik och elektroteknik. Fortsätter för närvarande masterstudier inom samma område. Har erfarenhet av obemannade flygsystem, men specialiserar sig på undervattenteknologier. Har också erfarenhet av att designa, modellera och programmera robotar samt av signalbehandling.</p>
     </div>      
 </div>
 
@@ -137,12 +216,20 @@
     <!-- Nazwa uczelni z linkiem -->
     <div style="text-align: center;">
         <!-- Dodany napis "Alma Mater" -->
-        <h1 style="margin: 0; font-size: 82px;">Alma Mater</h1>
+        <h1 style="margin: 0; font-size: 82px;" data-lang="pl">Alma Mater</h1>
+        <h1 style="margin: 0; font-size: 82px; display:none" data-lang="en">Alma Mater</h1>
+        <h1 style="margin: 0; font-size: 82px; display:none" data-lang="de">Alma Mater</h1>
+        <h1 style="margin: 0; font-size: 82px; display:none" data-lang="it">Alma Mater</h1>
+        <h1 style="margin: 0; font-size: 82px; display:none" data-lang="sv">Alma Mater</h1>
         
         <!-- Pomniejszona nazwa uczelni -->
         <h2 style="margin: 0; font-size: 58px;">
             <a href="https://www.amw.gdynia.pl/index.php/pl/" style="text-decoration: none; color: inherit;">
-                <strong>Akademia Marynarki Wojennej <br>w Gdynii</strong>
+                <strong data-lang="pl">Akademia Marynarki Wojennej <br>w Gdynii</strong>
+                <strong data-lang="en" style="display:none">Polish Naval Academy <br>in Gdynia</strong>
+                <strong data-lang="de" style="display:none">Polnische Marineakademie <br>in Gdynia</strong>
+                <strong data-lang="it" style="display:none">Accademia Navale Polacca <br>a Gdynia</strong>
+                <strong data-lang="sv" style="display:none">Polska marinakademin <br>i Gdynia</strong>
             </a>
         </h2>
     </div>
@@ -155,13 +242,29 @@
 <!-- Podtytuł z linkiem -->
 <p style="text-align: center;">
     <a href="https://www.wme.amw.gdynia.pl/" style="text-decoration: none; color: inherit;">
-        <b>Wydział Mechaniczno-Elektryczny</b>
+        <b data-lang="pl">Wydział Mechaniczno-Elektryczny</b>
+        <b data-lang="en" style="display:none">Faculty of Mechanical and Electrical Engineering</b>
+        <b data-lang="de" style="display:none">Fakultät für Mechanik und Elektrotechnik</b>
+        <b data-lang="it" style="display:none">Facoltà di Ingegneria Meccanica ed Elettrica</b>
+        <b data-lang="sv" style="display:none">Fakulteten för mekanik och elektroteknik</b>
     </a>
 </p>
 
 <!-- Opis AMW -->
-<p style="text-align: center;">
+<p style="text-align: center;" data-lang="pl">
     Akademia Marynarki Wojennej w Gdyni to wiodąca uczelnia wojskowa w Polsce, kształcąca specjalistów w dziedzinach związanych z obronnością, technologiami morskimi oraz inżynierią. Wydział Mechaniczno-Elektryczny oferuje nowoczesne programy nauczania na kierunkach takich jak Automatyka i Robotyka, Elektronika i Telekomunikacja oraz Mechanika i Budowa Maszyn. Studenci mają dostęp do zaawansowanych laboratoriów i uczestniczą w projektach badawczych, które przygotowują ich do pracy w sektorze obronnym i przemysłowym.
+</p>
+<p style="text-align: center; display:none" data-lang="en">
+    The Polish Naval Academy in Gdynia is a leading military university in Poland, educating specialists in fields related to defense, marine technologies and engineering. The Faculty of Mechanical and Electrical Engineering offers modern study programs in fields such as Automation and Robotics, Electronics and Telecommunications, and Mechanical Engineering and Machine Building. Students have access to advanced laboratories and participate in research projects that prepare them for work in the defense and industrial sectors.
+</p>
+<p style="text-align: center; display:none" data-lang="de">
+    Die Polnische Marineakademie in Gdynia ist eine führende Militäruniversität in Polen, die Spezialisten in den Bereichen Verteidigung, Meerestechnologien und Ingenieurwesen ausbildet. Die Fakultät für Mechanik und Elektrotechnik bietet moderne Studienprogramme in Bereichen wie Automatisierung und Robotik, Elektronik und Telekommunikation sowie Maschinenbau und Maschinenbau an. Die Studierenden haben Zugang zu modernen Labors und nehmen an Forschungsprojekten teil, die sie auf die Arbeit im Verteidigungs- und Industriesektor vorbereiten.
+</p>
+<p style="text-align: center; display:none" data-lang="it">
+    L'Accademia Navale Polacca a Gdynia è un'università militare leader in Polonia, che forma specialisti in campi legati alla difesa, alle tecnologie marine e all'ingegneria. La Facoltà di Ingegneria Meccanica ed Elettrica offre programmi di studio moderni in campi come Automazione e Robotica, Elettronica e Telecomunicazioni e Ingegneria Meccanica e Costruzione di Macchine. Gli studenti hanno accesso a laboratori avanzati e partecipano a progetti di ricerca che li preparano per il lavoro nei settori della difesa e industriale.
+</p>
+<p style="text-align: center; display:none" data-lang="sv">
+    Polish Naval Academy i Gdynia är ett ledande militärt universitet i Polen som utbildar specialister inom områden relaterade till försvar, marin teknik och teknik. Fakulteten för mekanik och elektroteknik erbjuder moderna studioprogram inom områden som automatisering och robotteknik, elektronik och telekommunikation samt maskinteknik och maskinbyggnad. Studenter har tillgång till avancerade laboratorier och deltar i forskningsprojekt som förbereder dem för arbete inom försvars- och industrisektorn.
 </p>
 <!-- Zdjęcie "obrona" pod opisem -->
 <div style="text-align: center; margin-top: 20px;">
@@ -189,6 +292,57 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+			<script>
+				// Funkcja zmiany języka
+				function changeLanguage(lang) {
+					// Ukrywamy wszystkie elementy z atrybutem data-lang
+					document.querySelectorAll('[data-lang]').forEach(el => {
+						el.style.display = 'none';
+					});
+					
+					// Pokazujemy tylko elementy dla wybranego języka
+					document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+						el.style.display = '';
+					});
+					
+					// Aktualizujemy flagę i tekst przycisku
+					const flagImg = document.getElementById('current-flag');
+					const langText = document.getElementById('current-language');
+					
+					if (lang === 'pl') {
+						flagImg.src = 'https://flagcdn.com/w40/pl.png';
+						flagImg.alt = 'Polish';
+						langText.textContent = 'PL';
+					} else if (lang === 'en') {
+						flagImg.src = 'https://flagcdn.com/w40/gb.png';
+						flagImg.alt = 'English';
+						langText.textContent = 'EN';
+					} else if (lang === 'de') {
+						flagImg.src = 'https://flagcdn.com/w40/de.png';
+						flagImg.alt = 'German';
+						langText.textContent = 'DE';
+					} else if (lang === 'it') {
+						flagImg.src = 'https://flagcdn.com/w40/it.png';
+						flagImg.alt = 'Italian';
+						langText.textContent = 'IT';
+					} else if (lang === 'sv') {
+						flagImg.src = 'https://flagcdn.com/w40/se.png';
+						flagImg.alt = 'Swedish';
+						langText.textContent = 'SV';
+					}
+					
+					// Zamykamy menu po wyborze
+					document.querySelector('.language-selector').classList.remove('active');
+					
+					// Zapisujemy wybór języka w localStorage
+					localStorage.setItem('selectedLanguage', lang);
+				}
+				
+				// Sprawdzamy, czy w localStorage jest zapisany język
+				const savedLang = localStorage.getItem('selectedLanguage');
+				if (savedLang) {
+					changeLanguage(savedLang);
+				}
+			</script>
 	</body>
 </html>
