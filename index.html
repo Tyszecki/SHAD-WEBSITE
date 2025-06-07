@@ -74,6 +74,8 @@
     flex-direction: column;
     align-items: center; /* Dodaj to */
     text-align: center; /* Dodaj to */
+    max-height: 950px; /* Możesz dostosować tę wartość */
+    overflow: hidden;
 }
 
 /* Popraw nagłówek */
@@ -318,6 +320,13 @@
         margin-top: 5px;
     }
 }
+.image-description p {
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Ogranicz do 3 linii */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
 .language-selector.active .language-dropdown {
     display: flex;
@@ -469,6 +478,27 @@
 
             <!-- Posts -->
             <section class="posts">
+               <article>
+    <header>
+        <h2><a href="#" id="openModalDigitalBaltic" data-lang="pl">Digital Baltic 2025</a></h2>
+        <h2><a href="#" id="openModalDigitalBaltic" data-lang="en" style="display:none">Digital Baltic 2025</a></h2>
+        <h2><a href="#" id="openModalDigitalBaltic" data-lang="de" style="display:none">Digital Baltic 2025</a></h2>
+    </header>
+    <div class="image-container">
+        <a href="#" class="image fit" id="Digital1Image"><img src="images/Digital1.jpg" alt="Digital Baltic 2025" /></a>
+        <div class="image-description">
+            <p style="font-size: 0.5em;" data-lang="pl">
+                Na początku czerwca wzięliśmy udział w międzynarodowej konferencji Digital Baltic 2025, poświęconej bezpieczeństwu i technologiom w regionie Morza Bałtyckiego. Zaprezentowaliśmy tam projekt SHAD, zdobywając 3. miejsce w kategorii Digital Baltic Junior za innowacyjność, zaawansowanie techniczne oraz potencjał dual-use.
+           </p>
+            <p style="font-size: 0.5em; display:none" data-lang="en">
+                At the beginning of June, we participated in the international Digital Baltic 2025 conference, dedicated to security and technologies in the Baltic Sea region. We presented our SHAD project there, winning 3rd place in the Digital Baltic Junior category for innovation, technical advancement and dual-use potential.
+           </p>
+            <p style="font-size: 0.5em; display:none" data-lang="de">
+                Anfang Juni nahmen wir an der internationalen Konferenz Digital Baltic 2025 teil, die sich mit Sicherheit und Technologien in der Ostseeregion befasste. Wir präsentierten dort unser SHAD-Projekt und gewannen den 3. Platz in der Kategorie Digital Baltic Junior für Innovation, technische Fortschrittlichkeit und Dual-Use-Potenzial.
+            </p>
+        </div>
+    </div>
+</article>
                 <article>
                     <header>
                         <h2><a href="#" id="openModalWyzroznienie" data-lang="pl">Wyróżnienie w konkursie<br>"Młodzi Innowacyjni 2025"</a></h2>
@@ -605,6 +635,26 @@
     </div>
 
     <!-- Modale -->
+     <div id="modalDigitalBaltic" class="modal">
+    <span class="close">&times;</span>
+    <div class="gallery-container">
+        <h2 class="modal-title" data-lang="pl">Digital Baltic 2025</h2>
+        <h2 class="modal-title" data-lang="en" style="display:none">Digital Baltic 2025</h2>
+        <h2 class="modal-title" data-lang="de" style="display:none">Digital Baltic 2025</h2>
+        <h2 class="modal-title" data-lang="it" style="display:none">Digital Baltic 2025</h2>
+        <h2 class="modal-title" data-lang="sv" style="display:none">Digital Baltic 2025</h2>
+        <div class="gallery-main">
+            <img id="currentDigitalGalleryImage" src="images/Digital1.jpg">
+            <div class="gallery-nav">
+                <button id="prevDigitalBtn">&lt;</button>
+                <button id="nextDigitalBtn">&gt;</button>
+            </div>
+        </div>
+        <div class="gallery-counter">
+            <span id="currentDigitalImageIndex">1</span> / <span id="totalDigitalImages">3</span>
+        </div>
+    </div>
+</div>
     <div id="modalSpecyfikacje" class="modal">
         <span class="close">&times;</span>
         <img class="modal-content" id="modalSpecImg" src="images/specyfikacje.jpg">
@@ -805,6 +855,46 @@
             closeModal(event.target.id);
         }
     };
+    // Galeria zdjęć Digital Baltic
+const digitalGalleryImages = [
+    'images/Digital1.jpg',
+    'images/Digital2.jpg',
+    'images/Digital3.JPG'
+];
+
+let currentDigitalImage = 0;
+const totalDigitalImages = digitalGalleryImages.length;
+
+function updateDigitalGallery() {
+    document.getElementById('currentDigitalGalleryImage').src = digitalGalleryImages[currentDigitalImage];
+    document.getElementById('currentDigitalImageIndex').textContent = currentDigitalImage + 1;
+    document.getElementById('totalDigitalImages').textContent = totalDigitalImages;
+}
+
+document.getElementById('prevDigitalBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    currentDigitalImage = (currentDigitalImage - 1 + totalDigitalImages) % totalDigitalImages;
+    updateDigitalGallery();
+});
+
+document.getElementById('nextDigitalBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    currentDigitalImage = (currentDigitalImage + 1) % totalDigitalImages;
+    updateDigitalGallery();
+});
+
+// Inicjalizacja galerii Digital Baltic
+updateDigitalGallery();
+
+// Przypisanie zdarzeń dla Digital Baltic
+document.getElementById('openModalDigitalBaltic').addEventListener('click', function(e) {
+    e.preventDefault();
+    openModal('modalDigitalBaltic');
+});
+document.getElementById('Digital1Image').addEventListener('click', function(e) {
+    e.preventDefault();
+    openModal('modalDigitalBaltic');
+});
 </script>
 </body>
 </html>
